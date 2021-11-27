@@ -1,2 +1,0 @@
-cargo:rustc-env=TYPENUM_BUILD_OP=/Users/kohei/repos/atcoder-rust/target/debug/build/typenum-5fa840323764dc86/out/consts.rs
-cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/kohei/repos/atcoder-rust/target/debug/build/typenum-5fa840323764dc86/out/op.rs
