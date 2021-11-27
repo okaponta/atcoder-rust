@@ -2,7 +2,16 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+        mut n: i32,
     }
-    println!("{}", a);
+    if n == 0 {
+        println!("Yes");
+        return;
+    }
+    while n % 10 == 0 {
+        n /= 10;
+    }
+    let nstr = n.to_string();
+    let rev = nstr.chars().rev().collect::<String>();
+    println!("{}", if nstr == rev { "Yes" } else { "No" })
 }

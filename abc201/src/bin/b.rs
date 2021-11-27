@@ -2,7 +2,9 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+            n: i32,
+            mut st: [(String,i32);n]
     }
-    println!("{}", a);
+    st.sort_by(|a, b| b.1.cmp(&a.1));
+    println!("{}", st[1].0)
 }

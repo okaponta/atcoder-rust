@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+            n: i32
     }
-    println!("{}", a);
+    let mut count = 0;
+    let mut save = 0;
+    while save < n {
+        count += 1;
+        save += count
+    }
+    println!("{}", count);
 }

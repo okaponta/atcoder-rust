@@ -2,7 +2,16 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+            n: usize,
+            mut a: [usize;n],
     }
-    println!("{}", a);
+    a.sort();
+    let mut res = "Yes";
+    for i in 0..n {
+        if a[i] != i + 1 {
+            res = "No";
+            break;
+        }
+    }
+    println!("{}", res);
 }

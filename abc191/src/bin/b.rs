@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:usize,x:i32,
+       mut a: [i32;n]
     }
-    println!("{}", a);
+    for i in 0..n {
+        if a[i] != x {
+            print!("{} ", a[i]);
+        }
+    }
+    println!();
 }

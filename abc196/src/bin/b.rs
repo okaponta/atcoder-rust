@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       s: String,
     }
-    println!("{}", a);
+    println!("{}", s.split('.').nth(0).unwrap());
 }
