@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       s: String,
     }
-    println!("{}", a);
+    let c: Vec<char> = s.chars().collect();
+    println!("{}{}{}", c[1], c[2], c[0]);
 }

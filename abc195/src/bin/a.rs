@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       m:i32,
+       h:i32,
     }
-    println!("{}", a);
+    println!("{}", if h % m == 0 { "Yes" } else { "No" });
 }
