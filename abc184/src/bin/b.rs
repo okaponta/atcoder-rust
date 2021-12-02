@@ -2,8 +2,17 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+      n:usize,x:i32,s:String,
     }
-    println!("{}", a);
-    todo!();
+    let mut ans = x;
+    for i in 0..n {
+        if s.chars().nth(i).unwrap() == 'x' {
+            if ans != 0 {
+                ans -= 1;
+            }
+        } else {
+            ans += 1;
+        }
+    }
+    println!("{}", ans);
 }
