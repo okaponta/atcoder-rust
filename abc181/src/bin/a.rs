@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:i32,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", if n % 2 == 0 { "White" } else { "Black" });
 }
