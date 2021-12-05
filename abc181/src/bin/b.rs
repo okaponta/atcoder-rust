@@ -2,8 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:i32,
+       ab:[(i64,i64);n]
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        ab.iter()
+            .map(|(a, b)| ((a + b) * (b - a + 1) / 2))
+            .sum::<i64>()
+    );
 }
