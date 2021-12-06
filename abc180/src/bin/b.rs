@@ -2,8 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:usize,
+       x:[isize;n]
     }
-    println!("{}", a);
-    todo!();
+    let m = x.iter().fold(0, |acc, x| acc + x.abs());
+    let e = (x.iter().fold(0, |acc, x| acc + x * x) as f64).sqrt();
+    let c = x.iter().map(|x| x.abs()).max().unwrap();
+    println!("{}", m);
+    println!("{}", e);
+    println!("{}", c);
 }
