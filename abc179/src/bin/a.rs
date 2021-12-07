@@ -2,8 +2,15 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       s:String,
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}{}",
+        s,
+        if s.chars().last().unwrap() == 's' {
+            "es"
+        } else {
+            "s"
+        }
+    );
 }
