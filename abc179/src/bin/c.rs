@@ -2,8 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:i32,
     }
-    println!("{}", a);
-    todo!();
+    let mut count = 0;
+    for a in 1..n {
+        count += (n - 1) / a;
+    }
+    println!("{}", count);
 }
