@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+        d:i32,t:i32,s:i32,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", if d <= t * s { "Yes" } else { "No" });
 }
