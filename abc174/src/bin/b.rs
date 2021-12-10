@@ -2,8 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:i32,d:i64,
+       xy:[(i64,i64);n],
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        xy.iter().filter(|(x, y)| x * x + y * y <= d * d).count()
+    );
 }
