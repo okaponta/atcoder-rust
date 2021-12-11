@@ -1,9 +1,11 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+       s:Chars,t:Chars,
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        (0..s.len()).into_iter().filter(|&i| s[i] != t[i]).count()
+    );
 }
