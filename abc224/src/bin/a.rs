@@ -2,8 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       s:String,
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        if s.chars().last().unwrap() == 'r' {
+            "er"
+        } else {
+            "ist"
+        }
+    );
 }
