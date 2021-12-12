@@ -1,9 +1,16 @@
+use itertools::Itertools;
 use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:usize,
+       xy:[(i64,i64);n]
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        xy.iter()
+            .tuple_combinations()
+            .filter(|(a, b, c)| (c.0 - a.0) * (b.1 - a.1) != (b.0 - a.0) * (c.1 - a.1))
+            .count()
+    );
 }
