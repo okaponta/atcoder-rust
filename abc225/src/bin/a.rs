@@ -1,9 +1,12 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+       s:Chars,
     }
-    println!("{}", a);
-    todo!();
+    let mut a: Vec<_> = s.into_iter().permutations(3).collect();
+    a.sort();
+    a.dedup();
+    println!("{}", a.len());
 }
