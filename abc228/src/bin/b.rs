@@ -1,9 +1,17 @@
+use std::collections::HashSet;
+
 use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:usize,mut x:usize,
+       mut a:[usize;n]
     }
-    println!("{}", a);
-    todo!();
+    a.insert(0, 0);
+    let mut ans: HashSet<usize> = HashSet::new();
+    while !ans.contains(&x) {
+        ans.insert(x);
+        x = a[x];
+    }
+    println!("{}", ans.len());
 }
