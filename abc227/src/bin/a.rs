@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:i32,k:i32,a:i32,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", (a + k - 2) % n + 1);
 }
