@@ -2,8 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       s:String,
     }
-    println!("{}", a);
-    todo!();
+    let t = "oxxoxxoxxoxx";
+    println!("{}", if t.contains(&s) { "Yes" } else { "No" });
 }
