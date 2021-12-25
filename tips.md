@@ -18,4 +18,6 @@
 
 ## Map
 - 要素を取得、なかったら0
-  - map.get(&key).map_or(0, |p| *p);
+  - map.get(&key).map_or(0, |v| *v);
+- 要素がなければ1を挿入、あれば+1
+  - *map.entry(sum).or_insert(0) += 1;
