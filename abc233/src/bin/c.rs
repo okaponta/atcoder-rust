@@ -1,38 +1,20 @@
 use proconio::input;
 
 fn main() {
-    // WA
     input! {
-       n:usize,x:i64,
+       n:usize,x:usize,
+       a:[[usize];n]
     }
-    let mut la = vec![];
-    for i in 0..n {
-        input! {l:usize}
-        input! {
-            a:[i64;l],
-        }
-        la[i] = a;
-    }
-    let mut count = 0;
-    for a in &la[0] {
-        count += next(0, x, *a, &la, count);
-    }
-    println!("{}", count);
+    println!("{}", dfs(0, 1, x, &a));
 }
 
-fn next(index: usize, x: i64, a: i64, la: &Vec<Vec<i64>>, mut count: i32) -> i32 {
-    if x % a != 0 {
-        return count;
+fn dfs(i: usize, p: usize, x: usize, a: &Vec<Vec<usize>>) -> usize {
+    if i == a.len() {
+        return if p == x { 1 } else { 0 };
     }
-    if index + 1 == la.len() {
-        for ai in &la[index + 1] {
-            if x == *ai {
-                return count + 1;
-            }
-        }
+    let mut res = 0;
+    for ai in &a[i] {
+        res += dfs(i + 1, p.saturating_mul(*ai), x, a);
     }
-    for ai in &la[index + 1] {
-        count += next(index + 1, x / a, *ai, la, count);
-    }
-    return count;
+    res
 }
