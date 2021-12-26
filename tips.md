@@ -16,6 +16,11 @@
   - rotate_right(n)
   - s[n..].iter().collect::<String>(), s[..n].iter().collect::<String>())
 
+## iter
+- 要素を一緒にまわす
+  - zip
+  - s.iter().zip(t.iter()).map(|(a,b)| a + b)
+
 ## Map
 - 要素を取得、なかったら0
   - map.get(&key).map_or(0, |v| *v);
