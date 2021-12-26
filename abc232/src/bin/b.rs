@@ -1,9 +1,20 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+       s:Chars,t:Chars,
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        if s.iter()
+            .zip(t.iter())
+            .map(|(&a, &b)| (a as i32 - b as i32).rem_euclid(26))
+            .all_equal()
+        {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
