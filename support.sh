@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Usage source ./support.sh
+# Usage at ./abcXXX, execute 'source ../support.sh'
 export CONTEST=`basename $PWD`
 alias join="git add .&&git commit -m 'join $CONTEST'"
 alias a="git add ./src/bin/a.rs&&git commit -m 'add ${CONTEST}_a'"
