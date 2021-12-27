@@ -11,6 +11,7 @@ atcoderの回答をただ貯めておくリポジトリです
  - cargo compete open
 
 問題ごと
- - cargo compete test a
- - cargo compete submit a
- - a でコミット
+ - test a
+ - submit a
+ - commit a
+ - run a
