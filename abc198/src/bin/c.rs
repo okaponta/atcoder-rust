@@ -1,8 +1,17 @@
+use num_integer::Roots;
 use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       r:i64,x:i64,y:i64,
     }
-    println!("{}", a);
+    if x * x + y * y < r * r {
+        println!("{}", 2);
+        return;
+    }
+    let mut ans = ((x * x + y * y) / (r * r)).sqrt();
+    if x * x + y * y != ans * ans * r * r {
+        ans += 1;
+    }
+    println!("{}", ans);
 }
