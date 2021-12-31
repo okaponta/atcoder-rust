@@ -2,8 +2,9 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:i32, mut la:[[i32];n]
     }
-    println!("{}", a);
-    todo!();
+    la.sort();
+    la.dedup();
+    println!("{}", la.len());
 }
