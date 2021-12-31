@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       x:f32,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", x.round() as i32);
 }
