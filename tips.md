@@ -4,9 +4,23 @@
 - 0埋め
   - println!("{:<03}", { n });
 
+## 演算
+- BitXOR
+  - ^
+- BitAND
+  - &
+
+# char
+- nこめのアルファベット
+  - (b'a' + ((n - 1) % 26) as u8) as char
+- 数値に変換
+  - c.to_digit(RADIX)
+
 ## String
 - 部分文字列が存在する
   - t.contains(&s)
+- charを追加
+  - str.insert(char)
 
 ## Vec
 - 前後と一緒にイテレーション
@@ -27,6 +41,8 @@
   - for (i, j) in iproduct!(0..n, 0..n) { }
 
 ## Map
+- 新規
+  - let mut map = HashMap::new();
 - 要素を取得、なかったら0
   - map.get(&key).map_or(0, |v| *v);
 - 要素がなければ1を挿入、あれば+1
