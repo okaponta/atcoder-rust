@@ -2,8 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:usize,k:usize,mut p:[i32;n]
     }
-    println!("{}", a);
-    todo!();
+    p.sort();
+    println!("{}", p[0..k].iter().sum::<i32>());
 }
