@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       c:char,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", if c.is_ascii_uppercase() { "A" } else { "a" });
 }
