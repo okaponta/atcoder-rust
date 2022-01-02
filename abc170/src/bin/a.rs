@@ -2,8 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       x:[i32;5],
     }
-    println!("{}", a);
-    todo!();
+    for i in 0..5 {
+        if x[i] != (i + 1) as i32 {
+            println!("{}", i + 1);
+        }
+    }
 }
