@@ -1,9 +1,12 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+       k:usize, mut s:Chars
     }
-    println!("{}", a);
-    todo!();
+    if s.len() > k {
+        println!("{}...", s[..k].iter().collect::<String>());
+        return;
+    }
+    println!("{}", s.iter().collect::<String>());
 }
