@@ -15,12 +15,20 @@
   - (b'a' + ((n - 1) % 26) as u8) as char
 - 数値に変換
   - c.to_digit(RADIX)
+- `Vec<char>` -> String
+  - `c.iter().collect::<String>();`
+- chars -> String
+  - `chars.collect::<String>();`
 
 ## String
 - 部分文字列が存在する
   - t.contains(&s)
+- 部分文字列
+  - &s[0..k]
 - charを追加
   - str.insert(char)
+- String -> int
+  - `s.parse::<i32>().unwrap();`
 
 ## Vec
 - 前後と一緒にイテレーション
@@ -30,7 +38,7 @@
 - 前半後半いれかえ
   - rotate_left(n)
   - rotate_right(n)
-  - s[n..].iter().collect::<String>(), s[..n].iter().collect::<String>())
+  - `s[n..].iter().collect::<String>(), s[..n].iter().collect::<String>())`
 
 ## iter
 - 要素を一緒にまわす
