@@ -15,3 +15,7 @@ atcoderの回答をただ貯めておくリポジトリです
  - submit a
  - commit a
  - run a
+
+Rustのバージョンが1.49.0以降になったら以下でたぶんバージョン固定できる
+ - rustup toolchain add 1.49.0
+ - echo '1.49.0' > rust-toolchain
