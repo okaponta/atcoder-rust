@@ -10,19 +10,6 @@
 - BitAND
   - &
 
-# char
-- nこめのアルファベット
-  - (b'a' + ((n - 1) % 26) as u8) as char
-- 数値に変換
-  - c.to_digit(RADIX)
-- 数値から変換
-  - char::from_digit(int, 10).unwrap()
-  - 1.42.0だと、`std::char::from_digit()`じゃないとコンパイル通らない
-- `Vec<char>` -> String
-  - `c.iter().collect::<String>();`
-- chars -> String
-  - `chars.collect::<String>();`
-
 ## String
 - 部分文字列が存在する
   - t.contains(&s)
@@ -30,8 +17,6 @@
   - &s[0..k]
 - charを追加
   - str.insert(index,char)
-- String -> int
-  - `s.parse::<i32>().unwrap();`
 
 ## Vec
 - 前後と一緒にイテレーション
