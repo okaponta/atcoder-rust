@@ -2,8 +2,16 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       mut k:i64,
     }
-    println!("{}", a);
-    todo!();
+    let mut ans = vec![];
+    while k > 0 {
+        if k % 2 == 0 {
+            ans.push('0');
+        } else {
+            ans.push('2');
+        }
+        k /= 2;
+    }
+    println!("{}", ans.iter().rev().collect::<String>());
 }
