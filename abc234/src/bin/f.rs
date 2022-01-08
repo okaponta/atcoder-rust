@@ -30,10 +30,8 @@ fn main() {
     let mut dp = vec![0; n + 1];
     dp[0] = 1;
     for i in 0..26 {
-        // alphabet
         let mut next = vec![0; n + 1];
         for j in 0..=n {
-            // characters
             for k in 0..=j.min(map[i]) {
                 next[j] += dp[j - k] * binom[j][k];
                 next[j] %= MOD;
