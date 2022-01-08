@@ -1,9 +1,12 @@
 use proconio::input;
 
+fn f(x: i32) -> i32 {
+    x * x + 2 * x + 3
+}
+
 fn main() {
     input! {
-       a:i32,
+       t:i32,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", f(f(f(t) + t) + f(f(t))));
 }
