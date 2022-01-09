@@ -1,9 +1,14 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+       s:Chars,t:Chars
     }
-    println!("{}", a);
-    todo!();
+    for i in 0..s.len() {
+        if s[i] != t[i] {
+            println!("No");
+            return;
+        }
+    }
+    println!("Yes");
 }
