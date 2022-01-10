@@ -9,9 +9,9 @@ struct Dijkstra {
 
 impl Dijkstra {
     // n:usize 頂点の数
-    // path: Vec<Vec<(usize,usize)>> path[i] = [(2,3), (3,1), (頂点への道,重み)]
+    // edge: Vec<Vec<(usize,usize)>> edge[i] = [(2,3), (3,1), (頂点への道,重み)]
     // init:usize どの頂点を起点に考えるか
-    pub fn new(n: usize, path: Vec<Vec<(usize, usize)>>, init: usize) -> Self {
+    pub fn new(n: usize, edge: Vec<Vec<(usize, usize)>>, init: usize) -> Self {
         let mut distance = vec![INF; n];
         let mut parent = vec![INF; n];
         let mut heap = BinaryHeap::new();
@@ -26,7 +26,7 @@ impl Dijkstra {
                 continue;
             }
             distance[target] = d;
-            for &(next, cost) in &path[target] {
+            for &(next, cost) in &edge[target] {
                 if distance[next] > d + cost {
                     distance[next] = d + cost;
                     heap.push((Reverse(distance[next]), next));
