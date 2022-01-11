@@ -1,9 +1,8 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+       s:Chars,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", if s[1] == 'B' { "ARC" } else { "ABC" });
 }
