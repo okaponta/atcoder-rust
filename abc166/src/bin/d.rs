@@ -2,8 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       x:i64,
     }
-    println!("{}", a);
-    todo!();
+    for a in 0..120 {
+        for b in -120..120 {
+            if a * a * a * a * a - b * b * b * b * b == x {
+                println!("{} {}", a, b);
+                return;
+            }
+        }
+    }
 }
