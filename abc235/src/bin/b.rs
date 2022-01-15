@@ -2,8 +2,17 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       n:usize,
+       h:[i32;n],
     }
-    println!("{}", a);
-    todo!();
+    let mut ans = 0;
+    for hi in h {
+        if ans < hi {
+            ans = hi;
+        } else {
+            println!("{}", ans);
+            return;
+        }
+    }
+    println!("{}", ans);
 }
