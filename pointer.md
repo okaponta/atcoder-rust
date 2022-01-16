@@ -94,7 +94,7 @@
    - [グラフを削除していくのを逆に処理する感じでやったやつ](abc229/src/bin/e.rs)
    - [数値を回文にする](abc206/src/bin/d.rs)
    - [循環チェック](abc231/src/bin/d.rs)
-   - [ループを求める](abc167/src/bin/d.rs)
+   - [ループを求める](abc167/src/bin/d_sub.rs)
    - [cを最小とする最小全域木](abc218/src/bin/e.rs)
    - [クエリ先読みで解く最小全域木](abc235/src/bin/e.rs)
 

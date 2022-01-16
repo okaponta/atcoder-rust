@@ -1,31 +1,26 @@
-use petgraph::unionfind::UnionFind;
+use std::vec;
+
 use proconio::{input, marker::Usize1};
 
 fn main() {
     input! {
-       n:usize,k:usize,
+       n:usize, mut k:usize,
        a:[Usize1;n],
     }
-    let mut path = vec![0];
-    let mut uf = UnionFind::new(n);
-    let mut prev = 0;
-    let mut next = a[0];
-    while uf.union(prev, next) {
-        path.push(next);
-        prev = next;
-        next = a[prev];
-    }
-    let mut begin = 0;
-    for i in 0..path.len() {
-        if path[i] == next {
-            begin = i;
+    // dp[i][j] = 点jから2^i回遷移する先
+    // 2^60まであれば今回は十分
+    let mut dp = vec![a.clone(); 61];
+    for i in 0..60 {
+        for j in 0..n {
+            dp[i + 1][j] = dp[i][dp[i][j]];
         }
     }
-    let loop_size = path.len() - begin;
-    let index = if k < begin {
-        k
-    } else {
-        ((k - begin) % loop_size) + begin
-    };
-    println!("{}", path[index] + 1);
+    let mut ans = 0;
+    for i in 0..60 {
+        if k & 1 == 1 {
+            ans = dp[i][ans];
+        }
+        k >>= 1;
+    }
+    println!("{}", ans + 1);
 }
