@@ -17,6 +17,8 @@
   - &s[0..k]
 - charを追加
   - str.insert(index,char)
+- 末尾を先頭に
+  - format!("{}{}", x % 10, x / 10)
 
 ## Vec
 - 前後と一緒にイテレーション
