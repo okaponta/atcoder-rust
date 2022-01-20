@@ -110,3 +110,11 @@ fn binom_init(n: usize, modulo: usize) -> Vec<Vec<usize>> {
     }
     res
 }
+
+// 単体でnCkを求めたいとき
+fn binom(n: usize, k: usize) -> usize {
+    if k > n {
+        return 0;
+    }
+    (0..k).fold(1, |s, k| s * (n - k) / (k + 1))
+}

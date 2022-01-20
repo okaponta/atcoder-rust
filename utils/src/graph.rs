@@ -61,7 +61,6 @@ mod tests {
     #[test]
     fn test_dijkistra() {
         let n = 6;
-        let mut path = vec![vec![]; n];
         let abc = vec![
             (0, 1, 5),
             (0, 3, 9),
@@ -71,6 +70,7 @@ mod tests {
             (3, 5, 2),
             (4, 5, 3),
         ];
+        let mut path = vec![vec![]; n];
         for (a, b, c) in abc {
             path[a].push((b, c));
             path[b].push((a, c));
