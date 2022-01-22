@@ -12,16 +12,23 @@ fn main() {
     }
     wv.sort_by_key(|k| Reverse(k.1));
     for (l, r) in lr {
-        let mut xc = x.clone();
-        xc.drain(l..(r + 1));
-        xc.sort();
+        let mut target = vec![];
+        for i in 0..m {
+            if l <= i && i <= r {
+                continue;
+            }
+            target.push(x[i]);
+        }
+        target.sort();
         let mut ans = 0;
         for (w, v) in wv.clone() {
-            let i = xc.lower_bound(&w);
-            if i != xc.len() {
-                ans += v;
-                xc.remove(i);
+            let i = target.lower_bound(&w);
+            if i == target.len() {
+                // 対象外
+                continue;
             }
+            ans += v;
+            target.remove(i);
         }
         println!("{}", ans);
     }
