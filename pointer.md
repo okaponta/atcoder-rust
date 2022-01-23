@@ -7,6 +7,7 @@
  - 参考実装
    - [#の数を数え上げる全探索](abc173/src/bin/c.rs)
    - [Bit全探索で網羅](abc167/src/bin/c.rs)
+   - [ORのXORの最小値](abc197/src/bin/c.rs)
 
 ### 順列
  - nこの順列の全探索
@@ -27,6 +28,8 @@
 ### dfs
  - 深さ優先探索
    - [数列の全探索](abc233/src/bin/c.rs)
+   - [木の走査異なる色があるかどうか](abc198/src/bin/e.rs)
+   - [Bit全探索的な](abc197/src/bin/c_ex.rs)
 
 ## 整数
 
@@ -118,3 +121,8 @@
  - 桁dp
    - [1の出現する回数](abc029/src/bin/d.rs)
    - [長い数で特定の数が出てくる総和](abc235/src/bin/f.rs)
+
+## 幾何
+- ベクトル使う
+- 参考実装
+  - [回転行列](abc197/src/bin/d_ex.rs)

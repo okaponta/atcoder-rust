@@ -25,6 +25,8 @@
   - windows()
 - 要素入れ替え
   - swap(a,b)
+- 要素の範囲削除(lからrまで)
+  - drain((l-1)..r)
 - 前半後半いれかえ
   - rotate_left(n)
   - rotate_right(n)
