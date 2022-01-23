@@ -2,7 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+        n:f64,
     }
-    println!("{}", a);
+    let mut ans = 0.0;
+    for i in 1..n as i32 {
+        ans += n / (n - i as f64);
+    }
+    println!("{}", ans);
 }
