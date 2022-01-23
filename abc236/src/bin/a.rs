@@ -1,9 +1,14 @@
-use proconio::input;
+use proconio::{
+    input,
+    marker::{Chars, Usize1},
+};
 
 fn main() {
     input! {
-       a:i32,
+       mut s:Chars,
+       a:Usize1,
+       b:Usize1,
     }
-    println!("{}", a);
-    todo!();
+    s.swap(a, b);
+    println!("{}", s.iter().collect::<String>());
 }
