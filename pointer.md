@@ -8,6 +8,7 @@
    - [#の数を数え上げる全探索](abc173/src/bin/c.rs)
    - [Bit全探索で網羅](abc167/src/bin/c.rs)
    - [ORのXORの最小値](abc197/src/bin/c.rs)
+   - [シンプルなBit全探索](abc190/src/bin/c.rs)
 
 ### 順列
  - nこの順列の全探索
@@ -57,6 +58,7 @@
    - [特定の値以上になるインデックスをみつける](abc231/src/bin/c.rs)
    - [上記のような単純な場合は簡単に書ける](abc231/src/bin/c_ex.rs)
    - [要素がk以上になるようにmを2分探索](abc216/src/bin/e_ex.rs)
+   - [平均値と中央値の最大値を探索](abc236/src/bin/e.rs)
 
 ### 尺取り法  
  - leftとrightを尺取り虫みたく遷移させて計算する

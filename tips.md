@@ -27,6 +27,8 @@
   - swap(a,b)
 - 要素の範囲削除(lからrまで)
   - drain((l-1)..r)
+- 初期値いりで初期化
+  - (0..n).collect_vec()
 - 前半後半いれかえ
   - rotate_left(n)
   - rotate_right(n)

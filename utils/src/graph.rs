@@ -1,6 +1,6 @@
 use std::{cmp::Reverse, collections::BinaryHeap};
 
-const INF: usize = 1 << 31;
+const INF: usize = 1 << 60;
 
 struct Dijkstra {
     distance: Vec<usize>,
