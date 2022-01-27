@@ -26,9 +26,9 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+        a:i32,
     }
-    println!("{}", a);
+    println!("{}",0);
     todo!();
 }
 '''
