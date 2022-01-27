@@ -28,7 +28,7 @@ fn main() {
     input! {
         a:i32,
     }
-    println!("{}",0);
+    println!("{}", a);
     todo!();
 }
 '''
