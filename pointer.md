@@ -76,6 +76,10 @@
  - 参考実装
    - [k個先にいる頂点](abc167/src/bin/d_ex.rs)
 
+### その他
+ - 後ろから数え上げ
+   - [部分区間でmod2019が同じものがいくつあるか](abc164/src/bin/d.rs)
+
 ## 木
 
 ### BinaryTreeSet
