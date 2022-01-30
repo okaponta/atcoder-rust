@@ -2,8 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:i64,
     }
-    println!("{}", a);
-    todo!();
+    let max = 1 << 31;
+    println!("{}", if -max <= n && n < max { "Yes" } else { "No" });
 }
