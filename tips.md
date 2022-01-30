@@ -19,10 +19,12 @@
   - str.insert(index,char)
 - 末尾を先頭に
   - format!("{}{}", x % 10, x / 10)
-- Chars
-  - 文字が'a'の場合にとりつづける(先頭&末尾)
-  - let la = s.iter().take_while(|&&si| si == 'a').count();
-  - let ra = s.iter().rev().take_while(|&&si| si == 'a').count();
+- 文字が'a'の場合にとりつづける(先頭&末尾)
+  - let first_a_count = s.len() - s.trim_start_matches('a').len();
+  - let last_a_count = s.len() - s.trim_end_matches('a').len();
+  - Chars
+    - let la = s.iter().take_while(|&&si| si == 'a').count();
+    - let ra = s.iter().rev().take_while(|&&si| si == 'a').count();
 
 ## Vec
 - 前後と一緒にイテレーション
