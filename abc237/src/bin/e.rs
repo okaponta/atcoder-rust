@@ -1,4 +1,4 @@
-use std::collections::BinaryHeap;
+use std::{cmp::Reverse, collections::BinaryHeap};
 
 use proconio::{input, marker::Usize1};
 
@@ -10,49 +10,53 @@ fn main() {
     }
     let mut edge = vec![vec![]; n];
     for (u, v) in uv {
-        edge[u].push(v);
-        edge[v].push(u);
+        if h[u] > h[v] {
+            edge[u].push((v, 0));
+            edge[v].push((u, h[u] - h[v]));
+        } else {
+            edge[u].push((v, h[v] - h[u]));
+            edge[v].push((u, 0));
+        }
     }
-    let d = Dijkstra::new(n, edge, h);
-    println!("{}", d.fun.iter().max().unwrap());
+    let d = Dijkstra::new(n, edge, 0);
+    let mut ans = 0;
+    for i in 0..n {
+        ans = ans.max(h[0] - h[i] - d.potential[i]);
+    }
+    println!("{}", ans);
 }
 
 const INF: i64 = 1 << 60;
 
 struct Dijkstra {
-    fun: Vec<i64>,
+    potential: Vec<i64>,
 }
 
 impl Dijkstra {
     // n:usize 頂点の数
-    // edge: Vec<Vec<usize>> edge[i] = [2, 3, (頂点への道)]
-    // height: Vec<i64> height[i] = 標高、これをもとに楽しさを計算する
-    pub fn new(n: usize, edge: Vec<Vec<usize>>, height: Vec<i64>) -> Self {
-        let mut fun = vec![-INF; n];
+    // edge: Vec<Vec<(usize,usize)>> edge[i] = [(2,3), (3,1), (頂点への道,重み)]
+    // init:usize どの頂点を起点に考えるか
+    pub fn new(n: usize, edge: Vec<Vec<(usize, i64)>>, init: usize) -> Self {
+        let mut potential = vec![INF; n];
         let mut heap = BinaryHeap::new();
         for i in 0..n {
-            if i == 0 {
-                heap.push((0, i));
+            if i == init {
+                heap.push((Reverse(0), i));
             }
-            heap.push((-INF, i));
+            heap.push((Reverse(INF), i));
         }
-        while let Some((d, target)) = heap.pop() {
-            if fun[target] > d {
+        while let Some((Reverse(d), target)) = heap.pop() {
+            if potential[target] < d {
                 continue;
             }
-            fun[target] = d;
-            for &next in &edge[target] {
-                let cost = if height[target] > height[next] {
-                    height[target] - height[next]
-                } else {
-                    (height[target] - height[next]) * 2
-                };
-                if fun[next] < d + cost {
-                    fun[next] = d + cost;
-                    heap.push((fun[next], next));
+            potential[target] = d;
+            for &(next, cost) in &edge[target] {
+                if potential[next] > d + cost {
+                    potential[next] = d + cost;
+                    heap.push((Reverse(potential[next]), next));
                 }
             }
         }
-        Self { fun }
+        Self { potential }
     }
 }
