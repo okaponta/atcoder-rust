@@ -2,8 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       l:usize,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", binom(l - 1, 11));
+}
+
+fn binom(n: usize, k: usize) -> usize {
+    if k > n {
+        return 0;
+    }
+    (0..k).fold(1, |s, k| s * (n - k) / (k + 1))
 }
