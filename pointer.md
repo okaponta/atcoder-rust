@@ -93,6 +93,13 @@
 
 ### BinaryTreeMap
 
+### Segment tree
+ - 区間上の値を更新する
+ - 任意の区間上の最小値や合計値などを取得する
+   - [区間のXORを更新しながら計算](abc185/src/bin/f.rs)
+
+### Fenwick tree (Binary Indexed Tree)
+
 ### ノードの深さ(二部グラフ性)
  - 参考実装
    - 深さ優先探索

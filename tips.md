@@ -9,6 +9,8 @@
   - ^
 - BitAND
   - &
+- 割り算(切り上げ)
+  - (a + b - 1) / b
 
 ## String
 - 部分文字列が存在する
@@ -19,6 +21,13 @@
   - str.insert(index,char)
 - 末尾を先頭に
   - format!("{}{}", x % 10, x / 10)
+- n進数に変換
+  - 2
+    - format!("{:b}", i);
+  - 8
+    - format!("{:o}", i);
+  - 16
+    - format!("{:x}", i);
 - 文字が'a'の場合にとりつづける(先頭&末尾)
   - let first_a_count = s.len() - s.trim_start_matches('a').len();
   - let last_a_count = s.len() - s.trim_end_matches('a').len();
