@@ -14,6 +14,7 @@
  - nこの順列の全探索
  - 参考実装
    - [順列を全探索し、一致するかを判定](abc232/src/bin/c.rs)
+   - [permutationsを使用して順列の全探索](abc183/src/bin/c_ex.rs)
 
 ### 組み合わせ
  - 組み合わせの全探索
@@ -35,6 +36,7 @@
    - [数列の全探索](abc233/src/bin/c.rs)
    - [木の走査異なる色があるかどうか](abc198/src/bin/e.rs)
    - [Bit全探索的な](abc197/src/bin/c_ex.rs)
+   - [順列全網羅](abc183/src/bin/c.rs)
 
 ## 整数
 
@@ -125,6 +127,12 @@
  - 参考実装
    - [行きと帰りのダイキストラ](abc035/src/bin/d.rs)
    - [ポテンシャルを用いてダイキストラを使う](abc237/src/bin/e.rs)
+
+## 閉路を含まない有向グラフ
+ - Directed Acyclic Graph
+ - dpで考える
+ - 参考実装
+   - [これまでの最小を求める](abc188/src/bin/e.rs)
 
 ## 動的計算法
  - 漸化式的な
