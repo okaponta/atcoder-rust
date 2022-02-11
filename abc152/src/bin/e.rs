@@ -11,30 +11,24 @@ fn main() {
         a:[i64;n],
     }
     let mut factorized = vec![];
-    for ai in a {
-        factorized.push(factorize(ai));
+    for ai in &a {
+        factorized.push(factorize(*ai));
     }
     let mut map = HashMap::new();
-    for e in factorized.clone() {
+    for e in factorized {
         for (k, v) in e {
             let val = *map.get(&k).unwrap_or(&0).max(&v);
             *map.entry(k).or_insert(0) = val;
         }
     }
-    let mut ans = 0;
-    for e in factorized {
-        let mut tmp = 1;
-        for (k, v) in &map {
-            let mut val = *v;
-            for fact in &e {
-                if fact.0 == *k {
-                    val -= fact.1;
-                }
-            }
-            tmp = (tmp * pow(*k, val, MOD)) % MOD;
-        }
-        ans = (ans + tmp) % MOD;
-    }
+    let lcm = map
+        .iter()
+        .map(|(k, v)| pow(*k, *v, MOD))
+        .fold(1, |acc, x| (acc * x) % MOD);
+    let ans = a
+        .iter()
+        .map(|e| (lcm * modinv(*e, MOD)) % MOD)
+        .fold(0, |acc, x| (acc + x) % MOD);
     println!("{}", ans);
 }
 
@@ -67,4 +61,22 @@ fn pow(mut x: i64, mut n: i64, modulo: i64) -> i64 {
         n >>= 1;
     }
     ret
+}
+
+fn modinv(mut a: i64, modulo: i64) -> i64 {
+    let mut b = modulo;
+    let mut u = 1;
+    let mut v = 0;
+    while b > 0 {
+        let t = a / b;
+        a -= t * b;
+        std::mem::swap(&mut a, &mut b);
+        u -= t * v;
+        std::mem::swap(&mut u, &mut v);
+    }
+    u %= modulo;
+    if u < 0 {
+        u += modulo;
+    }
+    u
 }
