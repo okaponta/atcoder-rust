@@ -50,6 +50,24 @@ fn judge_primes(n: usize) -> Vec<bool> {
     res
 }
 
+// Nまでの数字の素数判定を行う
+// res[i]=0ならiは素数、そうでなければ最小の素因子
+// 計算量はO(NloglogN)
+fn eratosthenes(n: usize) -> Vec<usize> {
+    let mut res = vec![0; n + 1];
+    res[0] = 0;
+    res[1] = 1;
+    for i in 2..=n.sqrt() {
+        if res[i] != 0 {
+            continue;
+        }
+        for j in (i * i..=n).step_by(i) {
+            res[j] = i;
+        }
+    }
+    res
+}
+
 // Nまでの数字の素数を返却する
 fn prime_lists(n: usize) -> Vec<usize> {
     judge_primes(n)
