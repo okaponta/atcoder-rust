@@ -1,0 +1,92 @@
+use num_integer::Roots;
+
+// 素因数分解する。(素因数,累乗)の形式で返却する
+// 計算量はO(√N)
+fn factorize(mut n: i64) -> Vec<(i64, i64)> {
+    let mut res = vec![];
+    for i in 2..=n.sqrt() {
+        if n % i != 0 {
+            continue;
+        }
+        let mut ex = 0;
+        while n % i == 0 {
+            ex += 1;
+            n /= i;
+        }
+        res.push((i, ex));
+    }
+    if n != 1 {
+        res.push((n, 1));
+    }
+    res
+}
+
+// 素数かどうかを判定する
+// 計算量はO(√N)
+fn is_prime(n: i64) -> bool {
+    for i in 2..=n.sqrt() {
+        if n % i == 0 {
+            return false;
+        }
+    }
+    true
+}
+
+// Nまでの数字の素数判定を行う
+// res[i]==trueならiは素数
+// 計算量はO(NloglogN)
+fn judge_primes(n: usize) -> Vec<bool> {
+    let mut res = vec![true; n + 1];
+    res[0] = false;
+    res[1] = false;
+    for i in 2..=n.sqrt() {
+        if !res[i] {
+            continue;
+        }
+        for j in (i * i..=n).step_by(i) {
+            res[j] = false;
+        }
+    }
+    res
+}
+
+// Nまでの数字の素数を返却する
+fn prime_lists(n: usize) -> Vec<usize> {
+    judge_primes(n)
+        .iter()
+        .enumerate()
+        .filter(|(_, &prime)| prime)
+        .map(|(i, _)| i)
+        .collect()
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_factorize() {
+        assert_eq!(factorize(5), vec![(5, 1)]);
+        assert_eq!(factorize(60), vec![(2, 2), (3, 1), (5, 1)]);
+    }
+
+    #[test]
+    fn test_is_prime() {
+        assert_eq!(is_prime(53), true);
+        assert_eq!(is_prime(55), false);
+    }
+
+    #[test]
+    fn test_judge_primes() {
+        assert_eq!(
+            judge_primes(9),
+            vec![false, false, true, true, false, true, false, true, false, false]
+        );
+    }
+
+    #[test]
+    fn test_prime_lists() {
+        assert_eq!(prime_lists(28), vec![2, 3, 5, 7, 11, 13, 17, 19, 23]);
+        assert_eq!(prime_lists(29), vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
+    }
+}

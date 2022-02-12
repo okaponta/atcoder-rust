@@ -1,5 +1,29 @@
 use num_integer::Roots;
 
+// 1+2+...+n
+fn tousa_sum_one(n: i64) -> i64 {
+    n * (n + 1) / 2
+}
+
+// 1^2 + 2^2 +...+ n^2
+fn tousa_square_sum_one(n: i64) -> i64 {
+    n * (n + 1) * (2 * n + 1) / 6
+}
+
+// 1 + c + c^2 + c^3 + c^4+...(0<c<1)
+fn sum_inf(c: f64) -> f64 {
+    1.0 / (1.0 - c)
+}
+
+// n!
+fn factorial(n: i64) -> i64 {
+    if n == 1 {
+        1
+    } else {
+        n * factorial(n - 1)
+    }
+}
+
 // 引数の約数を全て返却する。
 // 計算量はO(√N)
 fn divisor(n: i64) -> Vec<i64> {
@@ -16,66 +40,6 @@ fn divisor(n: i64) -> Vec<i64> {
     upper.reverse();
     res.append(&mut upper);
     res
-}
-
-// 素因数分解する。(素因数,累乗)の形式で返却する
-// 計算量はO(√N)
-fn factorize(mut n: i64) -> Vec<(i64, i64)> {
-    let mut res = vec![];
-    for i in 2..=n.sqrt() {
-        if n % i != 0 {
-            continue;
-        }
-        let mut ex = 0;
-        while n % i == 0 {
-            ex += 1;
-            n /= i;
-        }
-        res.push((i, ex));
-    }
-    if n != 1 {
-        res.push((n, 1));
-    }
-    res
-}
-
-// 素数かどうかを判定する
-// 計算量はO(√N)
-fn is_prime(n: i64) -> bool {
-    for i in 2..=n.sqrt() {
-        if n % i == 0 {
-            return false;
-        }
-    }
-    true
-}
-
-// Nまでの数字の素数判定を行う
-// res[i]==trueならiは素数
-// 計算量はO(NloglogN)
-fn judge_primes(n: usize) -> Vec<bool> {
-    let mut res = vec![true; n + 1];
-    res[0] = false;
-    res[1] = false;
-    for i in 2..=n.sqrt() {
-        if !res[i] {
-            continue;
-        }
-        for j in (i * i..=n).step_by(i) {
-            res[j] = false;
-        }
-    }
-    res
-}
-
-// Nまでの数字の素数を返却する
-fn prime_lists(n: usize) -> Vec<usize> {
-    judge_primes(n)
-        .iter()
-        .enumerate()
-        .filter(|(_, &prime)| prime)
-        .map(|(i, _)| i)
-        .collect()
 }
 
 // 最大公約数
@@ -122,6 +86,25 @@ fn pow(mut x: i64, mut n: i64, modulo: i64) -> i64 {
     ret
 }
 
+// 逆元を求める。(moduloが素数でなくてもOK)
+fn modinv(mut a: i64, modulo: i64) -> i64 {
+    let mut b = modulo;
+    let mut u = 1;
+    let mut v = 0;
+    while b > 0 {
+        let t = a / b;
+        a -= t * b;
+        std::mem::swap(&mut a, &mut b);
+        u -= t * v;
+        std::mem::swap(&mut u, &mut v);
+    }
+    u %= modulo;
+    if u < 0 {
+        u += modulo;
+    }
+    u
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -131,32 +114,6 @@ mod tests {
         assert_eq!(divisor(5), vec![1, 5]);
         assert_eq!(divisor(6), vec![1, 2, 3, 6]);
         assert_eq!(divisor(9), vec![1, 3, 9]);
-    }
-
-    #[test]
-    fn test_factorize() {
-        assert_eq!(factorize(5), vec![(5, 1)]);
-        assert_eq!(factorize(60), vec![(2, 2), (3, 1), (5, 1)]);
-    }
-
-    #[test]
-    fn test_is_prime() {
-        assert_eq!(is_prime(53), true);
-        assert_eq!(is_prime(55), false);
-    }
-
-    #[test]
-    fn test_judge_primes() {
-        assert_eq!(
-            judge_primes(9),
-            vec![false, false, true, true, false, true, false, true, false, false]
-        );
-    }
-
-    #[test]
-    fn test_prime_lists() {
-        assert_eq!(prime_lists(28), vec![2, 3, 5, 7, 11, 13, 17, 19, 23]);
-        assert_eq!(prime_lists(29), vec![2, 3, 5, 7, 11, 13, 17, 19, 23, 29]);
     }
 
     #[test]
