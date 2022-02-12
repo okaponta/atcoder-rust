@@ -8,6 +8,8 @@ mod geometry;
 mod graph;
 #[allow(dead_code)]
 mod integer;
+#[allow(dead_code)]
+mod prime;
 
 fn main() {
     println!("Hello");
