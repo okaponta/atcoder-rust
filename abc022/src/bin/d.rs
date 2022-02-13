@@ -20,19 +20,20 @@ fn closest_pair(points: &Vec<(i64, i64)>, i: usize, n: usize) -> (i64, Vec<(i64,
         return (1 << 60, vec![points[i]]);
     }
     let m = n / 2;
-    let x = points[i + m].0;
     let (d1, qs1) = closest_pair(points, i, m);
     let (d2, qs2) = closest_pair(points, i + m, n - m);
     let mut d = d1.min(d2);
+
+    let x = points[i + m].0;
     let qs = merge(qs1, qs2);
     let mut b: Vec<(i64, i64)> = vec![];
     for i in 0..n {
         if (qs[i].0 - x).abs() * (qs[i].0 - x).abs() >= d {
             continue;
         }
-        for j in 0..b.len() {
-            let dx = qs[i].0 - b[b.len() - j - 1].0;
-            let dy = qs[i].1 - b[b.len() - j - 1].1;
+        for j in (0..b.len()).rev() {
+            let dx = qs[i].0 - b[j].0;
+            let dy = qs[i].1 - b[j].1;
             if dy * dy >= d {
                 break;
             }
