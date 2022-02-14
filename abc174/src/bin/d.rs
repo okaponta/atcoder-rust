@@ -1,9 +1,11 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-       a:i32,
+        _:usize,
+        c:Chars,
     }
-    println!("{}", a);
-    todo!();
+    let red = c.clone().into_iter().filter(|&c| c == 'R').count();
+    let ok = (0..red).into_iter().filter(|&i| c[i] == 'R').count();
+    println!("{}", red - ok);
 }
