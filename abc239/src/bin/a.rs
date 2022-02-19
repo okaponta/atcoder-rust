@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        h:f64,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", ((12800000.0 + h) * h).sqrt());
 }
