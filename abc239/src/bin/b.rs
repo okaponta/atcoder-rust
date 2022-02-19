@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        x:i128,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", if x > 0 { x / 10 } else { (x - 9) / 10 });
 }
