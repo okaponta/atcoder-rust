@@ -2,8 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        a:[usize;10],
     }
-    println!("{}", a);
-    todo!();
+    let ans = a[a[a[0]]];
+    println!("{}", ans);
 }
