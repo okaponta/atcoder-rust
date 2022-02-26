@@ -2,8 +2,22 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,m:usize,
+        mut a:[usize;n],
+        b:[usize;m],
     }
-    println!("{}", a);
-    todo!();
+    a.sort();
+    for bi in b {
+        let res = a.binary_search(&bi);
+        match res {
+            Ok(index) => {
+                a.remove(index);
+            }
+            Err(_) => {
+                println!("No");
+                return;
+            }
+        }
+    }
+    println!("Yes");
 }
