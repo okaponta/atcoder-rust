@@ -1,9 +1,15 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        a:i32,
+        n:Chars,
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        if n.iter().any(|d| *d == '7') {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
