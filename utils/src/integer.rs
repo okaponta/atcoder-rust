@@ -75,7 +75,8 @@ fn extend_euclid(a: i64, b: i64, x: &mut i64, y: &mut i64) -> i64 {
 // x^n を求める
 // 計算量は O(logn)
 fn pow(mut x: i64, mut n: i64, modulo: i64) -> i64 {
-    let mut ret = 1;
+    x %= modulo;
+    let mut ret = if x == 0 { 0 } else { 1 };
     while n > 0 {
         if n & 1 == 1 {
             ret = ret * x % modulo;

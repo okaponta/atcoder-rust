@@ -1,3 +1,5 @@
+use itertools::Itertools;
+
 // 2つのベクトルの内積を返却
 // これが負なら、ベクトルのなす角は90度以上
 fn inner_product(x0: i32, y0: i32, x1: i32, y1: i32) -> i32 {
@@ -62,7 +64,10 @@ fn closest_pair(points: &Vec<(i64, i64)>, i: usize, n: usize) -> (i64, Vec<(i64,
     let mut d = d1.min(d2);
 
     let x = points[i + m].0;
-    let qs = merge(qs1, qs2);
+    let qs = qs1
+        .into_iter()
+        .merge_by(qs2.into_iter(), |x, y| x.1 < y.1)
+        .collect_vec();
     let mut b: Vec<(i64, i64)> = vec![];
     for i in 0..n {
         if (qs[i].0 - x).abs() * (qs[i].0 - x).abs() >= d {
@@ -79,29 +84,4 @@ fn closest_pair(points: &Vec<(i64, i64)>, i: usize, n: usize) -> (i64, Vec<(i64,
         b.push(qs[i]);
     }
     (d, qs)
-}
-
-// 自前でマージソート実装
-fn merge(left: Vec<(i64, i64)>, right: Vec<(i64, i64)>) -> Vec<(i64, i64)> {
-    let mut qs = vec![];
-    let mut s = 0;
-    let mut t = 0;
-    while s < left.len() && t < right.len() {
-        if left[s].1 < right[t].1 {
-            qs.push(left[s]);
-            s += 1;
-        } else {
-            qs.push(right[t]);
-            t += 1;
-        }
-    }
-    while s < left.len() {
-        qs.push(left[s]);
-        s += 1;
-    }
-    while t < right.len() {
-        qs.push(right[t]);
-        t += 1;
-    }
-    qs
 }

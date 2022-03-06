@@ -38,6 +38,7 @@
    - [Bit全探索的な](abc197/src/bin/c_ex.rs)
    - [順列全網羅](abc183/src/bin/c.rs)
    - [木のedgeの塗り分け](abc156/src/bin/d.rs)
+   - [貪欲dfs](typical90/src/bin/002.rs)
 
 ## 整数
 
@@ -69,6 +70,8 @@
    - [上記のような単純な場合は簡単に書ける](abc231/src/bin/c_ex.rs)
    - [要素がk以上になるようにmを2分探索](abc216/src/bin/e_ex.rs)
    - [平均値と中央値の最大値を探索](abc236/src/bin/e.rs)
+   - [切った丸太の長さの最小値を求める](abc174/src/bin/e.rs)
+   - [最小値の最大値](typical90/src/bin/001.rs)
 
 ### 尺取り法  
  - leftとrightを尺取り虫みたく遷移させて計算する
@@ -99,6 +102,9 @@
  - 参考実装
    - [k個先にいる頂点](abc167/src/bin/d_ex.rs)
 
+### ループを求める
+ - [ループを求めて高速化する](abc241/src/bin/e.rs)
+
 ### その他
  - 後ろから数え上げ
    - [部分区間でmod2019が同じものがいくつあるか](abc164/src/bin/d.rs)
@@ -107,10 +113,14 @@
 
 ### BinaryTreeSet
  - 次の要素や最大値などを素早く取得したいとき
+ - ソートされた状態で管理。クエリとかで挿入しながら取得したりするときに使える
    - [次の要素を高速で取得](abc228/src/bin/d.rs)
    - [indexを含めて重複する数字を管理](abc217/src/bin/e.rs)
+   - [配列に数字を挿入しながら指定された数字からk番目を出力](abc241/src/bin/d.rs)
 
 ### BinaryTreeMap
+ - ソートされた状態でmapに格納する
+   - [辞書順に出現回数が最大のものを出力](abc155/src/bin/c_ex.rs)
 
 ### Segment tree
  - 区間上の値を更新する
@@ -118,11 +128,18 @@
    - [区間のXORを更新しながら計算](abc185/src/bin/f.rs)
 
 ### Fenwick tree (Binary Indexed Tree)
+ - iとxが与えられたとき、aiにxを加算する
+ - iが与えられたとき、a1+a2+...+aiを求める
+   - [区間の和](abc231/src/bin/f.rs)
 
 ### ノードの深さ(二部グラフ性)
  - 参考実装
    - 深さ優先探索
      - [深さの偶奇を判定する](abc209/src/bin/d.rs)
+
+### 木dp
+ - 名前の通り、木の各要素に対してdpをつくる
+   - [子要素の順位を取得](abc239/src/bin/e.rs)
 
 ### Union Find
  - できること
@@ -163,6 +180,8 @@
    - [最長増加部分裂](abc237/src/bin/f.rs)
    - [文字列から取り除いた文字と一致しないものの合計の最小値](abc185/src/bin/e.rs)
    - [条件つきの人数を選ぶ組み合わせ](abc238/src/bin/f.rs)
+   - [区間で考える](abc179/src/bin/d.rs)
+     - 配るDPともいうらしい
 
 ### 部分和
  - 配列内でいくつか選んだ和

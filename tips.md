@@ -56,6 +56,13 @@
 - 二重ループをスッと書く
   - iproduct!
   - for (i, j) in iproduct!(0..n, 0..n) { }
+- itertools
+  - (0..3).permutations(2)
+    - [0,1],[0,2],[1,0],[1,2],[2,0],[2,1]
+  - (0..3).combinations(2)
+    - [0,1],[0,2],[1,2]
+  - (0..3).combinations_with_replacement(2)
+    - [0,0],[0,1],[0,2],[1,1],[1,2],[2,2]
 
 ## Map
 - 新規
@@ -64,3 +71,11 @@
   - map.get(&key).map_or(0, |v| *v);
 - 要素がなければ1を挿入、あれば+1
   - *map.entry(sum).or_insert(0) += 1;
+- 要素のあるなしによって出力を切り替え
+
+```
+match map.get(&ans) {
+    Some(res) => println!("{}", res),
+    None => println!("-1"),
+}
+```
