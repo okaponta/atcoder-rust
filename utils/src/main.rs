@@ -10,6 +10,8 @@ mod graph;
 mod integer;
 #[allow(dead_code)]
 mod prime;
+#[allow(dead_code)]
+mod tree;
 
 fn main() {
     println!("Hello");
