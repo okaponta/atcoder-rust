@@ -68,31 +68,62 @@ struct FenwickTree {
 }
 
 impl FenwickTree {
-    fn new(len: usize) -> Self {
+    // a1~anの配列を作成
+    fn new(n: usize) -> Self {
         Self {
-            len,
-            data: vec![0; len],
+            len: n + 1,
+            data: vec![0; n + 1],
         }
     }
 
+    // aiにvを加算する
     fn add(&mut self, i: usize, v: i64) {
+        assert!(i > 0);
         assert!(i < self.len);
-        let mut i = i as i32 + 1;
-        while i as usize <= self.len {
-            self.data[(i - 1) as usize] += v;
+        let mut i = i as i64;
+        while (i as usize) < self.len {
+            self.data[i as usize] += v;
             i += i & -i;
         }
     }
 
-    fn sum(&self, len: usize) -> i64 {
-        assert!(len <= self.len);
-        let mut len = len as i32;
-        let mut sum = 0i64;
-        while len > 0 {
-            sum += self.data[(len - 1) as usize];
-            len -= len & -len;
+    // a1+a2+...aiを計算する
+    fn sum(&self, i: usize) -> i64 {
+        assert!(i < self.len);
+        let mut i = i as i64;
+        let mut sum = 0;
+        while i > 0 {
+            sum += self.data[i as usize];
+            i -= i & -i;
         }
-
         sum
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_fenwick() {
+        let mut fw = FenwickTree::new(9);
+        fw.add(1, 1);
+        println!("{:?}", fw.data);
+        assert_eq!(fw.sum(0), 0);
+        assert_eq!(fw.sum(1), 1);
+        assert_eq!(fw.sum(2), 1);
+        fw.add(5, 2);
+        println!("{:?}", fw.data);
+        assert_eq!(fw.sum(4), 1);
+        assert_eq!(fw.sum(5), 3);
+        fw.add(9, 1);
+        println!("{:?}", fw.data);
+        assert_eq!(fw.sum(8), 3);
+        assert_eq!(fw.sum(9), 4);
+        fw.add(2, -3);
+        println!("{:?}", fw.data);
+        assert_eq!(fw.sum(1), 1);
+        assert_eq!(fw.sum(2), -2);
+        assert_eq!(fw.sum(9), 1);
     }
 }
