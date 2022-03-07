@@ -18,12 +18,12 @@ fn main() {
     let mut fw = FenwickTree::new(ca.len());
     let mut ans = 0;
     for i in 0..n {
-        let rank = *ca.get(&a[i]).unwrap() + 1;
+        let index = *ca.get(&a[i]).unwrap();
         if i >= 1 {
-            ans += fw.query(rank) % MOD * pp[i - 1] % MOD;
+            ans += fw.sum(index + 1) % MOD * pp[i - 1] % MOD;
             ans %= MOD;
         }
-        fw.update(rank, mod_pow(pp[i], MOD - 2))
+        fw.add(index, mod_pow(pp[i], MOD - 2))
     }
     println!("{}", ans);
 }
@@ -38,30 +38,36 @@ fn compress(source: &[usize]) -> HashMap<usize, usize> {
 }
 
 struct FenwickTree {
-    v: Vec<i64>,
+    len: usize,
+    data: Vec<i64>,
 }
 
 impl FenwickTree {
-    fn new(n: usize) -> Self {
-        FenwickTree { v: vec![0; n + 1] }
-    }
-
-    fn update(&mut self, x: usize, val: i64) {
-        let mut x = x as i64;
-        while x < self.v.len() as i64 {
-            self.v[x as usize] += val;
-            x += x & -x;
+    fn new(len: usize) -> Self {
+        Self {
+            len,
+            data: vec![0; len],
         }
     }
 
-    fn query(&mut self, x: usize) -> i64 {
-        let mut x = x as i64;
-        let mut ans = 0;
-        while x > 0 {
-            ans += self.v[x as usize];
-            x -= x & -x;
+    fn add(&mut self, i: usize, v: i64) {
+        assert!(i < self.len);
+        let mut i = i as i32 + 1;
+        while i as usize <= self.len {
+            self.data[(i - 1) as usize] += v;
+            i += i & -i;
         }
-        ans
+    }
+
+    fn sum(&self, len: usize) -> i64 {
+        assert!(len <= self.len);
+        let mut len = len as i32;
+        let mut sum = 0i64;
+        while len > 0 {
+            sum += self.data[(len - 1) as usize];
+            len -= len & -len;
+        }
+        sum
     }
 }
 
