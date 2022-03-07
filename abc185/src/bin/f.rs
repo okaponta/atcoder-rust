@@ -12,9 +12,12 @@ fn main() {
     }
     for (t, x, y) in txy {
         if t == 1 {
+            // a[x]を取得
             let cur = seg.query(x..x + 1);
+            // a[x]をcur^yで更新
             seg.update(x, cur ^ y);
         } else {
+            // a[x]^a[x+1]...^a[y-1]を取得
             let ans = seg.query(x..y);
             println!("{}", ans);
         }

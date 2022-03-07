@@ -35,7 +35,7 @@ where
         }
     }
 
-    /// Get the minimum value in the array in the range
+    // 半開区完なので注意
     pub fn query(&self, range: std::ops::Range<usize>) -> T {
         self.query_range(range, 0, 0..self.n)
     }
@@ -103,6 +103,29 @@ impl FenwickTree {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn test_segment() {
+        let mut seg = SegmentTree::new(9, 0, |a, b| a + b);
+        seg.update(1, 1);
+        assert_eq!(seg.query(0..1), 0);
+        assert_eq!(seg.query(0..2), 1);
+
+        seg.update(5, 2);
+        assert_eq!(seg.query(0..5), 1);
+        assert_eq!(seg.query(0..6), 3);
+        assert_eq!(seg.query(5..6), 2);
+
+        seg.update(9, 1);
+        assert_eq!(seg.query(0..9), 3);
+        assert_eq!(seg.query(0..10), 4);
+        assert_eq!(seg.query(9..10), 1);
+
+        seg.update(2, -3);
+        assert_eq!(seg.query(0..2), 1);
+        assert_eq!(seg.query(0..3), -2);
+        assert_eq!(seg.query(0..10), 1);
+    }
 
     #[test]
     fn test_fenwick() {
