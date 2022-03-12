@@ -18,7 +18,9 @@ fn main() {
         for j in 0..n {
             for k in 0..n {
                 if g[j][k] >= g[j][i] + g[i][k] {
+                    // もともとの距離より短くなるケースなので削除してOK
                     g[j][k] = g[j][i] + g[i][k];
+                    // 削除してOKフラグを立てる
                     d[j][k] = true;
                 }
             }
