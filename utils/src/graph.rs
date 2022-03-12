@@ -1,5 +1,7 @@
 use std::{cmp::Reverse, collections::BinaryHeap};
 
+use itertools::iproduct;
+
 const INF: usize = 1 << 60;
 
 // 計算量は(E+V)logV
@@ -92,6 +94,30 @@ impl BellmanFord {
 
     pub fn distance(&self, target: usize) -> i64 {
         self.distance[target]
+    }
+}
+
+// 計算量はN^3
+// 負の場合でも使用でき、任意の点の最短距離がすべて求まる
+struct WarshallFloyd {
+    distance: Vec<Vec<i64>>,
+}
+
+impl WarshallFloyd {
+    // n:usize 頂点の数
+    // edges: Vec<(usize,usize,i64)> edges[i] = [(0,2,3), (1,3,-1), (From,To,重み)]
+    pub fn new(n: usize, edges: Vec<(usize, usize, i64)>) -> Self {
+        let mut distance = vec![vec![1 << 60; n]; n];
+
+        for &(a, b, c) in &edges {
+            distance[a][b] = c;
+            distance[b][a] = c;
+        }
+
+        for (i, j, k) in iproduct!(0..n, 0..n, 0..n) {
+            distance[i][j] = distance[i][j].min(distance[i][k] + distance[k][j]);
+        }
+        Self { distance }
     }
 }
 
