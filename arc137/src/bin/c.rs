@@ -5,12 +5,18 @@ fn main() {
         n:usize,
         mut a:[usize;n],
     }
-    let mut ans = 0;
-    let mut terminal = 0;
     a.sort();
-    for i in 0..n {
-        ans = ans ^ a[i];
-        terminal = terminal ^ i;
+    a.reverse();
+    if a[0] - a[1] > 1 {
+        println!("Alice");
+        return;
     }
-    println!("{}", if ans == terminal { "Bob" } else { "Alice" });
+    println!(
+        "{}",
+        if (a[0] + 1 - n) % 2 == 0 {
+            "Bob"
+        } else {
+            "Alice"
+        }
+    );
 }
