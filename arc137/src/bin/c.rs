@@ -2,8 +2,15 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,
+        mut a:[usize;n],
     }
-    println!("{}", a);
-    todo!();
+    let mut ans = 0;
+    let mut terminal = 0;
+    a.sort();
+    for i in 0..n {
+        ans = ans ^ a[i];
+        terminal = terminal ^ i;
+    }
+    println!("{}", if ans == terminal { "Bob" } else { "Alice" });
 }
