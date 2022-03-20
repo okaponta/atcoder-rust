@@ -14,6 +14,7 @@ fn main() {
     }
     let mut ans = 0;
     let mut ans_set = HashSet::new();
+    // setで管理せずに、let mut dist = vec![vec![INF; 1 << n]; n];とかで管理するとはやい
     let mut set = HashSet::new();
     ans_set.insert(0);
     let mut q = VecDeque::new();
