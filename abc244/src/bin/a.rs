@@ -1,9 +1,9 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,
+        s:Chars
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", s[n - 1]);
 }
