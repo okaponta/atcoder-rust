@@ -118,3 +118,8 @@ fn binom(n: usize, k: usize) -> usize {
     }
     (0..k).fold(1, |s, k| s * (n - k) / (k + 1))
 }
+
+// nCkの偶奇だけ知りたいとき
+fn is_nck_odd(n: usize, k: usize) -> bool {
+    n & k == k
+}

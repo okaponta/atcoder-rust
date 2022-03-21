@@ -106,6 +106,25 @@ fn modinv(mut a: i64, modulo: i64) -> i64 {
     u
 }
 
+// いづれかの倍数であるものの数
+// https://atcoder.jp/contests/math-and-algorithm/tasks/math_and_algorithm_be
+fn num_multiple(n: i64, k: usize, v: Vec<i64>) -> i64 {
+    let mut ans = 0_i64;
+    for bits in 1..1 << k {
+        // 包除原理。偶数個のものはひいて、奇数個のものは足す。
+        let mut is_even = true;
+        let mut x = 1;
+        for (i, v_i) in v.iter().copied().enumerate() {
+            if ((bits >> i) & 1) == 1 {
+                x = lcm(x, v_i);
+                is_even = !is_even;
+            }
+        }
+        ans += if is_even { -1 } else { 1 } * (n / x);
+    }
+    ans
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
