@@ -26,10 +26,9 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", n);
 }
 '''
 
