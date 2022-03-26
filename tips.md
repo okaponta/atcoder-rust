@@ -1,10 +1,12 @@
-# Rustの書き方備忘録
+# Rust の書き方備忘録
 
 ## println
-- 0埋め
+
+- 0 埋め
   - println!("{:<03}", { n });
 
 ## 演算
+
 - BitXOR
   - ^
 - BitAND
@@ -13,15 +15,16 @@
   - (a + b - 1) / b
 
 ## String
+
 - 部分文字列が存在する
   - t.contains(&s)
 - 部分文字列
   - &s[0..k]
-- charを追加
+- char を追加
   - str.insert(index,char)
 - 末尾を先頭に
   - format!("{}{}", x % 10, x / 10)
-- n進数に変換
+- n 進数に変換
   - 2
     - format!("{:b}", i);
   - 8
@@ -36,11 +39,12 @@
     - let ra = s.iter().rev().take_while(|&&si| si == 'a').count();
 
 ## Vec
+
 - 前後と一緒にイテレーション
   - windows()
 - 要素入れ替え
   - swap(a,b)
-- 要素の範囲削除(lからrまで)
+- 要素の範囲削除(l から r まで)
   - drain((l-1)..r)
 - 初期値いりで初期化
   - (0..n).collect_vec()
@@ -48,8 +52,20 @@
   - rotate_left(n)
   - rotate_right(n)
   - `s[n..].iter().collect::<String>(), s[..n].iter().collect::<String>())`
+- 3 つで sort(全部逆順)
+
+```
+vec.sort_by(|a, b| match b.0.cmp(&a.0) {
+  std::cmp::Ordering::Equal => match b.1.cmp(&a.1) {
+      std::cmp::Ordering::Equal => b.2.cmp(&a.2),
+      other => other,
+  },
+  other => other,
+});
+```
 
 ## iter
+
 - 要素を一緒にまわす
   - zip
   - s.iter().zip(t.iter()).map(|(a,b)| a + b)
@@ -65,12 +81,13 @@
     - [0,0],[0,1],[0,2],[1,1],[1,2],[2,2]
 
 ## Map
+
 - 新規
   - let mut map = HashMap::new();
-- 要素を取得、なかったら0
-  - map.get(&key).map_or(0, |v| *v);
-- 要素がなければ1を挿入、あれば+1
-  - *map.entry(sum).or_insert(0) += 1;
+- 要素を取得、なかったら 0
+  - map.get(&key).map_or(0, |v| \*v);
+- 要素がなければ 1 を挿入、あれば+1
+  - \*map.entry(sum).or_insert(0) += 1;
 - 要素のあるなしによって出力を切り替え
 
 ```
