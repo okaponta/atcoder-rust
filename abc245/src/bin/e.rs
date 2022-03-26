@@ -25,16 +25,15 @@ fn main() {
         other => other,
     });
     let mut set = BTreeSet::new();
-    for (i, (_, y, is_choco)) in abcd.iter().enumerate() {
-        if *is_choco != 0 {
+    for (i, (_, y, is_box)) in abcd.iter().enumerate() {
+        if *is_box == 1 {
             set.insert((*y, i));
         } else {
-            let bo = set.range((*y, 0)..).next().map_or((0, 0), |i| *i);
-            if bo.0 == 0 {
+            if let Some(&val) = set.range((*y, 0)..).next() {
+                set.remove(&val);
+            } else {
                 println!("No");
                 return;
-            } else {
-                set.remove(&bo);
             }
         }
     }
