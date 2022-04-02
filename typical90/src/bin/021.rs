@@ -20,8 +20,8 @@ fn main() {
             count = dfs(i, count, &mut used, &mut num, &edge);
         }
     }
-    // 以前の頂点 -> 新たな頂点のマッピング
     used = vec![false; n];
+    // 以前の頂点 -> 新たな頂点のマッピング
     let mut new_num = vec![0; n];
     let mut count = 0;
     let mut sizes = vec![];
