@@ -1,6 +1,9 @@
-use std::{cmp::Reverse, collections::BinaryHeap};
+use std::{
+    cmp::Reverse,
+    collections::{BinaryHeap, HashSet},
+};
 
-use itertools::iproduct;
+use itertools::{iproduct, Itertools};
 
 const INF: usize = 1 << 60;
 
@@ -121,6 +124,82 @@ impl WarshallFloyd {
     }
 }
 
+fn scc(
+    n: usize,
+    edges: Vec<Vec<usize>>,
+    rev_edges: Vec<Vec<usize>>,
+) -> (Vec<usize>, Vec<usize>, Vec<Vec<usize>>) {
+    let mut used = vec![false; n];
+    let mut num = vec![0; n];
+    // num[i] -> i番目の番号がどの頂点か
+    let mut count = 0;
+    for i in 0..n {
+        if !used[i] {
+            count = dfs(i, count, &mut used, &mut num, &edges);
+        }
+    }
+    used = vec![false; n];
+    // 以前の頂点 -> 新たな頂点のマッピング
+    let mut new_num = vec![0; n];
+    let mut count = 0;
+    let mut sizes = vec![];
+    for i in (0..n).rev() {
+        let target = num[i];
+        if !used[target] {
+            let size = rev_dfs(target, count, 0, &mut used, &mut new_num, &rev_edges);
+            sizes.push(size);
+            count += 1;
+        }
+    }
+    let mut new_edges = vec![HashSet::new(); sizes.len()];
+    for i in 0..n {
+        for &edge in &edges[i] {
+            if new_num[i] != new_num[edge] {
+                new_edges[new_num[i]].insert(new_num[edge]);
+            }
+        }
+    }
+    let v = new_edges
+        .iter()
+        .map(|s| s.iter().map(|i| *i).collect_vec())
+        .collect_vec();
+    return (sizes, new_num, v);
+}
+fn dfs(
+    cur: usize,
+    mut count: usize,
+    used: &mut Vec<bool>,
+    num: &mut Vec<usize>,
+    edge: &Vec<Vec<usize>>,
+) -> usize {
+    used[cur] = true;
+    for &next in edge[cur].iter() {
+        if !used[next] {
+            count = dfs(next, count, used, num, edge);
+        }
+    }
+    num[count] = cur;
+    count + 1
+}
+
+fn rev_dfs(
+    cur: usize,
+    count: usize,
+    mut size: usize,
+    used: &mut Vec<bool>,
+    num: &mut Vec<usize>,
+    edge: &Vec<Vec<usize>>,
+) -> usize {
+    used[cur] = true;
+    for &next in edge[cur].iter() {
+        if !used[next] {
+            size = rev_dfs(next, count, size, used, num, edge);
+        }
+    }
+    num[cur] = count;
+    size + 1
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -175,5 +254,49 @@ mod tests {
 
         assert_eq!(b.distance, vec![0, 5, 7, 7, 2, 5]);
         assert_eq!(b.has_neg_loop, false);
+    }
+
+    #[test]
+    fn test_scc() {
+        let n = 12;
+        let uv = vec![
+            (0, 1),
+            (1, 2),
+            (1, 3),
+            (2, 3),
+            (3, 4),
+            (4, 2),
+            (4, 5),
+            (5, 6),
+            (6, 7),
+            (6, 8),
+            (6, 9),
+            (7, 5),
+            (8, 10),
+            (9, 8),
+            (9, 11),
+            (10, 8),
+        ];
+        let mut edges = vec![vec![]; n];
+        let mut rev_edges = vec![vec![]; n];
+        for (u, v) in uv {
+            edges[u].push(v);
+            rev_edges[v].push(u);
+        }
+        let res = scc(n, edges, rev_edges);
+        assert_eq!(res.0, vec![1, 1, 3, 3, 1, 1, 2]);
+        assert_eq!(res.1, vec![0, 1, 2, 2, 2, 3, 3, 3, 6, 4, 6, 5]);
+        assert_eq!(
+            res.2,
+            vec![
+                vec![1],
+                vec![2],
+                vec![3],
+                vec![6, 4],
+                vec![6, 5],
+                vec![],
+                vec![]
+            ]
+        );
     }
 }
