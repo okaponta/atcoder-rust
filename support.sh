@@ -21,3 +21,12 @@ function commit() {
   command git add ./src/bin/${1}.rs
   command git commit -m "add ${CONTEST}_$1"
 }
+
+function problem(){
+  command open https://atcoder.jp/contests/$1/tasks/$1_a
+  command open https://atcoder.jp/contests/$1/tasks/$1_b
+  command open https://atcoder.jp/contests/$1/tasks/$1_c
+  command open https://atcoder.jp/contests/$1/tasks/$1_d
+  command open https://atcoder.jp/contests/$1/tasks/$1_e
+  command open https://atcoder.jp/contests/$1/tasks/$1_f
+}
