@@ -2,7 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:String,_:String,
+        mut a:usize,mut b:usize,
+        u:String
     }
-    println!("{}", n);
+    if s == u {
+        a -= 1;
+    } else {
+        b -= 1;
+    }
+    println!("{} {}", a, b);
 }
