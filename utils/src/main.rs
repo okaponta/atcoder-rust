@@ -11,6 +11,8 @@ mod graph;
 #[allow(dead_code)]
 mod integer;
 #[allow(dead_code)]
+mod matching;
+#[allow(dead_code)]
 mod prime;
 #[allow(dead_code)]
 mod tree;
