@@ -3,6 +3,8 @@ mod combination;
 #[allow(dead_code)]
 mod convert_from;
 #[allow(dead_code)]
+mod flow;
+#[allow(dead_code)]
 mod geometry;
 #[allow(dead_code)]
 mod graph;
