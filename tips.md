@@ -13,6 +13,8 @@
   - &
 - 割り算(切り上げ)
   - (a + b - 1) / b
+- bitが1の数
+  - count_ones()
 
 ## String
 
@@ -85,9 +87,9 @@ vec.sort_by(|a, b| match b.0.cmp(&a.0) {
 - 新規
   - let mut map = HashMap::new();
 - 要素を取得、なかったら 0
-  - map.get(&key).map_or(0, |v| \*v);
+  - map.get(&key).map_or(0, |v| *v);
 - 要素がなければ 1 を挿入、あれば+1
-  - \*map.entry(sum).or_insert(0) += 1;
+  - *map.entry(sum).or_insert(0) += 1;
 - 要素のあるなしによって出力を切り替え
 
 ```
