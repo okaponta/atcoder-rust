@@ -21,9 +21,8 @@ fn main() {
                 // 既に使っているので操作不要
                 continue;
             }
-            let next = dp[bit]
-                + (a[p] - b[cnt]).abs() * x
-                + (bit & ((1_usize << n) - (1_usize << p))).count_ones() as i64 * y;
+            // 前回の数 + たしひき + 転倒数(bitの中のpの桁以上でフラグが立っている数)
+            let next = dp[bit] + (a[p] - b[cnt]).abs() * x + (bit >> p).count_ones() as i64 * y;
             dp[bit | 1 << p] = dp[bit | 1 << p].min(next);
         }
     }
