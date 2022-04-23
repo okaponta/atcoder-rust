@@ -6,26 +6,24 @@ fn main() {
         d:i32,e:i32,f:i32,
         x:i32
     }
-    let mut t = (x / (a + c)) * a * b;
-    let mut ao = (x / (d + f)) * d * e;
-    let xt = x % (a + c);
-    let xa = x % (d + f);
-    if xt > a {
-        t += a * b;
-    } else {
-        t += xt * b;
-    }
-    if xa > d {
-        ao += d * e;
-    } else {
-        ao += xa * e;
-    }
-    let ans = if t > ao {
+    let tak = distance(a, b, c, x);
+    let aok = distance(d, e, f, x);
+    let ans = if tak > aok {
         "Takahashi"
-    } else if t == ao {
+    } else if tak == aok {
         "Draw"
     } else {
         "Aoki"
     };
     println!("{}", ans);
+}
+
+fn distance(a: i32, b: i32, c: i32, x: i32) -> i32 {
+    let mut res = (x / (a + c)) * a * b;
+    if x % (a + c) > a {
+        res += a * b;
+    } else {
+        res += (x % (a + c)) * b;
+    }
+    res
 }
