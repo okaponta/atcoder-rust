@@ -10,10 +10,7 @@ fn main() {
     }
     let mut sets = vec![];
     for ch in s {
-        let mut set = HashSet::new();
-        for c in ch {
-            set.insert(c);
-        }
+        let set = ch.into_iter().collect::<HashSet<_>>();
         sets.push(set);
     }
     let mut ans = 0;
