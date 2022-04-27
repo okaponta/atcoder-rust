@@ -2,7 +2,14 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        ab:[i32;2],
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        (1..4)
+            .into_iter()
+            .filter(|i| !ab.contains(i))
+            .next()
+            .unwrap()
+    );
 }
