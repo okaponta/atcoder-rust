@@ -10,6 +10,7 @@
   - [Bit 全探索で網羅](abc167/src/bin/c.rs)
   - [OR の XOR の最小値](abc197/src/bin/c.rs)
   - [シンプルな Bit 全探索](abc190/src/bin/c.rs)
+  - [アルファベットが含まれているかを全探索](abc249/src/bin/c.rs)
 
 ### 順列
 
@@ -230,6 +231,9 @@
   - [条件つきの人数を選ぶ組み合わせ](abc238/src/bin/f.rs)
   - [区間で考える](abc179/src/bin/d.rs)
     - 配る DP ともいうらしい
+  - [並び替えの問題、転倒数(bitDP)](abc232/src/bin/f.rs)
+    - 転倒数はここらへん見る。順列を並び替えるのに必要なswap回数
+      - https://scrapbox.io/pocala-kyopro/%E8%BB%A2%E5%80%92%E6%95%B0
 
 ### 部分和
 

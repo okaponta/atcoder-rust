@@ -98,3 +98,6 @@ match map.get(&ans) {
     None => println!("-1"),
 }
 ```
+
+## memswap
+- swap(&mut x, &mut y);
