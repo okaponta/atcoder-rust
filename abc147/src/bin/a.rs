@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:[i32;3],
     }
-    println!("{}", n);
+    let ans = a.iter().sum::<i32>() > 21;
+    println!("{}", if ans { "bust" } else { "win" });
 }
