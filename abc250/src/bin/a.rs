@@ -6,10 +6,16 @@ fn main() {
         r:usize,c:usize,
     }
     let mut ans = 4;
-    if r == 1 || r == h {
+    if r == 1 {
         ans -= 1;
     }
-    if c == 1 || c == w {
+    if r == h {
+        ans -= 1;
+    }
+    if c == 1 {
+        ans -= 1;
+    }
+    if c == w {
         ans -= 1;
     }
     println!("{}", ans);
