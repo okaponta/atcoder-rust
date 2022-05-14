@@ -1,8 +1,12 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    let mut ans = vec![];
+    for i in 0..6 {
+        ans.push(s[i % s.len()]);
+    }
+    println!("{}", ans.iter().collect::<String>());
 }
