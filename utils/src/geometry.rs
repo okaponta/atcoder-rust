@@ -14,6 +14,16 @@ fn outer_product(x0: i32, y0: i32, x1: i32, y1: i32) -> i32 {
     x0 * y1 - y0 * x1
 }
 
+// 上記の点だけ渡す版
+// P1P2とP1P3の外積を求める。外積なので三角形の二倍
+fn outer_product_p(p1: (i64, i64), p2: (i64, i64), p3: (i64, i64)) -> i64 {
+    let a = p2.0 - p1.0;
+    let b = p2.1 - p1.1;
+    let c = p3.0 - p1.0;
+    let d = p3.1 - p1.1;
+    a * d - b * c
+}
+
 // 3点が同一線状にあるか判定
 fn is_on_line(x0: i32, y0: i32, x1: i32, y1: i32, x2: i32, y2: i32) -> bool {
     (y1 - y0) * (x2 - x0) == (y2 - y0) * (x1 - x0)
