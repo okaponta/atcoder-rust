@@ -1,8 +1,10 @@
+use std::f64::consts::PI;
+
 use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        r:f64,
     }
-    println!("{}", n);
+    println!("{}", 2.0 * r * PI);
 }
