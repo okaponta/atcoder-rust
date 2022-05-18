@@ -15,13 +15,22 @@ fn sum_inf(c: f64) -> f64 {
     1.0 / (1.0 - c)
 }
 
-// n!
-fn factorial(n: i64) -> i64 {
-    if n == 1 {
-        1
-    } else {
-        n * factorial(n - 1)
+// n!, 1/n, 1/n! をかえす
+fn fact_inv(n: usize, modulo: usize) -> (Vec<usize>, Vec<usize>, Vec<usize>) {
+    let mut fact = vec![0; n + 1];
+    let mut inv = vec![0; n + 1];
+    let mut fact_inv = vec![0; n + 1];
+    fact[0] = 1;
+    fact[1] = 1;
+    inv[1] = 1;
+    fact_inv[0] = 1;
+    fact_inv[1] = 1;
+    for i in 2..(n + 1) {
+        fact[i] = fact[i - 1] * i % modulo;
+        inv[i] = modulo - inv[modulo % i] * (modulo / i) % modulo;
+        fact_inv[i] = fact_inv[i - 1] * inv[i] % modulo;
     }
+    (fact, inv, fact_inv)
 }
 
 // 引数の約数を全て返却する。
