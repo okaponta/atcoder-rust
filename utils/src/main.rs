@@ -9,6 +9,8 @@ mod geometry;
 #[allow(dead_code)]
 mod graph;
 #[allow(dead_code)]
+mod grid;
+#[allow(dead_code)]
 mod integer;
 #[allow(dead_code)]
 mod matching;
