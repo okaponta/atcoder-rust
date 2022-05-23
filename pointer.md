@@ -155,6 +155,7 @@
 - 区間上の値を更新する
 - 任意の区間上の最小値や合計値などを取得する
   - [区間の XOR を更新しながら計算](abc185/src/bin/f.rs)
+  - [累積和とその最小値を管理](abc223/src/bin/f.rs)
 
 ### Fenwick tree (Binary Indexed Tree)
 
