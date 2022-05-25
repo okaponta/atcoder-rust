@@ -1,9 +1,10 @@
 use std::{
     cmp::Reverse,
-    collections::{BTreeSet, BinaryHeap},
+    collections::{BTreeSet, BinaryHeap, HashSet},
 };
 
 use itertools::{iproduct, Itertools};
+use petgraph::unionfind::UnionFind;
 
 const INF: usize = 1 << 60;
 
@@ -224,6 +225,67 @@ impl SCC {
     }
 }
 
+// 最小全域木をつくるアルゴリズム
+// 計算量|E|log|V|
+// n:usize 頂点の数
+// edges: Vec<(usize,usize,i64)> edges[i] = [(0,2,3), (1,3,-1), (From,To,重み)]
+fn kruskal(n: usize, mut edges: Vec<(usize, usize, i64)>) -> i64 {
+    edges.sort_by_key(|e| e.2);
+    let mut uf = UnionFind::new(n);
+    let mut res = 0;
+    for (u, v, cost) in edges {
+        if uf.union(u, v) {
+            res += cost;
+        }
+    }
+    res
+}
+
+// 最小全域木をつくるアルゴリズム(0からの最小全域)
+// 計算量|E|log|V|
+// n:usize 頂点の数
+// edges: Vec<Vec<(usize,i64)>> edges[i] = [(2,3), (3,1), (頂点への道,重み)]
+fn prim(n: usize, edges: Vec<Vec<(usize, i64)>>) -> i64 {
+    let mut res = 0;
+    let mut used = vec![false; n];
+    let mut heap = BinaryHeap::new();
+    heap.push((Reverse(0), 0));
+    while let Some((Reverse(d), target)) = heap.pop() {
+        if used[target] {
+            continue;
+        }
+        used[target] = true;
+        res += d;
+        for &(next, cost) in &edges[target] {
+            heap.push((Reverse(cost), next));
+        }
+    }
+    res
+}
+
+// 最小全域木をつくるアルゴリズム(できるだけバージョン、森でもOK)
+// 計算量|E|log|V|
+// n:usize 頂点の数
+// edges: Vec<Vec<(usize,i64)>> edges[i] = [(2,3), (3,1), (頂点への道,重み)]
+fn prim_forest(n: usize, edges: Vec<Vec<(usize, i64)>>) -> i64 {
+    let mut res = 0;
+    let mut remain: HashSet<usize> = (0..n).collect();
+    let mut heap = BinaryHeap::new();
+    while !remain.is_empty() {
+        heap.push((Reverse(0), *remain.iter().next().unwrap()));
+        while let Some((Reverse(d), target)) = heap.pop() {
+            if !remain.remove(&target) {
+                continue;
+            }
+            res += d;
+            for &(next, cost) in &edges[target] {
+                heap.push((Reverse(cost), next));
+            }
+        }
+    }
+    res
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -323,5 +385,47 @@ mod tests {
                 vec![]
             ]
         );
+    }
+
+    #[test]
+    fn test_kruskal() {
+        let n = 10;
+        let abc = vec![
+            (4, 3, 6831),
+            (1, 3, 4583),
+            (0, 0, 6592),
+            (0, 1, 3063),
+            (3, 3, 4975),
+            (1, 3, 2049),
+            (4, 2, 2104),
+            (2, 2, 781),
+        ];
+        let mut edges = vec![];
+        for (a, b, c) in abc {
+            edges.push((a, 5 + b, -c));
+            edges.push((5 + b, a, -c));
+        }
+        assert_eq!(10000 * n as i64 + kruskal(n, edges), 71071);
+    }
+
+    #[test]
+    fn test_prim() {
+        let n = 10;
+        let abc = vec![
+            (4, 3, 6831),
+            (1, 3, 4583),
+            (0, 0, 6592),
+            (0, 1, 3063),
+            (3, 3, 4975),
+            (1, 3, 2049),
+            (4, 2, 2104),
+            (2, 2, 781),
+        ];
+        let mut edges = vec![vec![]; n];
+        for (a, b, c) in abc {
+            edges[a].push((5 + b, -c));
+            edges[5 + b].push((a, -c));
+        }
+        assert_eq!(10000 * n as i64 + prim_forest(n, edges), 71071);
     }
 }
