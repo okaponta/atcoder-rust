@@ -10,6 +10,12 @@ fn tousa_square_sum_one(n: i64) -> i64 {
     n * (n + 1) * (2 * n + 1) / 6
 }
 
+// c + 2c + 3c +...max以下最大の数まで
+fn tousa_sum(max: i64, c: i64) -> i64 {
+    let n = max / c;
+    (c + n * c) * n / 2
+}
+
 // 1 + c + c^2 + c^3 + c^4+...(0<c<1)
 fn sum_inf(c: f64) -> f64 {
     1.0 / (1.0 - c)
