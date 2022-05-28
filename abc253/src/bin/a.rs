@@ -2,7 +2,17 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize,
+        c:usize,
     }
-    println!("{}", n);
+    if a < b && b < c {
+        println!("Yes");
+    } else if c < b && b < a {
+        println!("Yes");
+    } else if a == b || b == c {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
