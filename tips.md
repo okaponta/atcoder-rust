@@ -54,6 +54,8 @@
 - 前半後半いれかえ
   - rotate_left(n)
   - rotate_right(n)
+  - 一部だけrotateしたいとき
+    - ans[i..].rotate_right(1);
   - `s[n..].iter().collect::<String>(), s[..n].iter().collect::<String>())`
 - 3 つで sort(全部逆順)
 

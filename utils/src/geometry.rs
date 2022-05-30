@@ -24,6 +24,10 @@ fn outer_product_p(p1: (i64, i64), p2: (i64, i64), p3: (i64, i64)) -> i64 {
     a * d - b * c
 }
 
+// 距離の二乗を返却
+fn dist(p1: (i32, i32), p2: (i32, i32)) -> i32 {
+    (p1.0 - p2.0) * (p1.0 - p2.0) + (p1.1 - p2.1) * (p1.1 - p2.1)
+}
 // 3点が同一線状にあるか判定
 fn is_on_line(x0: i32, y0: i32, x1: i32, y1: i32, x2: i32, y2: i32) -> bool {
     (y1 - y0) * (x2 - x0) == (y2 - y0) * (x1 - x0)
@@ -49,7 +53,6 @@ fn circum_from_three(x0: i32, y0: i32, x1: i32, y1: i32, x2: i32, y2: i32) -> (f
 }
 
 // (x^2 + y^2).sqrt() = x.hypot(y)
-
 fn is_inside(x0: f64, y0: f64, r: f64, xy: &Vec<(i32, i32)>) -> bool {
     !xy.iter()
         .any(|&(x, y)| (x as f64 - x0).hypot(y as f64 - y0) > r)
