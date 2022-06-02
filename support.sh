@@ -34,7 +34,7 @@ function problem(){
 function qiita(){
   command touch commentary.md
   command echo "[${CONTEST}](https://atcoder.jp/contests/${CONTEST})お疲れ様でした！" >> ./commentary.md
-  command echo "早速解説です！！(A-Dまで)" >> ./commentary.md
+  command echo "早速解説です！！(A-Fまで)" >> ./commentary.md
   command echo "" >> ./commentary.md
   command echo "質問、感想はこの記事のコメントでも、[twitter](https://twitter.com/okaponta_)でも、大歓迎です！:muscle:" >> ./commentary.md
   command echo "" >> ./commentary.md
