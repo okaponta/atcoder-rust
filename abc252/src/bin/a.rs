@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        n:u8,
     }
-    println!("{}", n);
+    println!("{}", (b'a' + (n - 97)) as char);
 }
