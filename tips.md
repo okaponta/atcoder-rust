@@ -60,13 +60,9 @@
 - 3 つで sort(全部逆順)
 
 ```
-vec.sort_by(|a, b| match b.0.cmp(&a.0) {
-  std::cmp::Ordering::Equal => match b.1.cmp(&a.1) {
-      std::cmp::Ordering::Equal => b.2.cmp(&a.2),
-      other => other,
-  },
-  other => other,
-});
+vec.sort_by(
+    |a, b| a.0.cmp(&b.0).then(a.1.cmp(&b.1).then(a.2.cmp(&b.2))
+);
 ```
 
 ## iter
