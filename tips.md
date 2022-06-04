@@ -100,3 +100,55 @@ match map.get(&ans) {
 
 ## memswap
 - swap(&mut x, &mut y);
+
+# bit演算
+
+### シンプル
+
+```
+for i in 0..1 << n {
+    let mut count = vec![bool; n];
+    for j in 0..n {
+        if i & (1 << j) > 0 {
+            // フラグが立っている
+            count[j] = true;
+        } else {
+            // フラグが立っていない
+        }
+    }
+}
+```
+
+### 部分集合
+
+```
+let mut sub = sup;
+while {
+    println!("{}", sub);
+    sub = (sub - 1) & sup;
+    sub != sup
+} {}
+```
+以下と同じ
+```
+let mut sub = sup;
+loop {
+    println!("{}", sub);
+    sub = (sub - 1) & sup;
+    if sub == sup {
+        break;
+    }
+}
+```
+
+n以下のサイズkの部分集合
+
+```
+let mut comb = (1 << k) - 1;
+while comb < 1 << n {
+    println!("{}", comb);
+    let x = comb & -comb;
+    let y = comb + x;
+    comb = ((comb & !y) / x >> 1) | y;
+}
+```
