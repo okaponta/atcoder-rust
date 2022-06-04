@@ -2,7 +2,16 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:String,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        if s == "Sunny" {
+            "Cloudy"
+        } else if s == "Cloudy" {
+            "Rainy"
+        } else {
+            "Sunny"
+        }
+    );
 }
