@@ -1,8 +1,9 @@
-use proconio::input;
+use proconio::{input, marker::Usize1};
 
 fn main() {
     input! {
-        n:usize,
+        r:Usize1,c:Usize1,
+        a:[[usize;2];2],
     }
-    println!("{}", n);
+    println!("{}", a[r][c]);
 }
