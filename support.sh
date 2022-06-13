@@ -3,9 +3,13 @@
 # Usage: at ./abcXXX, execute 'source ../support.sh'
 export CONTEST=$(basename $PWD)
 
-alias join="git add .&&git commit -m 'join $CONTEST'"
-
 source ~/repos/rust-kyopro-type-converter/convert.sh
+
+function join() {
+  command cp ../.vscode/launch.json ./.vscode/launch.json
+  command git add .
+  command git commit -m "join $CONTEST"
+}
 
 function test() {
   command cargo compete test $1
