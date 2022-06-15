@@ -1,22 +1,5 @@
 # Rust の書き方備忘録
 
-## println
-
-- 0 埋め
-  - println!("{:<03}", { n });
-- f64の小数点以下桁数指定(以下は小数点2桁以下切り捨て)
-  - println!("{:.*}", 2, (hoge * 100.0).floor() / 100.0);
-## 演算
-
-- BitXOR
-  - ^
-- BitAND
-  - &
-- 割り算(切り上げ)
-  - (a + b - 1) / b
-- bitが1の数
-  - count_ones()
-
 ## String
 
 - 部分文字列が存在する
@@ -27,13 +10,6 @@
   - str.insert(index,char)
 - 末尾を先頭に
   - format!("{}{}", x % 10, x / 10)
-- n 進数に変換
-  - 2
-    - format!("{:b}", i);
-  - 8
-    - format!("{:o}", i);
-  - 16
-    - format!("{:x}", i);
 - 文字が'a'の場合にとりつづける(先頭&末尾)
   - let first_a_count = s.len() - s.trim_start_matches('a').len();
   - let last_a_count = s.len() - s.trim_end_matches('a').len();
@@ -90,7 +66,6 @@ vec.sort_by(
 - 要素がなければ 1 を挿入、あれば+1
   - *map.entry(sum).or_insert(0) += 1;
 - 要素のあるなしによって出力を切り替え
-
 ```
 match map.get(&ans) {
     Some(res) => println!("{}", res),
@@ -101,54 +76,3 @@ match map.get(&ans) {
 ## memswap
 - swap(&mut x, &mut y);
 
-# bit演算
-
-### シンプル
-
-```
-for i in 0..1 << n {
-    let mut count = vec![bool; n];
-    for j in 0..n {
-        if i & (1 << j) > 0 {
-            // フラグが立っている
-            count[j] = true;
-        } else {
-            // フラグが立っていない
-        }
-    }
-}
-```
-
-### 部分集合
-
-```
-let mut sub = sup;
-while {
-    println!("{}", sub);
-    sub = (sub - 1) & sup;
-    sub != sup
-} {}
-```
-以下と同じ
-```
-let mut sub = sup;
-loop {
-    println!("{}", sub);
-    sub = (sub - 1) & sup;
-    if sub == sup {
-        break;
-    }
-}
-```
-
-n以下のサイズkの部分集合
-
-```
-let mut comb = (1 << k) - 1;
-while comb < 1 << n {
-    println!("{}", comb);
-    let x = comb & -comb;
-    let y = comb + x;
-    comb = ((comb & !y) / x >> 1) | y;
-}
-```
