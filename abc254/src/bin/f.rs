@@ -1,5 +1,6 @@
-use proconio::{input, marker::Usize1};
+use proconio::{fastout, input, marker::Usize1};
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
@@ -11,9 +12,11 @@ fn main() {
     let mut hseg = SegmentTree::new(n - 1, 0, |a, b| gcd(a, b));
     let mut wseg = SegmentTree::new(n - 1, 0, |a, b| gcd(a, b));
     for i in 0..n - 1 {
-        hseg.update(i, abs_sub(a[i], a[i + 1]));
-        wseg.update(i, abs_sub(b[i], b[i + 1]));
+        hseg.update_tmp(i, abs_sub(a[i], a[i + 1]));
+        wseg.update_tmp(i, abs_sub(b[i], b[i + 1]));
     }
+    hseg.update_all();
+    wseg.update_all();
     for (h1, h2, w1, w2) in hw {
         let a = a[h1] + b[w1];
         let b = hseg.query(h1..h2);
@@ -34,10 +37,7 @@ where
     F: Fn(T, T) -> T,
 {
     pub fn new(size: usize, initial_value: T, f: F) -> SegmentTree<T, F> {
-        let mut m = 1;
-        while m <= size {
-            m <<= 1;
-        }
+        let m = size.next_power_of_two();
         SegmentTree {
             seg: vec![initial_value; m * 2],
             n: m,
@@ -46,8 +46,7 @@ where
         }
     }
 
-    pub fn update(&mut self, k: usize, value: T) {
-        let mut k = k;
+    pub fn update(&mut self, mut k: usize, value: T) {
         k += self.n - 1;
         self.seg[k] = value;
         while k > 0 {
@@ -56,7 +55,17 @@ where
         }
     }
 
-    // 半開区完なので注意
+    pub fn update_tmp(&mut self, k: usize, value: T) {
+        self.seg[k + self.n - 1] = value;
+    }
+
+    pub fn update_all(&mut self) {
+        for i in (0..self.n - 1).rev() {
+            self.seg[i] = (self.f)(self.seg[2 * i + 1], self.seg[2 * i + 2]);
+        }
+    }
+
+    // 半開区間なので注意
     pub fn query(&self, range: std::ops::Range<usize>) -> T {
         self.query_range(range, 0, 0..self.n)
     }
