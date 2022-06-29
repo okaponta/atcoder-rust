@@ -1,8 +1,10 @@
-use proconio::input;
+use num::Integer;
+use proconio::{input, marker::Usize1};
 
 fn main() {
     input! {
-        n:usize,
+        a:Usize1,
+        b:Usize1,
     }
-    println!("{}", n);
+    println!("{}", b.div_ceil(&a));
 }
