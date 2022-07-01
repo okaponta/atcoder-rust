@@ -6,6 +6,7 @@ export CONTEST=$(basename $PWD)
 source ~/repos/rust-kyopro-type-converter/convert.sh
 
 function join() {
+  command mkdir .vscode
   command cp ../.vscode/launch.json ./.vscode/launch.json
   command git add .
   command git commit -m "join $CONTEST"
