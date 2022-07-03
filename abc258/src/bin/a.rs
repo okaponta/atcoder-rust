@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        k:usize,
     }
-    println!("{}", n);
+    println!("{}:{:<02}", 21 + k / 60, k % 60);
 }
