@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        s:String
     }
-    println!("{}", n);
+    println!("{}", if a < 3200 { "red" } else { &s });
 }
