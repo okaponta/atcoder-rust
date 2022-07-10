@@ -1,8 +1,14 @@
+use itertools::Itertools;
 use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        k:i32,
+        x:i32,
     }
-    println!("{}", n);
+    let mut ans = vec![];
+    for i in x - k + 1..x + k {
+        ans.push(i);
+    }
+    println!("{}", ans.iter().join(" "));
 }
