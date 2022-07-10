@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:i32,b:i32
     }
-    println!("{}", n);
+    println!("{}", (a + b).max(a - b).max(a * b));
 }
