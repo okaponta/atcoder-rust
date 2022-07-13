@@ -2,7 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        _:usize,
+        m:usize,
+        x:usize,
+        t:usize,
+        d:usize,
     }
-    println!("{}", n);
+    println!("{}", (t + m * d - x * d).min(t));
 }
