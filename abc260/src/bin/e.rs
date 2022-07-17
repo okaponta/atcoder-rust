@@ -1,51 +1,30 @@
 use itertools::Itertools;
 use proconio::{fastout, input, marker::Usize1};
-use std::collections::HashMap;
 
 #[fastout]
 fn main() {
     input! {
-        n: usize, m: usize,
-        ab: [(Usize1, Usize1); n],
+        n:usize,m:usize,
+        ab:[(Usize1,Usize1);n],
     }
-
-    let mut dict = vec![vec![]; m + 1];
-    for (i, &(a, b)) in ab.iter().enumerate() {
-        dict[a].push(i);
-        dict[b].push(i);
+    let mut ans = vec![0; m + 1];
+    let mut least = vec![0; m];
+    let mut maxa = 0;
+    let mut minb = m;
+    for (a, b) in ab {
+        maxa = maxa.max(a);
+        minb = minb.min(b);
+        least[a] = least[a].max(b);
     }
-    let mut r = 0;
-    let mut map = HashMap::new();
-    let mut ans = vec![0; m + 2];
-    for l in 0..=m {
-        loop {
-            if r > m {
-                break;
-            }
-            if map.len() == n {
-                break;
-            }
-            for &x in &dict[r] {
-                *map.entry(x).or_insert(0) += 1;
-            }
-            r += 1;
-        }
-        if map.len() == n {
-            ans[r - l] += 1;
-            ans[m + 1 - l] -= 1;
-        }
-        for &x in &dict[l] {
-            *map.entry(x).or_insert(0) -= 1;
-            if map.get(&x).unwrap() == &0 {
-                map.remove(&x);
-            }
-        }
+    let mut r = maxa;
+    for l in 0..=minb {
+        ans[r - l] += 1;
+        ans[m - l] -= 1;
+        r = r.max(least[l]);
     }
-
     for i in 1..=m {
         ans[i] += ans[i - 1];
     }
-    ans.remove(0);
     ans.remove(m);
     println!("{}", ans.iter().join(" "));
 }
