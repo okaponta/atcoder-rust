@@ -7,10 +7,10 @@ fn main() {
         c:usize,
         ta:[(usize,usize);n],
     }
-    let n = 30;
+    let max = (1 << 30) - 1;
     let mut ans = c;
     let mut zero = 0;
-    let mut one = (1 << 30) - 1;
+    let mut one = max;
     for (t, a) in ta {
         if t == 1 {
             zero &= a;
@@ -24,14 +24,7 @@ fn main() {
             zero ^= a;
             one ^= a;
         }
-        let mut next = 0;
-        for i in 0..n {
-            if ans >> i & 1 == 0 {
-                next += (zero >> i & 1) * (1 << i);
-            } else {
-                next += (one >> i & 1) * (1 << i);
-            }
-        }
+        let next = ((ans ^ max) & zero) + (ans & one);
         println!("{}", next);
         ans = next;
     }
