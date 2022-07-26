@@ -19,12 +19,13 @@ fn main() {
             println!("-1");
             return;
         }
-        let mut index = map[alpha].upper_bound(&rem);
+        let index = map[alpha].lower_bound(&rem);
         if map[alpha].len() == index {
-            index = 0;
             quotient += 1;
+            rem = map[alpha][0] + 1;
+        } else {
+            rem = map[alpha][index] + 1;
         }
-        rem = map[alpha][index];
     }
-    println!("{}", quotient * s.len() + rem + 1);
+    println!("{}", quotient * s.len() + rem);
 }
