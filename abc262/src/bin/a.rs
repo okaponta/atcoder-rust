@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut y:usize,
     }
-    println!("{}", n);
+    loop {
+        if y % 4 == 2 {
+            println!("{}", y);
+            return;
+        }
+        y += 1;
+    }
 }
