@@ -1,8 +1,13 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{fastout, input};
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
+        m:usize,
     }
-    println!("{}", n);
+    for v in (1..=m).combinations(n) {
+        println!("{}", v.iter().join(" "));
+    }
 }
