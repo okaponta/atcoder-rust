@@ -21,7 +21,7 @@ fn main() {
 fn dist(a: &Vec<i64>, b: &Vec<i64>) -> i64 {
     a.iter()
         .zip(b.iter())
-        .map(|(a, b)| (a - b) * (a - b))
+        .map(|(a, b)| (a - b).pow(2))
         .sum::<i64>()
 }
 
