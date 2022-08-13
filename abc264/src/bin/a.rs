@@ -1,8 +1,8 @@
-use proconio::input;
+use proconio::{input, marker::Usize1};
 
 fn main() {
     input! {
-        l:usize,
+        l:Usize1,
         r:usize,
     }
     let atcoder = vec!['a', 't', 'c', 'o', 'd', 'e', 'r'];
