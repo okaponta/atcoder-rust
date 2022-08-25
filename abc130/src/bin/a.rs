@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:i32,
+        a:i32,
     }
-    println!("{}", n);
+    println!("{}", if x - a < 0 { 0 } else { 10 });
 }
