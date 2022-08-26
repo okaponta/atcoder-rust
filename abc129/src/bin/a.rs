@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut t:[usize;3],
     }
-    println!("{}", n);
+    t.sort();
+    println!("{}", t[0] + t[1]);
 }
