@@ -2,7 +2,15 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        w:usize,
+        h:usize,
+        x:usize,
+        y:usize,
     }
-    println!("{}", n);
+    let ans = (w * h) as f64 / 2.0;
+    if x * 2 == w && y * 2 == h {
+        println!("{} {}", ans, 1);
+    } else {
+        println!("{} {}", ans, 0);
+    }
 }
