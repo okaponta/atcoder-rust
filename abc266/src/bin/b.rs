@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        n:i64,
     }
-    println!("{}", n);
+    println!("{}", n.rem_euclid(998244353));
 }
