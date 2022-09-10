@@ -19,7 +19,7 @@ cases:
       chokudai
       choku_dai
     out: |
-      dai_choku
+      choku__dai
   - name: sample3
     in: |
       2 2
@@ -41,7 +41,31 @@ cases:
       ____
       _ab_cd_ef_gh_
     out: |
-      ab__ef___cd_gh
+      ab_cd_ef_gh
+  - name: custom1
+    in: |
+      2 17
+      choku
+      dai
+      chokudai
+      choku_dai
+      choku__dai
+      choku___dai
+      choku____dai
+      choku_____dai
+      choku______dai
+      choku_______dai
+      choku________dai
+      dai_choku
+      dai__choku
+      dai___choku
+      dai____choku
+      dai_____choku
+      dai_____choku
+      dai_____choku
+      dai______choku
+    out: |
+      dai_______choku
 
 extend:
   - type: Text
