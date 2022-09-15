@@ -1,4 +1,4 @@
-use std::{cmp::Reverse, collections::BinaryHeap};
+use std::collections::VecDeque;
 
 use proconio::{fastout, input, marker::Usize1};
 
@@ -15,24 +15,27 @@ fn main() {
         e[u].push(v);
         e[v].push(u);
     }
+
     let mut is_cycle = vec![true; n];
     let mut deg = vec![0; n];
-    let mut heap = BinaryHeap::new();
+    let mut q = VecDeque::new();
     for i in 0..n {
-        heap.push(Reverse((e[i].len(), i)));
         deg[i] = e[i].len();
+        if deg[i] == 1 {
+            q.push_back(i);
+        }
     }
-    while let Some(Reverse((len, i))) = heap.pop() {
-        if len == 1 {
-            is_cycle[i] = false;
-            for &next in &e[i] {
-                if is_cycle[next] {
-                    deg[next] -= 1;
-                    heap.push(Reverse((deg[next], next)));
+    // 次数が1の頂点をキューで処理
+    while let Some(i) = q.pop_front() {
+        is_cycle[i] = false;
+        for &next in &e[i] {
+            // 既に削除済なら飛ばす
+            if is_cycle[next] {
+                deg[next] -= 1;
+                if deg[next] == 1 {
+                    q.push_back(next);
                 }
             }
-        } else {
-            break;
         }
     }
     let mut root = vec![!0; n];
