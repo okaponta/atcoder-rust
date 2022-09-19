@@ -2,7 +2,17 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        if 12 < a {
+            b
+        } else if 5 < a {
+            b / 2
+        } else {
+            0
+        }
+    );
 }
