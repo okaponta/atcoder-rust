@@ -2,7 +2,12 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        r:usize,
+        d:usize,
+        mut x:usize,
     }
-    println!("{}", n);
+    for _ in 0..10 {
+        x = r * x - d;
+        println!("{}", x);
+    }
 }
