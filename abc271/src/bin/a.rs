@@ -4,5 +4,11 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    let ans = format!("{:x}", n);
+    let ans = ans.to_uppercase();
+    if ans.len() == 1 {
+        println!("0{}", ans);
+    } else {
+        println!("{}", ans);
+    }
 }
