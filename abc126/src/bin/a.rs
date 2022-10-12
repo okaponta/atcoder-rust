@@ -1,8 +1,14 @@
-use proconio::input;
+use proconio::{
+    input,
+    marker::{Chars, Usize1},
+};
 
 fn main() {
     input! {
-        n:usize,
+        _:usize,
+        k:Usize1,
+        mut s:Chars
     }
-    println!("{}", n);
+    s[k] = s[k].to_ascii_lowercase();
+    println!("{}", s.iter().collect::<String>());
 }
