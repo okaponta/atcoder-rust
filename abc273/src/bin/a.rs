@@ -4,5 +4,13 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    println!("{}", f(n));
+}
+
+fn f(k: usize) -> usize {
+    if k == 0 {
+        1
+    } else {
+        k * f(k - 1)
+    }
 }
