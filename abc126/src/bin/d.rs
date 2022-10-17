@@ -1,5 +1,6 @@
-use proconio::{input, marker::Usize1};
+use proconio::{fastout, input, marker::Usize1};
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
