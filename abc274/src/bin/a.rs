@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:f64,
+        b:f64,
     }
-    println!("{}", n);
+    println!("{:.*}", 3, b / a);
 }
