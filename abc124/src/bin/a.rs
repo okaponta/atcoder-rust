@@ -2,7 +2,9 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize,
     }
-    println!("{}", n);
+    let ans = if a == b { a + b } else { a.max(b) * 2 - 1 };
+    println!("{}", ans);
 }
