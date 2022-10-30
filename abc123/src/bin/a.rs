@@ -2,7 +2,9 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut a:[usize;5],
+        k:usize
     }
-    println!("{}", n);
+    a.sort();
+    println!("{}", if a[4] - a[0] <= k { "Yay!" } else { ":(" });
 }
