@@ -22,10 +22,10 @@ fn main() {
     let mut ans = 0;
     loop {
         while flip <= k && right < a.len() {
-            if flip == k && a[right].0 == '0' {
-                break;
-            }
             if a[right].0 == '0' {
+                if flip == k {
+                    break;
+                }
                 flip += 1;
             }
             count += a[right].1;
