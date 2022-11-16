@@ -43,21 +43,19 @@ fn main() {
                         indexes.push(y_idx[i]);
                     }
                     indexes.sort();
+                    // k
                     if k < k_num {
                         let inv = k_idx[k] - indexes.lower_bound(&k_idx[k]);
-                        // k
                         next[x + inv][e][y] += dp[x][e][y];
                     }
                     // e
                     if e < e_num {
                         let inv = e_idx[e] - indexes.lower_bound(&e_idx[e]);
-                        // e
                         next[x + inv][e + 1][y] += dp[x][e][y];
                     }
                     // y
                     if y < y_num {
                         let inv = y_idx[y] - indexes.lower_bound(&y_idx[y]);
-                        // e
                         next[x + inv][e][y + 1] += dp[x][e][y];
                     }
                 }
