@@ -29,14 +29,12 @@ fn testcase() {
             }
             cur += 1;
             if let Some(Reverse(i)) = heap.pop() {
-                //println!("{} {}", cur, i);
                 if i < cur {
                     println!("No");
                     return;
                 }
             }
         }
-        //println!("{} {:?}", cur, heap);
     }
     println!("Yes");
 }
