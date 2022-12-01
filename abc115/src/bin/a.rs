@@ -2,7 +2,12 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        d:usize,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        (0..25 - d)
+            .into_iter()
+            .fold("Christmas".to_string(), |a, _| a + " Eve")
+    );
 }
