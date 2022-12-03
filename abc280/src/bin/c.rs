@@ -1,8 +1,16 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
+        t:Chars,
     }
-    println!("{}", n);
+    let n = s.len();
+    for i in 0..n {
+        if s[i] != t[i] {
+            println!("{}", i + 1);
+            return;
+        }
+    }
+    println!("{}", n + 1);
 }
