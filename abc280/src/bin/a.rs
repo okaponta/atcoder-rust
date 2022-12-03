@@ -1,8 +1,18 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        h:usize,
+        _:usize,
+        s:[Chars;h],
     }
-    println!("{}", n);
+    let mut ans = 0;
+    for i in 0..h {
+        for &c in &s[i] {
+            if c == '#' {
+                ans += 1;
+            }
+        }
+    }
+    println!("{}", ans);
 }
