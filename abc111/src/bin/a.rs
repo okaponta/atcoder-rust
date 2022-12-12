@@ -1,8 +1,13 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        s.into_iter()
+            .map(|c| if c == '1' { '9' } else { '1' })
+            .collect::<String>()
+    );
 }
