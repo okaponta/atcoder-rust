@@ -7,10 +7,6 @@ fn main() {
         mut h:[usize;n],
     }
     h.sort();
-    let mut ans = h[n - 1];
-    for i in 0..=n - k {
-        ans = ans.min(h[i + k - 1] - h[i]);
-    }
     println!(
         "{}",
         (0..=n - k)
