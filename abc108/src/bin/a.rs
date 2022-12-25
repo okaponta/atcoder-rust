@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        k:usize,
     }
-    println!("{}", n);
+    println!("{}", (k / 2) * (k - k / 2));
 }
