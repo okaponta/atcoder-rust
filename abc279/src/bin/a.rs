@@ -1,8 +1,12 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        s.into_iter()
+            .fold(0, |a, c| a + if c == 'v' { 1 } else { 2 })
+    );
 }
