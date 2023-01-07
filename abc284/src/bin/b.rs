@@ -1,8 +1,15 @@
-use proconio::input;
+use proconio::{fastout, input};
 
+#[fastout]
 fn main() {
     input! {
-        n:usize,
+        t:usize,
     }
-    println!("{}", n);
+    for _ in 0..t {
+        input! {
+            n:usize,
+            a:[usize;n],
+        }
+        println!("{}", a.into_iter().filter(|i| i % 2 == 1).count());
+    }
 }
