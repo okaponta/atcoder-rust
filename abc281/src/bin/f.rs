@@ -7,7 +7,7 @@ fn main() {
     }
     a.sort();
     a.dedup();
-    println!("{}", dfs(&a, 0, a.len(), 1 << 30));
+    println!("{}", dfs(&a, 0, a.len(), 1 << 29));
 }
 
 fn dfs(a: &Vec<usize>, l: usize, r: usize, bit: usize) -> usize {
@@ -17,9 +17,9 @@ fn dfs(a: &Vec<usize>, l: usize, r: usize, bit: usize) -> usize {
     if (l..r).into_iter().all(|i| a[i] & bit == bit) {
         return dfs(a, l, r, bit >> 1);
     }
-    if (l..r).into_iter().fold(0, |or, i| or | a[i]) & bit != bit {
-        return dfs(a, l, r, bit >> 1);
+    if let Some(mid) = (l..r).into_iter().find(|&i| a[i] & bit == bit) {
+        bit + dfs(a, l, mid, bit >> 1).min(dfs(a, mid, r, bit >> 1))
+    } else {
+        dfs(a, l, r, bit >> 1)
     }
-    let mid = (l..r).into_iter().find(|&i| a[i] & bit == bit).unwrap();
-    return bit + dfs(a, l, mid, bit >> 1).min(dfs(a, mid, r, bit >> 1));
 }
