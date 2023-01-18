@@ -1,0 +1,37 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      AtCoder
+    out: |
+      AC
+  - name: sample2
+    in: |
+      ACoder
+    out: |
+      WA
+  - name: sample3
+    in: |
+      AcycliC
+    out: |
+      WA
+  - name: sample4
+    in: |
+      AtCoCo
+    out: |
+      WA
+  - name: sample5
+    in: |
+      Atcoder
+    out: |
+      WA
+
+extend:
+  - type: Text
+    path: "./b"
+    in: /in/*.txt
+    out: /out/*.txt
