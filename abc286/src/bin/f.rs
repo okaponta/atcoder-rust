@@ -4,21 +4,17 @@ use itertools::Itertools;
 use proconio::{input, source::line::LineSource};
 
 fn main() {
-    let kitei = vec![4, 5, 7, 9, 11, 13, 17, 19, 23];
-    //let kitei = vec![5, 7];
-    let mut a = vec![];
-    let mut tmp = 1;
-    for i in kitei.clone() {
-        for j in 0..i {
-            if j == i - 1 {
-                a.push(tmp);
-                continue;
-            }
-            a.push(tmp + j + 1);
-        }
-        tmp += i;
+    let div = vec![4, 5, 7, 9, 11, 13, 17, 19, 23];
+    let mut s = vec![0];
+    let d = div.len();
+    for i in 0..d {
+        s.push(s[i] + div[i]);
     }
+    let mut a = (2..110).into_iter().collect::<Vec<_>>();
     let m = a.len();
+    for i in 0..d {
+        a[s[i + 1] - 1] = s[i] + 1;
+    }
     println!("{}", m);
     println!("{}", a.iter().join(" "));
     let stdin = stdin();
@@ -27,23 +23,24 @@ fn main() {
         from &mut source,
         b: [usize;m],
     }
-    // 5でわったあまり
-    let mut ans = b[0] - 1;
-    let mut lcm = 4;
-    let mut kijun = 4;
-    for i in kitei {
-        if i == 4 {
-            continue;
-        }
-        let rem = b[kijun] - 1 - kijun;
+    let mut set = vec![];
+    for i in 0..d {
+        set.push((div[i], b[s[i]] - s[i] - 1));
+    }
+    println!("{}", crt(set));
+}
+
+fn crt(set: Vec<(usize, usize)>) -> usize {
+    let mut res = 0;
+    let mut lcm = 1;
+    for (div, rem) in set {
         loop {
-            if ans % i == rem {
+            if res % div == rem {
                 break;
             }
-            ans += lcm;
+            res += lcm;
         }
-        lcm *= i;
-        kijun += i;
+        lcm *= div;
     }
-    println!("{}", ans);
+    res
 }
