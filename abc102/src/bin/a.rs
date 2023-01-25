@@ -4,5 +4,5 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    println!("{}", if n % 2 == 0 { n } else { 2 * n });
 }
