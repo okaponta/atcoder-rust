@@ -2,7 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        d:usize,
+        mut n:usize,
     }
-    println!("{}", n);
+    if n == 100 {
+        n += 1;
+    }
+    println!("{}", (0..d).into_iter().fold(n, |s, _| s * 100));
 }
