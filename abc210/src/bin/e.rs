@@ -8,15 +8,7 @@ fn main() {
     }
     ac.sort_by_key(|k| k.1);
     let mut g = n;
-    for i in 0..m {
-        g = gcd(g, ac[i].0);
-    }
-    if n % g == 0 && g != 1 {
-        println!("-1");
-        return;
-    }
     let mut ans = 0;
-    g = n;
     for (a, c) in ac {
         let after = gcd(g, a);
         if g != after {
@@ -24,10 +16,11 @@ fn main() {
         }
         g = after;
         if g == 1 {
-            break;
+            println!("{}", ans);
+            return;
         }
     }
-    println!("{}", ans);
+    println!("-1");
 }
 
 fn gcd(a: usize, b: usize) -> usize {
