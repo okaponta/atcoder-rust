@@ -1,8 +1,9 @@
-use proconio::input;
+use proconio::{input, marker::Usize1};
 
 fn main() {
     input! {
-        n:usize,
+        n:Usize1,
+        k:Usize1,
     }
-    println!("{}", n);
+    println!("{}", (n + k - 1) / k);
 }
