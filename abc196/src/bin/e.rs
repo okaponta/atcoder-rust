@@ -8,7 +8,7 @@ fn main() {
        n:usize,
        at:[(i64,u8);n],
        q:usize,
-       mut x:[i64;q],
+       x:[i64;q],
     }
     let mut min = -MAX;
     let mut max = MAX;
@@ -23,21 +23,12 @@ fn main() {
                 min = a;
                 max = max.max(min);
             }
-        } else {
-            if a < max {
-                max = a;
-                min = min.min(max);
-            }
+        } else if a < max {
+            max = a;
+            min = min.min(max);
         }
     }
-    for i in 0..q {
-        x[i] += tmp;
-        if x[i] < min {
-            x[i] = min;
-        }
-        if max < x[i] {
-            x[i] = max;
-        }
-        println!("{}", x[i]);
+    for x in x {
+        println!("{}", (x + tmp).max(min).min(max));
     }
 }
