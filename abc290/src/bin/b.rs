@@ -1,8 +1,20 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        _:usize,
+        k:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    let mut ans = vec![];
+    let mut count = 0;
+    for c in s {
+        if c == 'o' && count < k {
+            ans.push('o');
+            count += 1;
+        } else {
+            ans.push('x');
+        }
+    }
+    println!("{}", ans.iter().collect::<String>());
 }
