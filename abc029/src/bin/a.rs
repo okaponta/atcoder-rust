@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       w:String,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}s", w);
 }
