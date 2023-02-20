@@ -2,8 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       s:[String;12],
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", s.iter().filter(|s| s.contains('r')).count());
 }
