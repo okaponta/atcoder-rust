@@ -9,7 +9,9 @@ fn main() {
     for i in 0..n {
         s[i + 1] = s[i] + a[i];
     }
+    // i番目で、次j番目の区切り
     let mut dp = vec![vec![ModInt::zero(); n + 1]; n + 1];
+    // modi が j のものの数
     let mut memo = vec![vec![ModInt::zero(); n + 1]; n + 1];
     dp[0][0] += ModInt::one();
     memo[1][0] += ModInt::one();
@@ -17,8 +19,9 @@ fn main() {
         for j in 1..=n {
             dp[i + 1][j] = memo[j][s[i + 1] % j];
         }
-        for j in 2..=n {
-            memo[j][s[i + 1] % j] += dp[i + 1][j - 1];
+        for j in 1..n {
+            // 処理したあとの累積和のmod jの値を更新する
+            memo[j + 1][s[i + 1] % (j + 1)] += dp[i + 1][j];
         }
     }
     let mut ans = ModInt::zero();
