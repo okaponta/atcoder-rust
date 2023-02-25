@@ -4,5 +4,5 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    println!("AB{}", if n < 1000 { "C" } else { "D" });
 }
