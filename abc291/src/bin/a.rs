@@ -1,8 +1,11 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        s.into_iter().enumerate().find(|(_, c)| *c < 'a').unwrap().0 + 1
+    );
 }
