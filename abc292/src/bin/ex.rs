@@ -86,7 +86,6 @@ where
     }
 
     // lowerとupperの間でfを満たす最小の値
-    // ng, ng, ng, (ok), ok, ok
     pub fn max_right<P>(&self, mut lower: usize, mut upper: usize, f: P) -> usize
     where
         P: Fn(T) -> bool,
