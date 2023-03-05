@@ -16,18 +16,9 @@ fn main() {
     seg.update_all();
     for (c, x) in cx {
         seg.update(c, (x - b, x - b));
-        let mut lower = 0;
-        let mut upper = n;
-        while upper - lower > 1 {
-            let med = (lower + upper) / 2;
-            if 0 <= seg.query(0..med).1 {
-                upper = med;
-            } else {
-                lower = med;
-            }
-        }
-        let sum = seg.query(0..upper).0 + b * upper as i64;
-        println!("{}", sum as f64 / upper as f64);
+        let pos = seg.max_right(0, n, |e| 0 <= e.1);
+        let sum = seg.query(0..pos).0 + b * pos as i64;
+        println!("{}", sum as f64 / pos as f64);
     }
 }
 
@@ -92,5 +83,38 @@ where
             let y = self.query_range(range, k * 2 + 2, mid..seg_range.end);
             (self.f)(x, y)
         }
+    }
+
+    // lowerとupperの間でfを満たす最小の値
+    // ng, ng, ng, (ok), ok, ok
+    pub fn max_right<P>(&self, mut lower: usize, mut upper: usize, f: P) -> usize
+    where
+        P: Fn(T) -> bool,
+    {
+        while upper - lower > 1 {
+            let med = (lower + upper) / 2;
+            if f(self.query(0..med)) {
+                upper = med;
+            } else {
+                lower = med;
+            }
+        }
+        upper
+    }
+
+    // lowerとupperの間でfを満たさない最大の値
+    pub fn min_left<P>(&self, mut lower: usize, mut upper: usize, f: P) -> usize
+    where
+        P: Fn(T) -> bool,
+    {
+        while upper - lower > 1 {
+            let med = (lower + upper) / 2;
+            if f(self.query(0..med)) {
+                lower = med;
+            } else {
+                upper = med;
+            }
+        }
+        lower
     }
 }
