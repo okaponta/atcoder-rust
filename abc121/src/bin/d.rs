@@ -5,12 +5,13 @@ fn main() {
         a:Usize1,
         b:usize,
     }
-    println!("{}", sxor(b) ^ sxor(a));
+    println!("{}", s(b) ^ s(a));
 }
 
-fn sxor(a: usize) -> usize {
+fn s(a: usize) -> usize {
     if a % 2 != 0 {
-        return (a / 2 + 1) % 2;
+        (a / 2 + 1) % 2
+    } else {
+        a + (a / 2) % 2
     }
-    a + (a / 2) % 2
 }
