@@ -6,9 +6,7 @@ fn main() {
         x:usize,
         m:usize,
     }
-    // aの2^i乗
     let mut pow = vec![1, a % m];
-    // 2^i-1までの和
     let mut s = vec![1, (a + 1) % m];
     for i in 2..45 {
         pow.push((pow[i - 1] * pow[i - 1]) % m);
