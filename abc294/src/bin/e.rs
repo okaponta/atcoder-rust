@@ -2,44 +2,27 @@ use proconio::input;
 
 fn main() {
     input! {
-        l:usize,
+        _:usize,
         n1:usize,
         n2:usize,
-        vl1:[(i64,usize);n1],
-        vl2:[(i64,usize);n2],
+        mut vl1:[(i64,usize);n1],
+        mut vl2:[(i64,usize);n2],
     }
-    let mut vls = vec![(0, 0)];
-    let mut vls1 = vec![(0, 0)];
-    for i in 0..n1 {
-        vls1.push((vl1[i].0, vls1[i].1 + vl1[i].1));
-        vls.push((0, vls1[i].1 + vl1[i].1));
-    }
-    let mut vls2 = vec![(0, 0)];
-    for i in 0..n2 {
-        vls2.push((vl2[i].0, vls2[i].1 + vl2[i].1));
-        vls.push((0, vls2[i].1 + vl2[i].1));
-    }
-    vls.sort();
-    vls.dedup();
-    vls.push((1, l + 1));
-    let mut index = 0;
-    for (val, i) in vls1 {
-        while vls[index].1 <= i {
-            vls[index].0 += val;
-            index += 1;
-        }
-    }
-    let mut index = 0;
-    for (val, i) in vls2 {
-        while vls[index].1 <= i {
-            vls[index].0 -= val;
-            index += 1;
-        }
-    }
+    let mut i1 = 0;
+    let mut i2 = 0;
     let mut ans = 0;
-    for i in 1..vls.len() {
-        if vls[i].0 == 0 {
-            ans += vls[i].1 - vls[i - 1].1;
+    while i1 != n1 && i2 != n2 {
+        let seg = vl1[i1].1.min(vl2[i2].1);
+        if vl1[i1].0 == vl2[i2].0 {
+            ans += seg;
+        }
+        vl1[i1].1 -= seg;
+        vl2[i2].1 -= seg;
+        if vl1[i1].1 == 0 {
+            i1 += 1;
+        }
+        if vl2[i2].1 == 0 {
+            i2 += 1;
         }
     }
     println!("{}", ans);
