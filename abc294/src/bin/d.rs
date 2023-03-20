@@ -1,7 +1,8 @@
 use std::collections::BTreeSet;
 
-use proconio::input;
+use proconio::{fastout, input};
 
+#[fastout]
 fn main() {
     input! {
         _:usize,
