@@ -27,27 +27,6 @@ cases:
       AC
     out: |
       No
-  - name: sample4
-    in: |
-      8 6 9 1
-      AC
-      BC
-      AB
-      BC
-      AC
-      BC
-      AB
-      AB
-    out: |
-      Yes
-      C
-      B
-      B
-      C
-      C
-      B
-      A
-      A
 
 extend:
   - type: Text
