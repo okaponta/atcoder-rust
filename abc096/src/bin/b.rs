@@ -2,7 +2,10 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut a:[usize;3],
+        k:usize,
     }
-    println!("{}", n);
+    a.sort();
+    a[2] <<= k;
+    println!("{}", a.into_iter().sum::<usize>());
 }
