@@ -1,8 +1,13 @@
 use proconio::input;
+use superslice::Ext;
 
 fn main() {
     input! {
-        n:usize,
+        _:usize,
+        m:usize,
+        x:usize,
+        a:[usize;m],
     }
-    println!("{}", n);
+    let l = a.lower_bound(&x);
+    println!("{}", (m - l).min(l));
 }
