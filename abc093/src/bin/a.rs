@@ -1,8 +1,10 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        mut s:Chars,
     }
-    println!("{}", n);
+    s.sort();
+    let ans = s.into_iter().collect::<String>();
+    println!("{}", if ans == "abc" { "Yes" } else { "No" });
 }
