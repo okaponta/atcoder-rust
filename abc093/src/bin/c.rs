@@ -2,7 +2,12 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut a:[usize;3],
     }
-    println!("{}", n);
+    a.sort();
+    let mut sub = a[2] * 2 - a[1] - a[0];
+    if sub % 2 != 0 {
+        sub += 3;
+    }
+    println!("{}", sub / 2);
 }
