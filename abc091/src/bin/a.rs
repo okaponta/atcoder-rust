@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:[usize;3],
     }
-    println!("{}", n);
+    println!("{}", if a[2] <= a[0] + a[1] { "Yes" } else { "No" });
 }
