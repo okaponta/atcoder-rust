@@ -9,16 +9,7 @@ fn main() {
         n:usize,
         s:Chars,
     }
-    let b = BASE;
-    let mut t = 1;
-    // ローリングハッシュを累積和みたいな感じで管理
-    let mut cum = vec![0];
-    let mut base = vec![t];
-    for i in 0..n {
-        cum.push((s[i] as u128).wrapping_mul(t).wrapping_add(cum[i]));
-        t = t.wrapping_mul(b);
-        base.push(t);
-    }
+    let roliha = RollingHash::init(BASE, n, &s);
     // 長さ
     let mut lower = 0;
     let mut upper = n / 2 + 1;
@@ -28,12 +19,13 @@ fn main() {
         let mut set = HashSet::new();
         // 開始位置
         for j in (0..=n - 2 * mid).rev() {
-            let h1 = cum[j + mid].wrapping_sub(cum[j]);
+            let h1 = roliha.hash(j, j + mid);
             // 開始位置(一致する方)
-            let h2 =
-                (cum[j + 2 * mid].wrapping_sub(cum[j + mid])).wrapping_mul(base[n - 2 * mid - j]);
+            let h2 = roliha
+                .hash(j + mid, j + mid * 2)
+                .wrapping_mul(roliha.b[n - 2 * mid - j]);
             set.insert(h2);
-            if set.contains(&(h1.wrapping_mul(base[n - mid - j]))) {
+            if set.contains(&(h1.wrapping_mul(roliha.b[n - mid - j]))) {
                 is_ok = true;
                 break;
             }
@@ -45,4 +37,29 @@ fn main() {
         }
     }
     println!("{}", lower);
+}
+
+pub struct RollingHash {
+    b: Vec<u128>,
+    hash: Vec<u128>,
+}
+
+impl RollingHash {
+    // const BASE:u128 = 1000001137;
+    pub fn init(base: u128, n: usize, str: &Vec<char>) -> Self {
+        let mut b = vec![1u128];
+        let mut hash = vec![0u128];
+        let mut t = 1;
+        for i in 0..n {
+            hash.push((str[i] as u128).wrapping_mul(t).wrapping_add(hash[i]));
+            t = t.wrapping_mul(base);
+            b.push(t);
+        }
+        Self { b, hash }
+    }
+
+    // i..jまでの文字列のハッシュ値
+    fn hash(&self, i: usize, j: usize) -> u128 {
+        self.hash[j].wrapping_sub(self.hash[i])
+    }
 }
