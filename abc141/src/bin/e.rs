@@ -59,6 +59,7 @@ impl RollingHash {
     }
 
     // i..jまでの文字列のハッシュ値
+    // 位置が違うところで比較するときは、b[差分]だけかけてから比較すること
     fn hash(&self, i: usize, j: usize) -> u128 {
         self.hash[j].wrapping_sub(self.hash[i])
     }
