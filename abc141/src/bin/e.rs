@@ -20,18 +20,29 @@ fn main() {
         base.push(t);
     }
     // 長さ
-    for i in (0..=n / 2).rev() {
+    let mut lower = 0;
+    let mut upper = n / 2 + 1;
+    while 1 < upper - lower {
+        let mid = (upper + lower) / 2;
+        let mut is_ok = false;
         let mut set = HashSet::new();
         // 開始位置
-        for j in (0..=n - 2 * i).rev() {
-            let h1 = cum[j + i].wrapping_sub(cum[j]);
+        for j in (0..=n - 2 * mid).rev() {
+            let h1 = cum[j + mid].wrapping_sub(cum[j]);
             // 開始位置(一致する方)
-            let h2 = (cum[j + 2 * i].wrapping_sub(cum[j + i])).wrapping_mul(base[n - 2 * i - j]);
+            let h2 =
+                (cum[j + 2 * mid].wrapping_sub(cum[j + mid])).wrapping_mul(base[n - 2 * mid - j]);
             set.insert(h2);
-            if set.contains(&(h1.wrapping_mul(base[n - i - j]))) {
-                println!("{}", i);
-                return;
+            if set.contains(&(h1.wrapping_mul(base[n - mid - j]))) {
+                is_ok = true;
+                break;
             }
         }
+        if is_ok {
+            lower = mid;
+        } else {
+            upper = mid;
+        }
     }
+    println!("{}", lower);
 }
