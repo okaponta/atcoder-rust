@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize,
     }
-    println!("{}", n);
+    println!("{}", if a * b & 1 == 1 { "Odd" } else { "Even" });
 }
