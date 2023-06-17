@@ -2,7 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:[u128;64],
     }
-    println!("{}", n);
+    let mut ans = 0;
+    for i in 0..64 {
+        ans += a[i] << i;
+    }
+    println!("{}", ans);
 }
