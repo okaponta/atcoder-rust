@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:usize,
+        y:usize,
     }
-    println!("{}", n);
+    println!("{}", ((y / x) + 1).next_power_of_two().trailing_zeros());
 }
