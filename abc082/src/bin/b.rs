@@ -1,8 +1,12 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        mut s:Chars,
+        mut t:Chars,
     }
-    println!("{}", n);
+    s.sort();
+    t.sort();
+    t.reverse();
+    println!("{}", if s < t { "Yes" } else { "No" });
 }
