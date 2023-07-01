@@ -2,7 +2,19 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:[usize;8],
     }
-    println!("{}", n);
+    if !(0..7).into_iter().all(|i| s[i] <= s[i + 1]) {
+        println!("No");
+        return;
+    }
+    if s[0] < 100 || 675 < s[7] {
+        println!("No");
+        return;
+    }
+    if !(0..8).into_iter().all(|i| s[i] % 25 == 0) {
+        println!("No");
+        return;
+    }
+    println!("Yes");
 }
