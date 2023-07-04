@@ -1,8 +1,8 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    println!("{}", s.into_iter().filter(|c| c == &'1').count());
 }
