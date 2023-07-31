@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:String,
     }
-    println!("{}", n);
+    let str = "ACEGBDFAC".to_string();
+    println!("{}", if str.contains(&s) { "Yes" } else { "No" });
 }
