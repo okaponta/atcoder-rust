@@ -2,7 +2,15 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:i64,
+        b:i64,
+        c:i64,
     }
-    println!("{}", n);
+    if a == b {
+        println!("{}", c);
+    } else if b == c {
+        println!("{}", a);
+    } else {
+        println!("{}", b);
+    }
 }
