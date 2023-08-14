@@ -6,84 +6,67 @@ fn main() {
         m:usize,
         ab:[(Usize1,Usize1);m],
     }
-    let mut ans = 0;
-    for i in 0..m {
-        let mut uf = UnionFind::new(n);
-        for j in 0..m {
-            if i != j {
-                uf.union(ab[j].0, ab[j].1);
+    let mut l = LowLink::new(n);
+    for (a, b) in ab {
+        l.add_edges(a, b);
+    }
+    println!("{}", l.execute());
+}
+
+pub struct LowLink {
+    n: usize,
+    g: Vec<Vec<usize>>,
+    bridges: Vec<(usize, usize)>,
+}
+
+impl LowLink {
+    pub fn new(n: usize) -> Self {
+        Self {
+            n,
+            g: vec![vec![]; n],
+            bridges: vec![],
+        }
+    }
+
+    pub fn add_edges(&mut self, u: usize, v: usize) {
+        self.g[u].push(v);
+        self.g[v].push(u);
+    }
+
+    pub fn execute(&mut self) -> usize {
+        let mut pre = vec![!0; self.n];
+        let mut low = vec![!0; self.n];
+        let mut res = vec![];
+        fn dfs(
+            cur: usize,
+            prev: usize,
+            mut count: usize,
+            g: &Vec<Vec<usize>>,
+            pre: &mut Vec<usize>,
+            low: &mut Vec<usize>,
+            res: &mut Vec<(usize, usize)>,
+        ) -> usize {
+            count += 1;
+            pre[cur] = count;
+            low[cur] = pre[cur];
+            for &next in &g[cur] {
+                if pre[next] == !0 {
+                    // 未到達
+                    low[cur] = low[cur].min(dfs(next, cur, count, g, pre, low, res));
+                    if low[next] == pre[next] {
+                        res.push((cur, next));
+                    }
+                } else {
+                    if prev == next {
+                        continue;
+                    }
+                    low[cur] = low[cur].min(low[next]);
+                }
             }
+            low[cur]
         }
-        if !uf.is_linked() {
-            ans += 1;
-        }
-    }
-    println!("{}", ans);
-}
-
-pub struct UnionFind {
-    parent: Vec<usize>,
-    size: Vec<usize>,
-    rank: Vec<usize>,
-}
-
-impl UnionFind {
-    fn new(n: usize) -> Self {
-        UnionFind {
-            parent: (0..n).collect(),
-            size: vec![1; n],
-            rank: vec![0; n],
-        }
-    }
-
-    // 根を返却
-    pub fn root(&mut self, x: usize) -> usize {
-        // parentが自分自身の場合は根
-        if self.parent[x] == x {
-            return x;
-        }
-        // 経路圧縮
-        self.parent[x] = self.root(self.parent[x]);
-        self.parent[x]
-    }
-
-    // xとyが同じ根か判定
-    pub fn equiv(&mut self, x: usize, y: usize) -> bool {
-        self.root(x) == self.root(y)
-    }
-
-    // xとyを合体
-    pub fn union(&mut self, x: usize, y: usize) -> bool {
-        let mut rx = self.root(x);
-        let mut ry = self.root(y);
-        // 既に同じ
-        if rx == ry {
-            return false;
-        }
-
-        // ryのrankが小さくなるように調整
-        // ここを省略するとrxが親になる
-        if self.rank[rx] < self.rank[ry] {
-            std::mem::swap(&mut rx, &mut ry);
-        }
-        // ryの根をrxにする
-        self.parent[ry] = rx;
-        // rxのrank調整
-        if self.rank[rx] == self.rank[ry] {
-            self.rank[rx] += 1;
-        }
-        self.size[rx] += self.size[ry];
-        true
-    }
-
-    // xのグループの要素数
-    pub fn size(&mut self, x: usize) -> usize {
-        let root = self.root(x);
-        self.size[root]
-    }
-
-    // 連結かどうかを返却する
-    pub fn is_linked(&mut self) -> bool {
-        self.size(0) == self.size.len()
+        dfs(0, !0, 0, &self.g, &mut pre, &mut low, &mut res);
+        self.bridges = res;
+        self.bridges.len()
     }
 }
