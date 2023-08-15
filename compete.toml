@@ -131,11 +131,18 @@ path = "./{{ contest }}"
 
 [test]
 # Toolchain for the test. (optional)
-toolchain = ""
+# toolchain = ""
 # Profile for `cargo build`. ("dev" | "release")
 #
 # Defaults to `"dev"`.
 #profile = "dev"
+
+# for new judges
+
+# [submit]
+# kind = "file"
+# path = "{{ src_path }}"
+# language_id = "5054"
 
 #[submit.transpile]
 #kind = "command"
