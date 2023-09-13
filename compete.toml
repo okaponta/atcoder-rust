@@ -139,10 +139,10 @@ path = "./{{ contest }}"
 
 # for new judges
 
-# [submit]
-# kind = "file"
-# path = "{{ src_path }}"
-# language_id = "5054"
+[submit]
+kind = "file"
+path = "{{ src_path }}"
+language_id = "5054"
 
 #[submit.transpile]
 #kind = "command"
