@@ -3,49 +3,78 @@ use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        p:[[Chars;4];3],
+        mut p:[[Chars;4];3],
     }
-    'a: for (p1i, p1j, p2i, p2j, p3i, p3j, x, y) in
-        iproduct!(0..8, 0..8, 0..8, 0..8, 0..8, 0..8, 0..4, 0..4)
-    {
-        let mut target = vec![vec![0; 12]; 12];
+    p[0] = upleft(&p[0]);
+    for (p1i, p1j, p2i, p2j, p3i, p3j) in iproduct!(0..4, 0..4, 0..4, 0..4, 0..4, 0..4) {
         let pij = vec![(p1i, p1j), (p2i, p2j), (p3i, p3j)];
-        for (n, i, j) in iproduct!(0..3, 0..4, 0..4) {
-            let x = if n == 0 {
-                0
-            } else if n == 1 {
-                x
-            } else {
-                y
-            };
-            if p[n][i][j] == '#' {
-                let (ni, nj) = next(pij[n].0, pij[n].1, i, j, x);
-                if ni < 4 || 7 < ni || nj < 4 || 7 < nj || target[ni][nj] == 1 {
-                    continue 'a;
+        for _ in 0..4 {
+            for _ in 0..4 {
+                if check(&p, &pij) {
+                    println!("Yes");
+                    return;
                 }
-                target[ni][nj] += 1;
+                p[1] = rotate_2d_vector(&p[1]);
+                p[1] = upleft(&p[1]);
             }
+            p[2] = rotate_2d_vector(&p[2]);
+            p[2] = upleft(&p[2]);
         }
-        for (i, j) in iproduct!(4..8, 4..8) {
-            if target[i][j] != 1 {
-                continue 'a;
-            }
-        }
-        println!("Yes");
-        return;
     }
     println!("No");
 }
 
-fn next(pi: usize, pj: usize, i: usize, j: usize, x: usize) -> (usize, usize) {
-    if x == 0 {
-        return (pi + i, pj + j);
+fn check(p: &Vec<Vec<Vec<char>>>, pij: &Vec<(usize, usize)>) -> bool {
+    let mut used = vec![vec![false; 4]; 4];
+    for (k, i, j) in iproduct!(0..3, 0..4, 0..4) {
+        if p[k][i][j] == '#' {
+            let ni = pij[k].0 + i;
+            let nj = pij[k].1 + j;
+            if 3 < ni || 3 < nj || used[ni][nj] {
+                return false;
+            }
+            used[ni][nj] = true;
+        }
     }
-    if x == 1 {
-        return (pj + 3 - j, pi + i);
+    (0..4)
+        .into_iter()
+        .all(|i| (0..4).into_iter().all(|j| used[i][j]))
+}
+
+fn upleft(v: &Vec<Vec<char>>) -> Vec<Vec<char>> {
+    let w = v.len();
+    let h = v[0].len();
+    let mut new_v = vec![vec!['.'; w]; h];
+    let mut upshift = 0;
+    let mut leftshift = 0;
+    for i in 0..h {
+        if (0..w).into_iter().all(|j| v[i][j] == '.') {
+            upshift += 1;
+        } else {
+            break;
+        }
     }
-    if x == 2 {
-        return (pi + 3 - i, pj + 3 - j);
+    for j in 0..w {
+        if (0..h).into_iter().all(|i| v[i][j] == '.') {
+            leftshift += 1;
+        } else {
+            break;
+        }
     }
-    return (pj + j, pi + 3 - i);
+    for i in upshift..h {
+        for j in leftshift..w {
+            new_v[i - upshift][j - leftshift] = v[i][j];
+        }
+    }
+    return new_v;
+}
+
+fn rotate_2d_vector(v: &Vec<Vec<char>>) -> Vec<Vec<char>> {
+    let mut new_v = vec![vec!['.'; v.len()]; v[0].len()];
+    for i in 0..v.len() {
+        for j in 0..v[0].len() {
+            new_v[j][v.len() - 1 - i] = v[i][j];
+        }
+    }
+    return new_v;
 }
