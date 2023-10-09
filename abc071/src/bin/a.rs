@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:i32,
+        a:i32,
+        b:i32,
     }
-    println!("{}", n);
+    if (x - a).abs() < (x - b).abs() {
+        println!("A");
+    } else {
+        println!("B");
+    }
 }
