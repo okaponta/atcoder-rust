@@ -2,7 +2,10 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize,
+        c:usize,
+        d:usize,
     }
-    println!("{}", n);
+    println!("{}", b.min(d).saturating_sub(a.max(c)));
 }
