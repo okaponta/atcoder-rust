@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:String,
+        _:String,
     }
-    println!("{}", n);
+    println!("{} san", s);
 }
