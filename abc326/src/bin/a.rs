@@ -2,7 +2,15 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:i32,
+        y:i32,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        if y - x <= 2 && -3 <= y - x {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
