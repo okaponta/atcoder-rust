@@ -2,7 +2,16 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut n:usize,
     }
-    println!("{}", n);
+    loop {
+        let a = n / 100;
+        let b = (n - a * 100) / 10;
+        let c = n % 10;
+        if a * b == c {
+            println!("{}", n);
+            return;
+        }
+        n += 1;
+    }
 }
