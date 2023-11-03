@@ -4,5 +4,5 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    println!("ABC{}", n);
 }
