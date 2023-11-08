@@ -4,5 +4,9 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    let mut ans = 1;
+    while ans * 2 <= n {
+        ans *= 2;
+    }
+    println!("{}", ans);
 }
