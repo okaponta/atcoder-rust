@@ -1,8 +1,9 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s:Chars,
     }
-    println!("{}", n);
+    println!("{}", s.into_iter().join(" "));
 }
