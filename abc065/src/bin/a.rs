@@ -2,7 +2,18 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:i64,
+        a:i64,
+        b:i64,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        if b <= a {
+            "delicious"
+        } else if b <= a + x {
+            "safe"
+        } else {
+            "dangerous"
+        }
+    );
 }
