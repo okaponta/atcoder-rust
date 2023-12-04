@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:[usize;3],
     }
-    println!("{}", n);
+    let b = a[0] * 100 + a[1] * 10 + a[2];
+    println!("{}", if b % 4 == 0 { "YES" } else { "NO" });
 }
