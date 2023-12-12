@@ -13,12 +13,14 @@ fn main() {
         } else if state[1] == 0 {
             state[1] = m;
         } else {
-            if g < state[1] {
-                state[1] -= g;
-                state[0] = g;
+            let a = g - state[0];
+            let b = state[1];
+            if a < b {
+                state[1] -= a;
+                state[0] += a;
             } else {
-                state[0] = state[1];
-                state[1] = 0;
+                state[1] -= b;
+                state[0] += b;
             }
         }
     }
