@@ -1,8 +1,11 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        mut s:Chars,
     }
-    println!("{}", n);
+    let n = s.len();
+    s.sort();
+    s.dedup();
+    println!("{}", if n == s.len() { "yes" } else { "no" });
 }
