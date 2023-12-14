@@ -2,7 +2,12 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize,
     }
-    println!("{}", n);
+    if 9 < a + b {
+        println!("error");
+    } else {
+        println!("{}", a + b);
+    }
 }
