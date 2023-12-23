@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        b:usize,
+        g:usize,
     }
-    println!("{}", n);
+    println!("{}", if b > g { "Bat" } else { "Glove" });
 }
