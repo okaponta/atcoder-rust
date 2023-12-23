@@ -8,36 +8,7 @@ fn main() {
         w:usize,
         s:[Chars;h],
     }
-    let mut grid = vec![vec![0; w]; h];
-    let mut q = VecDeque::new();
-    let mut count = 1;
-    for i in 0..h {
-        for j in 0..w {
-            if s[i][j] == '.' {
-                continue;
-            }
-            if grid[i][j] != 0 {
-                continue;
-            }
-            q.push_back((i, j, count));
-            grid[i][j] = count;
-            while let Some((x, y, count)) = q.pop_front() {
-                for (dx, dy) in vec![(!0, 0), (0, 1), (0, !0), (1, 0)] {
-                    let xi = x.wrapping_add(dx);
-                    let yi = y.wrapping_add(dy);
-                    if h <= xi || w <= yi {
-                        continue;
-                    }
-                    if s[xi][yi] == '#' && grid[xi][yi] == 0 {
-                        q.push_back((xi, yi, count));
-                        grid[xi][yi] = count;
-                    }
-                }
-            }
-            count += 1;
-        }
-    }
-    count -= 1;
+    let (count, grid) = count_area(&s, h, w, '#');
     let mut sum = 0;
     let mut div = 0;
     for i in 0..h {
@@ -66,6 +37,36 @@ fn main() {
     }
     let ans = ModInt::new(sum) * ModInt::new(div).inv();
     println!("{}", ans.val);
+}
+
+fn count_area(grid: &Vec<Vec<char>>, h: usize, w: usize, target: char) -> (usize, Vec<Vec<usize>>) {
+    let mut res = vec![vec![0; w]; h];
+    let mut q = VecDeque::new();
+    let mut count = 0;
+    for i in 0..h {
+        for j in 0..w {
+            if grid[i][j] != target || res[i][j] != 0 {
+                continue;
+            }
+            count += 1;
+            q.push_back((i, j, count));
+            res[i][j] = count;
+            while let Some((x, y, count)) = q.pop_front() {
+                for (dx, dy) in vec![(!0, 0), (0, 1), (0, !0), (1, 0)] {
+                    let xi = x.wrapping_add(dx);
+                    let yi = y.wrapping_add(dy);
+                    if h <= xi || w <= yi {
+                        continue;
+                    }
+                    if grid[xi][yi] == target && res[xi][yi] == 0 {
+                        q.push_back((xi, yi, count));
+                        res[xi][yi] = count;
+                    }
+                }
+            }
+        }
+    }
+    (count, res)
 }
 
 const MOD: usize = 998244353;
