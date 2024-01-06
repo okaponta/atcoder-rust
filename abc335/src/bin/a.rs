@@ -1,8 +1,11 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        mut s:Chars,
     }
-    println!("{}", n);
+    let n = s.len();
+    s[n - 1] = '4';
+    println!("{}", s.iter().join(""));
 }
