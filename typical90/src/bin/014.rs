@@ -2,8 +2,11 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,
+        mut a:[i64;n],
+        mut b:[i64;n],
     }
-    println!("{}", a);
-    todo!();
+    a.sort();
+    b.sort();
+    println!("{}", (0..n).fold(0, |s, i| s + (a[i] - b[i]).abs()));
 }
