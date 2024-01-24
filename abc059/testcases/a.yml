@@ -1,0 +1,32 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      atcoder beginner contest
+    out: |
+      ABC
+  - name: sample2
+    in: |
+      resident register number
+    out: |
+      RRN
+  - name: sample3
+    in: |
+      k nearest neighbor
+    out: |
+      KNN
+  - name: sample4
+    in: |
+      async layered coding
+    out: |
+      ALC
+
+extend:
+  - type: Text
+    path: "./a"
+    in: /in/*.txt
+    out: /out/*.txt
