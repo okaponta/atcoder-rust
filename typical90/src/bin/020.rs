@@ -2,8 +2,9 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        a:usize,
+        b:u32,
+        c:usize,
     }
-    println!("{}", a);
-    todo!();
+    println!("{}", if a < c.pow(b) { "Yes" } else { "No" });
 }
