@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:String,
     }
-    println!("{}", n);
+    let ss = s.split('.').collect::<Vec<_>>();
+    println!("{}", ss[ss.len() - 1]);
 }
