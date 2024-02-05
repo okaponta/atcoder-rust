@@ -1,8 +1,17 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        o:Chars,
+        e:Chars,
     }
-    println!("{}", n);
+    let mut p = vec![];
+    for i in 0..o.len() {
+        p.push(o[i]);
+        if i < e.len() {
+            p.push(e[i]);
+        }
+    }
+    println!("{}", p.iter().join(""));
 }
