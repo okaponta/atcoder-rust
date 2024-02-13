@@ -1,9 +1,18 @@
-use proconio::input;
+use std::collections::HashSet;
 
+use proconio::{fastout, input};
+
+#[fastout]
 fn main() {
     input! {
-        a:i32,
+        n:usize,
+        s:[String;n],
     }
-    println!("{}", a);
-    todo!();
+    let mut set = HashSet::new();
+    for i in 0..n {
+        if !set.contains(&s[i]) {
+            set.insert(&s[i]);
+            println!("{}", i + 1);
+        }
+    }
 }
