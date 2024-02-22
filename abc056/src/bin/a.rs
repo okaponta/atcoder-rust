@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:char,
+        b:char,
     }
-    println!("{}", n);
+    println!("{}", if a == b { 'H' } else { 'D' });
 }
