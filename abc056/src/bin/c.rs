@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:usize,
     }
-    println!("{}", n);
+    let mut max = 0;
+    let mut i = 1;
+    while max < x {
+        max += i;
+        i += 1;
+    }
+    println!("{}", i - 1);
 }
