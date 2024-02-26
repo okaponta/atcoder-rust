@@ -4,5 +4,5 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    println!("{}", n * 800 - n / 15 * 200);
 }
