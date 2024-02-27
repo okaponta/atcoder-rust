@@ -3,6 +3,8 @@ use proconio::input;
 fn main() {
     input! {
         n:usize,
+        m:usize,
     }
-    println!("{}", n);
+    let ans = ((n * 2 + m) / 4).min(m / 2);
+    println!("{}", ans);
 }
