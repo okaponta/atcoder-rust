@@ -11,8 +11,8 @@ fn main() {
         println!("No");
         return;
     }
-    for (i, j, k) in iproduct!(-1..8, -1..8, -1..8) {
-        for (l, m, n) in iproduct!(-1..8, -1..8, -1..8) {
+    for (i, j, k) in iproduct!(-7..8, -7..8, -7..8) {
+        for (l, m, n) in iproduct!(-7..8, -7..8, -7..8) {
             let v = calc((0, 0, 0), (i, j, k), (l, m, n));
             if v.0 == v1 && v.1 == v2 && v.2 == v3 {
                 println!("Yes");
