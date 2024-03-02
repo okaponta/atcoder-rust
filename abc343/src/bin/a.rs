@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:usize,
+        b:usize,
     }
-    println!("{}", n);
+    for i in 0..10 {
+        if i != a + b {
+            println!("{i}");
+            return;
+        }
+    }
 }
