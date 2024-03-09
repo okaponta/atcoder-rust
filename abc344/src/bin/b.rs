@@ -1,8 +1,17 @@
-use proconio::input;
+use proconio::{fastout, input};
 
+#[fastout]
 fn main() {
-    input! {
-        n:usize,
+    let mut a = vec![];
+    loop {
+        input! {x:usize}
+        a.push(x);
+        if x == 0 {
+            break;
+        }
     }
-    println!("{}", n);
+    a.reverse();
+    for a in a {
+        println!("{}", a);
+    }
 }
