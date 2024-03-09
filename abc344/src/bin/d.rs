@@ -24,15 +24,13 @@ fn main() {
     dp[0] = 0;
     for _ in 0..n {
         input! {a:usize, s:[Chars;a]}
-        let mut next = dp.clone();
-        for i in 0..m {
+        for i in (0..m).rev() {
             for j in 0..a {
                 if check[i].contains(&s[j]) {
-                    next[i + s[j].len()] = next[i + s[j].len()].min(dp[i] + 1);
+                    dp[i + s[j].len()] = dp[i + s[j].len()].min(dp[i] + 1);
                 }
             }
         }
-        dp = next;
     }
     if dp[m] == 1 << 30 {
         println!("-1");
