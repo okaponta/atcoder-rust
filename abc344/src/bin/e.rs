@@ -1,5 +1,3 @@
-use std::collections::HashMap;
-
 use itertools::Itertools;
 use proconio::input;
 
@@ -9,58 +7,94 @@ fn main() {
         a:[usize;n],
         q:usize
     }
-    let mut map = HashMap::new();
-    for i in 0..n {
-        if n == 1 {
-            map.insert(a[i], (0, 0));
-        } else if i == 0 {
-            map.insert(a[i], (0, a[i + 1]));
-        } else if i == n - 1 {
-            map.insert(a[i], (a[i - 1], 0));
-        } else {
-            map.insert(a[i], (a[i - 1], a[i + 1]));
-        }
-    }
+    let mut linked = LinkedList::from(0, 1 << 60, &a);
     for _ in 0..q {
         input! {c:u8}
         if c == 1 {
             input! {x:usize, y:usize}
-            let &(_, after) = map.get(&x).unwrap();
-            map.entry(x).or_insert((0, 0)).1 = y;
-            if after != 0 {
-                map.entry(after).or_insert((0, 0)).0 = y;
-            }
-            map.insert(y, (x, after));
+            linked.insert_after(x, y);
         } else {
             input! {x:usize}
-            let (bef, after) = map.remove(&x).unwrap();
-            if bef == 0 {
-                map.entry(after).or_insert((0, 0)).0 = bef;
-            } else if after == 0 {
-                map.entry(bef).or_insert((0, 0)).1 = after;
-            } else {
-                map.entry(bef).or_insert((0, 0)).1 = after;
-                map.entry(after).or_insert((0, 0)).0 = bef;
-            }
+            linked.remove(x);
+        }
+    }
+    println!("{}", linked.to_vec().iter().join(" "));
+}
+
+// 連結リスト
+// 要素は異なるようにすること
+pub struct LinkedList {
+    prev: std::collections::HashMap<usize, usize>,
+    next: std::collections::HashMap<usize, usize>,
+    first: usize,
+    last: usize,
+    len: usize,
+}
+
+impl LinkedList {
+    // firstとlastは変えること！
+    pub fn from(first: usize, last: usize, a: &Vec<usize>) -> Self {
+        let mut prev = std::collections::HashMap::new();
+        let mut next = std::collections::HashMap::new();
+        for i in 1..a.len() {
+            prev.insert(a[i], a[i - 1]);
+            next.insert(a[i - 1], a[i]);
+        }
+        let len = a.len();
+        next.insert(0, a[0]);
+        prev.insert(a[0], 0);
+        next.insert(a[len - 1], last);
+        prev.insert(last, a[len - 1]);
+        Self {
+            prev,
+            next,
+            first,
+            last,
+            len,
         }
     }
 
-    let mut start = 0;
-    for (k, v) in &map {
-        if v.0 == 0 {
-            start = *k;
+    // xの後にyを挿入する
+    pub fn insert_after(&mut self, x: usize, y: usize) -> bool {
+        if self.prev.get(&x) == None {
+            return false;
         }
+        let z = self.next[&x];
+        self.next.insert(x, y);
+        self.prev.insert(y, x);
+        self.prev.insert(z, y);
+        self.next.insert(y, z);
+        self.len += 1;
+        true
     }
 
-    let mut ans = vec![start];
-    let mut tmp = start;
-    loop {
-        let &(_, next) = map.get(&tmp).unwrap();
-        if next == 0 {
-            break;
+    pub fn remove(&mut self, x: usize) -> bool {
+        if self.prev.get(&x) == None {
+            return false;
         }
-        ans.push(next);
-        tmp = next;
+        let p = self.prev[&x];
+        let n = self.next[&x];
+        self.prev.insert(n, p);
+        self.next.insert(p, n);
+        self.len -= 1;
+        true
     }
-    println!("{}", ans.iter().join(" "));
+
+    pub fn first(&self) -> usize {
+        self.next[&self.first]
+    }
+
+    pub fn last(&self) -> usize {
+        self.prev[&self.last]
+    }
+
+    pub fn to_vec(&self) -> Vec<usize> {
+        let mut c = self.first;
+        let mut res = vec![];
+        for _ in 0..self.len {
+            c = self.next[&c];
+            res.push(c);
+        }
+        res
+    }
 }
