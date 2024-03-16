@@ -1,8 +1,16 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        mut s:Chars,
     }
-    println!("{}", n);
+    if s[0] == '<' && s[s.len() - 1] == '>' {
+        s.pop();
+        s.remove(0);
+        if s.iter().all(|c| *c == '=') {
+            println!("Yes");
+            return;
+        }
+    }
+    println!("No");
 }
