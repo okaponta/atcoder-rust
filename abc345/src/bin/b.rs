@@ -2,7 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:i64,
     }
-    println!("{}", n);
+    if 0 <= x {
+        println!("{}", (x + 9) / 10);
+    } else if -10 < x {
+        println!("{}", 0);
+    } else {
+        println!("-{}", -x / 10);
+    }
 }
