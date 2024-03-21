@@ -2,7 +2,7 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        x:usize,
     }
-    println!("{}", n);
+    println!("A{}C", if x < 1200 { "B" } else { "R" });
 }
