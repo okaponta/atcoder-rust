@@ -32,25 +32,41 @@ fn is_ok(med: usize, n: usize, cnt: &Vec<Vec<usize>>, t: &Vec<char>) -> bool {
         if cnt[c].len() == 0 {
             return false;
         }
-        let tmp = cnt[c].upper_bound(&idx);
-        let mut rem = med;
-        if rem <= cnt[c].len() - tmp {
-            idx = cnt[c][tmp + rem - 1];
-        } else {
-            rem -= cnt[c].len() - tmp;
-            a += 1;
-            if rem % cnt[c].len() == 0 {
-                a += (rem / cnt[c].len()) - 1;
-                idx = cnt[c][cnt[c].len() - 1];
-            } else {
-                a += rem / cnt[c].len();
-                rem %= cnt[c].len();
-                idx = cnt[c][rem - 1];
-            }
-        }
+        (a, idx) = next(a, idx, c, med, cnt);
         if n <= a {
             return false;
         }
     }
     true
+}
+
+// a: Sを何回繰り返しているか
+// idx: Sの何番目のインデックスか
+// c: 対象のアルファベット
+// times: aのindex以降でcが何回登場したときのaとindexを返却する
+// cnt: 文字列Sの中にアルファベットが何番目に登場するか
+fn next(
+    mut a: usize,
+    mut idx: usize,
+    c: usize,
+    times: usize,
+    cnt: &Vec<Vec<usize>>,
+) -> (usize, usize) {
+    let tmp = cnt[c].upper_bound(&idx);
+    let mut rem = times;
+    if rem <= cnt[c].len() - tmp {
+        idx = cnt[c][tmp + rem - 1];
+    } else {
+        rem -= cnt[c].len() - tmp;
+        a += 1;
+        if rem % cnt[c].len() == 0 {
+            a += (rem / cnt[c].len()) - 1;
+            idx = cnt[c][cnt[c].len() - 1];
+        } else {
+            a += rem / cnt[c].len();
+            rem %= cnt[c].len();
+            idx = cnt[c][rem - 1];
+        }
+    }
+    (a, idx)
 }
