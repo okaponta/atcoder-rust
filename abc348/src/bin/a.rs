@@ -4,5 +4,8 @@ fn main() {
     input! {
         n:usize,
     }
-    println!("{}", n);
+    for i in 0..n {
+        print!("{}", if i % 3 == 2 { 'x' } else { 'o' });
+    }
+    println!();
 }
