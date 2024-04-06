@@ -37,8 +37,8 @@ fn main() {
     q.push_back(start);
     visited.insert(start);
     while let Some((i, j)) = q.pop_front() {
-        let set = ok(i, j, med[i][j], h, w, &a);
-        if set.contains(&goal) {
+        let d = bfs(h, w, (i, j), &a, '#');
+        if d[goal.0][goal.1] <= med[i][j] {
             println!("Yes");
             return;
         }
@@ -46,7 +46,7 @@ fn main() {
             if visited.contains(&(r, c)) {
                 continue;
             }
-            if set.contains(&(r, c)) {
+            if d[r][c] <= med[i][j] {
                 q.push_back((r, c));
                 visited.insert((r, c));
             }
@@ -55,34 +55,34 @@ fn main() {
     println!("No");
 }
 
-fn ok(
-    x: usize,
-    y: usize,
-    d: usize,
+fn bfs(
     h: usize,
     w: usize,
-    a: &Vec<Vec<char>>,
-) -> HashSet<(usize, usize)> {
-    let mut res = HashSet::new();
-    res.insert((x, y));
+    init: (usize, usize),
+    grid: &Vec<Vec<char>>,
+    ng: char,
+) -> Vec<Vec<usize>> {
+    let mut visited = vec![vec![false; w]; h];
+    let mut res = vec![vec![1 << 60; w]; h];
     let mut q = VecDeque::new();
-    q.push_back((x, y, d));
-    while let Some((x, y, d)) = q.pop_front() {
-        if d == 0 {
-            continue;
-        }
+
+    visited[init.0][init.1] = true;
+    res[init.0][init.1] = 0usize;
+    q.push_back((init.0, init.1));
+    while let Some((x, y)) = q.pop_front() {
+        let d = res[x][y];
         for (dx, dy) in vec![(!0, 0), (0, 1), (0, !0), (1, 0)] {
-            let xi = x.wrapping_add(dx);
-            let yi = y.wrapping_add(dy);
-            if h <= xi || w <= yi {
+            let nx = x.wrapping_add(dx);
+            let ny = y.wrapping_add(dy);
+            if h <= nx || w <= ny {
                 continue;
             }
-            // ここは移動可能
-            if res.contains(&(xi, yi)) || a[xi][yi] == '#' {
+            if visited[nx][ny] || grid[nx][ny] == ng {
                 continue;
             }
-            q.push_back((xi, yi, d - 1));
-            res.insert((xi, yi));
+            q.push_back((nx, ny));
+            visited[nx][ny] = true;
+            res[nx][ny] = d + 1;
         }
     }
     res
