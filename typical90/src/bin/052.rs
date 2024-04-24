@@ -2,8 +2,13 @@ use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,
+        a:[[usize;6];n],
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        a.into_iter().fold(1usize, |s, a| {
+            (s * a.into_iter().sum::<usize>()) % 1_000_000_007
+        })
+    );
 }
