@@ -1,9 +1,18 @@
+use itertools::Itertools;
 use proconio::input;
 
 fn main() {
     input! {
-        a:i32,
+        n:usize,
+        p:usize,
+        q:usize,
+        a:[usize;n],
     }
-    println!("{}", a);
-    todo!();
+    println!(
+        "{}",
+        (0..n)
+            .combinations(5)
+            .filter(|v| v.into_iter().fold(1, |pr, i| (pr * a[*i]) % p) == q)
+            .count()
+    );
 }
