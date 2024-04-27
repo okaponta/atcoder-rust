@@ -2,7 +2,10 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:[usize;9],
+        b:[usize;8],
     }
-    println!("{}", n);
+    let sa = a.into_iter().sum::<usize>();
+    let sb = b.into_iter().sum::<usize>();
+    println!("{}", sa - sb + 1);
 }
