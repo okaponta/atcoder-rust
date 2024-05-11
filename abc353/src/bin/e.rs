@@ -3,35 +3,95 @@ use proconio::{input, marker::Chars};
 fn main() {
     input! {
         n:usize,
-        mut s:[Chars;n],
+        s:[Chars;n],
     }
-    s.sort();
-    println!("{}", dfs(&s, 0, n - 1, 0));
+    let mut trie = Trie::new();
+    for (i, s) in s.into_iter().enumerate() {
+        trie.insert(s, i);
+    }
+    let ans = trie
+        .nodes
+        .iter()
+        .map(|n| (n.count - 1) * n.count / 2)
+        .sum::<usize>();
+    println!("{}", ans - n * (n - 1) / 2);
 }
 
-fn dfs(s: &Vec<Vec<char>>, from: usize, to: usize, letters: usize) -> usize {
-    let mut res = 0;
-    let mut used = vec![false; 26];
-    let mut fr = vec![0; 26];
-    let mut t = vec![0; 26];
-    let mut cnt = vec![0; 26];
-    for i in from..=to {
-        if s[i].len() == letters {
-            continue;
-        }
-        let c = (s[i][letters] as u8 - b'a') as usize;
-        if !used[c] {
-            fr[c] = i;
-            used[c] = true;
-        }
-        t[c] = i;
-        cnt[c] += 1;
-    }
-    for i in 0..26 {
-        if cnt[i] != 0 {
-            res += cnt[i] * (cnt[i] - 1) / 2;
-            res += dfs(s, fr[i], t[i], letters + 1);
+pub struct TrieNode {
+    next: Vec<usize>,
+    ids: Vec<usize>,
+    _char: char,
+    count: usize,
+}
+
+impl TrieNode {
+    pub fn new(c: char) -> Self {
+        TrieNode {
+            next: vec![!0; 26],
+            ids: vec![],
+            _char: c,
+            count: 0,
         }
     }
-    res
+}
+
+pub struct Trie {
+    nodes: Vec<TrieNode>,
+}
+
+impl Trie {
+    pub fn new() -> Self {
+        Trie {
+            nodes: vec![TrieNode::new('#')],
+        }
+    }
+
+    pub fn insert(&mut self, s: Vec<char>, id: usize) {
+        let mut node_id = 0;
+        for i in 0..s.len() {
+            let c = (s[i] as u8 - b'a') as usize;
+            let mut next = self.nodes[node_id].next[c];
+            if next == !0 {
+                next = self.nodes.len();
+                self.nodes[node_id].next[c] = next;
+                self.nodes.push(TrieNode::new(s[i]));
+            }
+            self.nodes[node_id].count += 1;
+            node_id = next;
+        }
+        self.nodes[node_id].count += 1;
+        self.nodes[node_id].ids.push(id);
+    }
+
+    pub fn search(&self, s: Vec<char>) -> bool {
+        let mut node_id = 0;
+        for i in 0..s.len() {
+            let c = (s[i] as u8 - b'a') as usize;
+            let next = self.nodes[node_id].next[c];
+            if next == !0 {
+                return false;
+            }
+            node_id = next;
+        }
+        // 途中まで一致の可能性があるので、保持しているidsと照らし合わせ
+        0 < self.nodes[node_id].ids.len()
+    }
+
+    pub fn start_with(&self, s: Vec<char>) -> bool {
+        let mut node_id = 0;
+        for i in 0..s.len() {
+            let c = (s[i] as u8 - b'a') as usize;
+            let next = self.nodes[node_id].next[c];
+            if next == !0 {
+                return false;
+            }
+            node_id = next;
+        }
+        true
+    }
+
+    // 要素数
+    pub fn size(&mut self) -> usize {
+        self.nodes[0].count
+    }
 }
