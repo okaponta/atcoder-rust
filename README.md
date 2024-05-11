@@ -6,7 +6,7 @@ AtCoderの回答を貯めておくリポジトリです
 # About Me
 
 [AtCoder](https://atcoder.jp/users/okaponta)で競プロをやっています。  
-水レート帯でうろうろしてます。
+青レート帯でうろうろしてます。
 
 # ライブラリ
 
