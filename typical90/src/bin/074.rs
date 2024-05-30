@@ -1,9 +1,20 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        a:i32,
+        _n:usize,
+        s:Chars,
     }
-    println!("{}", a);
-    todo!();
+    let mut ans = 0i64;
+    let mut tmp = 1;
+    for c in s {
+        if c == 'b' {
+            ans += tmp;
+        }
+        if c == 'c' {
+            ans += tmp * 2;
+        }
+        tmp *= 2;
+    }
+    println!("{}", ans);
 }
