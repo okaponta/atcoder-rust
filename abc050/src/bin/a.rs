@@ -2,7 +2,9 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        a:i32,
+        o:char,
+        b:i32,
     }
-    println!("{}", n);
+    println!("{}", if o == '+' { a + b } else { a - b });
 }
