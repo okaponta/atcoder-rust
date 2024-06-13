@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        c: char,
     }
-    println!("{}", n);
+    let v = vec!['a', 'e', 'i', 'o', 'u'];
+    println!("{}", if v.contains(&c) { "vowel" } else { "consonant" });
 }
