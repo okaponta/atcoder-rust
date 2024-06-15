@@ -1,8 +1,14 @@
-use proconio::input;
+use itertools::Itertools;
+use proconio::{fastout, input, marker::Chars};
 
+#[fastout]
 fn main() {
     input! {
-        n:usize,
+        h:usize,
+        _w:usize,
+        c:[Chars;h],
     }
-    println!("{}", n);
+    for i in 0..2 * h {
+        println!("{}", c[i / 2].iter().join(""));
+    }
 }
