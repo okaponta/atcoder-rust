@@ -2,7 +2,15 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        s:String,
+        t:String,
     }
-    println!("{}", n);
+    println!(
+        "{}",
+        if &s == "AtCoder" && &t == "Land" {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
