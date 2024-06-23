@@ -1,8 +1,8 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        s: [Chars;3],
     }
-    println!("{}", n);
+    println!("A{}C", s[1][0]);
 }
