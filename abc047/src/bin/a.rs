@@ -2,7 +2,8 @@ use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
+        mut a:[usize;3],
     }
-    println!("{}", n);
+    a.sort();
+    println!("{}", if a[0] + a[1] == a[2] { "Yes" } else { "No" });
 }
