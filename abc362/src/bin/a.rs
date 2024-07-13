@@ -1,8 +1,18 @@
-use proconio::input;
+use proconio::{input, marker::Chars};
 
 fn main() {
     input! {
-        n:usize,
+        r:usize,
+        g:usize,
+        b:usize,
+        c:Chars,
     }
-    println!("{}", n);
+    let ans = if c[0] == 'R' {
+        g.min(b)
+    } else if c[0] == 'G' {
+        r.min(b)
+    } else {
+        r.min(g)
+    };
+    println!("{}", ans);
 }
