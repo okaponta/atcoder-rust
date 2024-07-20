@@ -1,29 +1,22 @@
-use std::collections::HashSet;
-
-use itertools::Itertools;
 use proconio::{input, marker::Chars};
+use superslice::Ext;
 
 fn main() {
     input! {
         n:usize,
         k:usize,
-        s:Chars,
+        mut s:Chars,
     }
-    let mut set = HashSet::new();
-    for v in (0..n).into_iter().permutations(n) {
-        let target = v.iter().map(|&i| s[i]).collect::<Vec<_>>();
-        if set.contains(&target) {
-            continue;
-        }
-        let mut flg = true;
-        for j in 0..=n - k {
-            if (0..k).all(|i| target[j + i] == target[j + k - 1 - i]) {
-                flg = false;
-            }
-        }
-        if flg {
-            set.insert(target);
+    s.sort();
+    let mut ans = if f(n, k, &s) { 1 } else { 0 };
+    while s.next_permutation() {
+        if f(n, k, &s) {
+            ans += 1;
         }
     }
-    println!("{}", set.len());
+    println!("{}", ans);
+}
+
+fn f(n: usize, k: usize, s: &Vec<char>) -> bool {
+    (0..=n - k).all(|i| !(0..(k + 1) / 2).all(|j| s[i + j] == s[i + k - 1 - j]))
 }
