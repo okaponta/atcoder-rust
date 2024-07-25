@@ -1,8 +1,12 @@
-use proconio::input;
+use itertools::*;
+use proconio::{marker::*, *};
 
 fn main() {
     input! {
         n:usize,
+        _l:Chars,
+        mut l:[String;n],
     }
-    println!("{}", n);
+    l.sort();
+    println!("{}", l.iter().join(""));
 }
