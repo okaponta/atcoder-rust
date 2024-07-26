@@ -1,12 +1,9 @@
-use itertools::*;
 use proconio::{marker::*, *};
-use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
         s:Chars,
+        i:Usize1,
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    println!("{}", s[i]);
 }
