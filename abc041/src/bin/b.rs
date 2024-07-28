@@ -1,12 +1,12 @@
-use itertools::*;
-use proconio::{marker::*, *};
-use superslice::*;
+use proconio::*;
+
+const MOD: usize = 1_000_000_007;
 
 fn main() {
     input! {
-        n:usize,
-        s:Chars,
+        a:usize,
+        b:usize,
+        c:usize,
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    println!("{}", a * b % MOD * c % MOD);
 }
