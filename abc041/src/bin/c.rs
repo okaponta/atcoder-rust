@@ -1,12 +1,18 @@
-use itertools::*;
-use proconio::{marker::*, *};
-use superslice::*;
+use proconio::*;
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
-        s:Chars,
+        a:[usize;n],
     }
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut ans = vec![];
+    for i in 0..n {
+        ans.push((a[i], i + 1));
+    }
+    ans.sort();
+    ans.reverse();
+    for i in 0..n {
+        println!("{}", ans[i].1);
+    }
 }
