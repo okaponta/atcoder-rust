@@ -1,5 +1,6 @@
 #[allow(unused)]
 use itertools::*;
+#[allow(unused)]
 use proconio::{marker::*, *};
 #[allow(unused)]
 use superslice::*;
@@ -7,9 +8,8 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        a:[usize;n],
-        s:Chars,
+        x:usize,
     }
-    let mut ans = 0;
+    let ans = (x - 1).min(n - x);
     println!("{}", ans);
 }
