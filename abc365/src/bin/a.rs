@@ -8,10 +8,14 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    if n % 4 != 0 {
+        println!("365");
+    } else if n % 100 != 0 {
+        println!("366");
+    } else if n % 400 != 0 {
+        println!("365");
+    } else {
+        println!("366");
+    }
 }
