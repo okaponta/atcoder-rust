@@ -8,10 +8,24 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:[Chars;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut m = 0;
+    for i in 0..n {
+        m = m.max(s[i].len());
+    }
+    for i in 0..m {
+        let mut tmp = vec![];
+        for j in (0..n).rev() {
+            if i < s[j].len() {
+                tmp.push(s[j][i]);
+            } else {
+                tmp.push('*');
+            }
+        }
+        while tmp[tmp.len() - 1] == '*' {
+            tmp.pop();
+        }
+        println!("{}", tmp.iter().join(""));
+    }
 }
