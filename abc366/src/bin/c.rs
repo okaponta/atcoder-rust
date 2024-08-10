@@ -1,7 +1,8 @@
 use std::collections::HashMap;
 
-use proconio::input;
+use proconio::{fastout, input};
 
+#[fastout]
 fn main() {
     input! {
         q:usize,
