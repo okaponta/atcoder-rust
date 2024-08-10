@@ -8,10 +8,15 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        t:usize,
+        a:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    println!(
+        "{}",
+        if (n + 1) / 2 <= t || (n + 1) / 2 <= a {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
