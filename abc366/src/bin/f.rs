@@ -8,10 +8,16 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:usize,
+        mut ab:[(usize,usize);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut dp = vec![0; k + 1];
+    dp[0] = 1;
+    ab.sort_by(|a, b| ((a.0 - 1) * b.1).cmp(&((b.0 - 1) * a.1)));
+    for (a, b) in ab {
+        for i in (1..=k).rev() {
+            dp[i] = dp[i].max(dp[i - 1] * a + b);
+        }
+    }
+    println!("{}", dp[k]);
 }
