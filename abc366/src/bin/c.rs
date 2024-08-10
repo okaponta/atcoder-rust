@@ -1,17 +1,26 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use std::collections::HashMap;
+
+use proconio::input;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        q:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut map = HashMap::new();
+    for _ in 0..q {
+        input! {qu: u8}
+        if qu == 1 {
+            input! {x: usize}
+            *map.entry(x).or_insert(0) += 1;
+        } else if qu == 2 {
+            input! {x: usize}
+            if map[&x] == 1 {
+                map.remove(&x);
+            } else {
+                *map.entry(x).or_insert(0) -= 1;
+            }
+        } else {
+            println!("{}", map.len());
+        }
+    }
 }
