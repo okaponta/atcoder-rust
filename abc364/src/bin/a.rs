@@ -8,10 +8,13 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:[Chars;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for i in 1..n - 1 {
+        if s[i - 1][1] == 'w' && s[i][1] == 'w' {
+            println!("No");
+            return;
+        }
+    }
+    println!("Yes");
 }
