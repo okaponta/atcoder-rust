@@ -7,11 +7,18 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut x:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    while let Some(c) = x.pop() {
+        if c != '0' {
+            x.push(c);
+            break;
+        }
+    }
+    if let Some(c) = x.pop() {
+        if c != '.' {
+            x.push(c);
+        }
+    }
+    println!("{}", x.iter().join(""));
 }
