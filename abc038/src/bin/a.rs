@@ -7,11 +7,8 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let c = s.pop().unwrap();
+    println!("{}", if c == 'T' { "YES" } else { "NO" });
 }
