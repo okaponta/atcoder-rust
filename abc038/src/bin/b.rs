@@ -7,11 +7,17 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        h1:usize,
+        w1:usize,
+        h2:usize,
+        w2:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    println!(
+        "{}",
+        if h1 == h2 || h1 == w2 || w1 == h2 || w1 == w2 {
+            "YES"
+        } else {
+            "NO"
+        }
+    );
 }
