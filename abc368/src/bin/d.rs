@@ -29,52 +29,31 @@ fn main() {
     for i in 0..k - 1 {
         let l = lca.query(v[i], v[i + 1]);
         set.insert(l);
-        let mut tmp = v[i];
-        while tmp != l {
-            if set.contains(&tmp) {
-                let mut next = 0;
-                loop {
-                    if n < lca.parent[next][tmp] {
-                        break;
-                    }
-                    if !set.contains(&lca.parent[next][tmp]) {
-                        break;
-                    }
-                    if lca.query(lca.parent[next][tmp], l) != l {
-                        break;
-                    }
-                    next += 1;
-                }
-                tmp = lca.parent[next.max(1) - 1][tmp];
-            } else {
-                set.insert(tmp);
-                tmp = lca.parent[0][tmp];
-            }
-        }
-        tmp = v[i + 1];
-        while tmp != l {
-            if set.contains(&tmp) {
-                let mut next = 0;
-                loop {
-                    if n < lca.parent[next][tmp] {
-                        break;
-                    }
-                    if !set.contains(&lca.parent[next][tmp]) {
-                        break;
-                    }
-                    if lca.query(lca.parent[next][tmp], l) != l {
-                        break;
-                    }
-                    next += 1;
-                }
-                tmp = lca.parent[next.max(1) - 1][tmp];
-            } else {
-                set.insert(tmp);
-                tmp = lca.parent[0][tmp];
-            }
-        }
+        f(v[i], n, l, &lca, &mut set);
+        f(v[i + 1], n, l, &lca, &mut set);
     }
     println!("{}", set.len())
+}
+
+fn f(mut tmp: usize, n: usize, l: usize, lca: &LCA, set: &mut HashSet<usize>) {
+    while tmp != l {
+        if set.contains(&tmp) {
+            let mut next = 0;
+            loop {
+                if n < lca.parent[next][tmp]
+                    || !set.contains(&lca.parent[next][tmp])
+                    || lca.query(lca.parent[next][tmp], l) != l
+                {
+                    break;
+                }
+                next += 1;
+            }
+            tmp = lca.parent[next.max(1) - 1][tmp];
+        } else {
+            set.insert(tmp);
+            tmp = lca.parent[0][tmp];
+        }
+    }
 }
 
 // LCA (Lowest Common Ancestor)
