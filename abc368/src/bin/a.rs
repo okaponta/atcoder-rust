@@ -8,10 +8,9 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:usize,
+        mut a:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    a.rotate_right(k);
+    println!("{}", a.iter().join(" "));
 }
