@@ -1,8 +1,6 @@
 use proconio::input;
 
 fn main() {
-    input! {
-        n:usize,
-    }
-    println!("{}", n);
+    input! {x:i64,y:i64}
+    println!("{}", if (x - y).abs() < 2 { "Brown" } else { "Alice" });
 }
