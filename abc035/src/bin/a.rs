@@ -2,8 +2,12 @@ use proconio::input;
 
 fn main() {
     input! {
-       a:i32,
+       mut w:usize,
+       mut h:usize,
     }
-    println!("{}", a);
-    todo!();
+    if (w / 4) * 3 == h {
+        println!("4:3");
+    } else {
+        println!("16:9");
+    }
 }
