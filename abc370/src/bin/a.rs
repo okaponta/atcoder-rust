@@ -7,11 +7,14 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        l:usize,
+        r:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    if l == 1 && r == 0 {
+        println!("Yes");
+    } else if l == 0 && r == 1 {
+        println!("No");
+    } else {
+        println!("Invalid");
+    }
 }
