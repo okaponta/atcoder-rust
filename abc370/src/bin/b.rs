@@ -8,10 +8,19 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut a = vec![];
+    for i in 0..n {
+        input! {ai: [Usize1; i+1]}
+        a.push(ai);
+    }
+    let mut tmp = 0;
+    for i in 0..n {
+        if i < tmp {
+            tmp = a[tmp][i];
+        } else {
+            tmp = a[i][tmp];
+        }
+    }
+    println!("{}", tmp + 1);
 }
