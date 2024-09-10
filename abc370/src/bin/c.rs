@@ -7,11 +7,26 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
+        t:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let n = s.len();
+    let mut ans = vec![];
+    while s != t {
+        let mut tmp = vec![];
+        for i in 0..n {
+            if s[i] != t[i] {
+                let mut u = s.clone();
+                u[i] = t[i];
+                tmp.push(u);
+            }
+        }
+        tmp.sort();
+        ans.push(tmp[0].iter().collect::<String>());
+        s = tmp[0].clone();
+    }
+    println!("{}", ans.len());
+    for ans in ans {
+        println!("{}", ans);
+    }
 }
