@@ -5,13 +5,24 @@ use proconio::{marker::*, *};
 #[allow(unused)]
 use superslice::*;
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        ab:[(Usize1,char);m],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut flg = vec![false; n];
+    for (a, b) in ab {
+        if b == 'F' {
+            println!("No");
+        } else {
+            if flg[a] {
+                println!("No");
+            } else {
+                println!("Yes");
+                flg[a] = true;
+            }
+        }
+    }
 }
