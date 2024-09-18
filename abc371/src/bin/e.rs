@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 #[allow(unused)]
 use itertools::*;
 #[allow(unused)]
@@ -8,10 +10,15 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut map = HashMap::new();
+    let mut sum = 0;
+    let mut tmp = 0;
+    for i in 0..n {
+        tmp += i as i64 - map.get(&a[i]).unwrap_or(&-1);
+        sum += tmp;
+        map.insert(a[i], i as i64);
+    }
+    println!("{}", sum);
 }
