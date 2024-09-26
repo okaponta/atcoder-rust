@@ -5,13 +5,20 @@ use proconio::{marker::*, *};
 #[allow(unused)]
 use superslice::*;
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        q:usize,
+        lrt:[(Usize1,usize,usize);q],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut ans = vec![0; n];
+    for (l, r, t) in lrt {
+        for i in l..r {
+            ans[i] = t;
+        }
+    }
+    for i in 0..n {
+        println!("{}", ans[i]);
+    }
 }
