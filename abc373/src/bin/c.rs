@@ -8,10 +8,9 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[i64;n],
+        b:[i64;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let ans = a.iter().max().unwrap() + b.iter().max().unwrap();
     println!("{}", ans);
 }
