@@ -1,17 +1,11 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
-
+use proconio::*;
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
-    }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    input! {n:usize,k:usize,a:[usize;n]}
+    println!(
+        "{}",
+        (0..n)
+            .into_iter()
+            .map(|i| a[i] * (i + 1).min(n - i).min(n + 1 - k).min(k))
+            .sum::<usize>()
+    )
 }
