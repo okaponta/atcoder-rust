@@ -7,11 +7,8 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut n:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    n.dedup();
+    println!("{}", if n.len() == 1 { "SAME" } else { "DIFFERENT" });
 }
