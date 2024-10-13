@@ -8,10 +8,14 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        st:[(String,usize);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let sum = st.iter().map(|(_, t)| t).sum::<usize>();
+    for (s, t) in st {
+        if sum < t * 2 {
+            println!("{s}");
+            return;
+        }
+    }
+    println!("atcoder");
 }
