@@ -7,11 +7,15 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    s.reverse();
+    println!(
+        "{}",
+        if s[0] == 'n' && s[1] == 'a' && s[2] == 's' {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
