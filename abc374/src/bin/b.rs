@@ -7,11 +7,23 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
+        mut t:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    if s == t {
+        println!("0");
+        return;
+    }
+    if s.len() != t.len() {
+        for _i in 0..200 {
+            s.push('#');
+            t.push('!');
+        }
+    }
+    for i in 0..s.len().min(t.len()) {
+        if s[i] != t[i] {
+            println!("{}", i + 1);
+            return;
+        }
+    }
 }
