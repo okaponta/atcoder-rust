@@ -8,10 +8,18 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let mut ans = 1 << 60;
+    let sum = k.iter().sum::<usize>();
+    for i in 0..1 << n {
+        let mut tmp = 0;
+        for j in 0..n {
+            if i >> j & 1 == 1 {
+                tmp += k[j];
+            }
+        }
+        ans = ans.min(tmp.max(sum - tmp));
+    }
     println!("{}", ans);
 }
