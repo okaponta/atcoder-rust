@@ -7,11 +7,20 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
+    s.push('+');
     let mut ans = 0;
+    let mut tmp = 1;
+    for c in s {
+        if c == '+' {
+            if tmp != 0 {
+                ans += 1;
+            }
+            tmp = 1;
+        } else if c == '0' {
+            tmp = 0;
+        }
+    }
     println!("{}", ans);
 }
