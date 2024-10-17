@@ -8,10 +8,15 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    if n < 2 {
+        println!("0");
+        return;
+    }
+    let ans = (0..n - 2)
+        .into_iter()
+        .filter(|&i| s[i] == '#' && s[i + 1] == '.' && s[i + 2] == '#')
+        .count();
     println!("{}", ans);
 }
