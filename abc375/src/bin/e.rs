@@ -1,17 +1,36 @@
-#[allow(unused)]
 use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        ab:[(usize,usize);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let s = ab.iter().map(|(_, b)| b).sum::<usize>();
+    if s % 3 != 0 {
+        println!("-1");
+        return;
+    }
+    let s = s / 3;
+    let mut dp = vec![vec![300; s + 1]; s + 1];
+    dp[0][0] = 0;
+    let f = |a: usize, i: usize| if a == i { 0 } else { 1 };
+    for i in 0..n {
+        let mut next = vec![vec![300; s + 1]; s + 1];
+        for (j, k) in iproduct!(0..=s, 0..=s) {
+            if j + ab[i].1 <= s {
+                next[j + ab[i].1][k] = next[j + ab[i].1][k].min(dp[j][k] + f(ab[i].0, 1));
+            }
+            if k + ab[i].1 <= s {
+                next[j][k + ab[i].1] = next[j][k + ab[i].1].min(dp[j][k] + f(ab[i].0, 2));
+            }
+            next[j][k] = next[j][k].min(dp[j][k] + f(ab[i].0, 3));
+        }
+        dp = next;
+    }
+    if dp[s][s] == 300 {
+        println!("-1");
+        return;
+    }
+    println!("{}", dp[s][s]);
 }
