@@ -1,17 +1,15 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
 use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use std::collections::*;
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+    input! {s:Chars,k:usize}
+    if s.len() < k {
+        println!("0");
+        return;
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut set = HashSet::new();
+    for i in 0..=s.len() - k {
+        set.insert((0..k).into_iter().map(|j| s[i + j]).collect::<String>());
+    }
+    println!("{}", set.len());
 }
