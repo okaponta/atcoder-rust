@@ -8,10 +8,27 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:usize,
+        s:[usize;n],
     }
-    #[allow(unused_mut)]
+    if s.iter().any(|&i| i == 0) {
+        println!("{n}");
+        return;
+    }
     let mut ans = 0;
+    let mut tmp = 1;
+    let mut r = 0;
+    for l in 0..n {
+        while r < n && tmp * s[r] <= k {
+            tmp *= s[r];
+            r += 1;
+        }
+        ans = ans.max(r - l);
+        if l != r {
+            tmp /= s[l];
+        } else {
+            r += 1;
+        }
+    }
     println!("{}", ans);
 }
