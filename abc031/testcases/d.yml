@@ -1,0 +1,53 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      6 4
+      356 migoro
+      461 yoroi
+      2 ni
+      12 ini
+    out: |
+      i
+      ni
+      mi
+      yo
+      go
+      ro
+  - name: sample2
+    in: |
+      3 4
+      21 aaa
+      12 aaa
+      123 aaaaaa
+      13 aaaa
+    out: |
+      a
+      aa
+      aaa
+  - name: sample3
+    in: |
+      2 3
+      12211 abcaaaaabcabc
+      2121 aaabcaaabc
+      222221 aaaaaaaaaaabc
+    out: |
+      abc
+      aa
+  - name: sample4
+    in: |
+      2 1
+      12 abcab
+    out: |
+      ab
+      cab
+
+extend:
+  - type: Text
+    path: "./d"
+    in: /in/*.txt
+    out: /out/*.txt
