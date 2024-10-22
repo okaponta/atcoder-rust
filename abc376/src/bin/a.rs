@@ -8,10 +8,16 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        c:usize,
+        t:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let mut ans = 1;
+    let mut prev = t[0];
+    for i in 1..n {
+        if prev + c <= t[i] {
+            prev = t[i];
+            ans += 1;
+        }
+    }
     println!("{}", ans);
 }
