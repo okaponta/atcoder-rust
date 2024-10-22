@@ -1,3 +1,5 @@
+use std::collections::BTreeSet;
+
 #[allow(unused)]
 use itertools::*;
 #[allow(unused)]
@@ -8,10 +10,21 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
+        mut b:[usize;n-1],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut set = (0..n)
+        .into_iter()
+        .map(|i| (a[i], i))
+        .collect::<BTreeSet<_>>();
+    b.sort();
+    for b in b {
+        if let Some((a, i)) = set.range(..=(b, n)).last() {
+            set.remove(&(*a, *i));
+        } else {
+            println!("-1");
+            return;
+        }
+    }
+    println!("{}", set.iter().next().unwrap().0);
 }
