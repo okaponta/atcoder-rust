@@ -5,13 +5,21 @@ use proconio::{marker::*, *};
 #[allow(unused)]
 use superslice::*;
 
+#[fastout]
 fn main() {
     input! {
+        l:usize,
+        h:usize,
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for a in a {
+        if a < l {
+            println!("{}", l - a);
+        } else if h < a {
+            println!("-1");
+        } else {
+            println!("0");
+        }
+    }
 }
