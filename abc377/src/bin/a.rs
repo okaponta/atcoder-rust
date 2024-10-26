@@ -7,11 +7,9 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    s.sort();
+    let s = s.iter().collect::<String>();
+    println!("{}", if &s == "ABC" { "Yes" } else { "No" });
 }
