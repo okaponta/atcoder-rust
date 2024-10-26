@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 #[allow(unused)]
 use itertools::*;
 #[allow(unused)]
@@ -7,11 +9,26 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:[Chars;8],
     }
-    #[allow(unused_mut)]
+    let mut row = HashSet::new();
+    let mut col = HashSet::new();
+    for i in 0..8 {
+        for j in 0..8 {
+            if s[i][j] == '#' {
+                row.insert(i);
+                col.insert(j);
+            }
+        }
+    }
     let mut ans = 0;
+    for i in 0..8 {
+        for j in 0..8 {
+            if row.contains(&i) || col.contains(&j) {
+                continue;
+            }
+            ans += 1;
+        }
+    }
     println!("{}", ans);
 }
