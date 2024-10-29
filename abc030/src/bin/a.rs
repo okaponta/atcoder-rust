@@ -7,11 +7,19 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:usize,
+        b:usize,
+        c:usize,
+        d:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let ao = a * d;
+    let ta = b * c;
+    let ans = if ao < ta {
+        "TAKAHASHI"
+    } else if ta < ao {
+        "AOKI"
+    } else {
+        "DRAW"
+    };
     println!("{}", ans);
 }
