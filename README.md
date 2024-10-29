@@ -51,3 +51,5 @@ AtCoderの回答を貯めておくリポジトリです
 - Rust のバージョンが 1.49.0 以降になったら以下でたぶんバージョン固定できる
   - rustup toolchain add 1.49.0
   - echo '1.49.0' > rust-toolchain
+- ログイン求められた時(Submission rejected)
+  - cargo compete login atcoder
