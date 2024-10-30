@@ -7,11 +7,14 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut n:f64,
+        m:f64,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    if 11.5 < n {
+        n -= 12.0;
+    }
+    let nd = 30.0 * n + 0.5 * m;
+    let md = 6.0 * m;
+    let d = md.max(nd) - md.min(nd);
+    println!("{}", d.min(360.0 - d));
 }
