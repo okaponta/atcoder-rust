@@ -7,11 +7,11 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;4],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut count = vec![0; 5];
+    for a in a {
+        count[a] += 1;
+    }
+    println!("{}", count.iter().map(|i| i / 2).sum::<usize>());
 }
