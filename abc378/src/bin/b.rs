@@ -5,13 +5,22 @@ use proconio::{marker::*, *};
 #[allow(unused)]
 use superslice::*;
 
+#[fastout]
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        qr:[(usize,usize);n],
+        q:usize,
+        td:[(Usize1,usize);q],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for (t, d) in td {
+        let (q, r) = qr[t];
+        if r == 0 {
+            println!("{}", ((q + d - 1) / q) * q);
+        } else if r < d {
+            println!("{}", ((d - r + q - 1) / q) * q + r);
+        } else {
+            println!("{}", r);
+        }
+    }
 }
