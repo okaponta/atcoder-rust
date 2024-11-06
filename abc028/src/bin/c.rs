@@ -7,11 +7,14 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        n:[usize;5],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut ans = vec![];
+    for v in (0..5).combinations(3) {
+        ans.push(v.into_iter().map(|i| n[i]).sum::<usize>());
+    }
+    ans.sort();
+    ans.dedup();
+    ans.reverse();
+    println!("{}", ans[2]);
 }
