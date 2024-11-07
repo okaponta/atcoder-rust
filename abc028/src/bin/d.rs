@@ -8,10 +8,10 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    println!(
+        "{}",
+        (1 + 3 * (n - 1) + 6 * (n - k) * (k - 1)) as f64 / (n * n * n) as f64
+    );
 }
