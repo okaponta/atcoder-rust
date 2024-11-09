@@ -8,10 +8,18 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:usize,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
     let mut ans = 0;
+    for i in 0..n {
+        s.push('X');
+        if (i..i + k).all(|j| s[j] == 'O') {
+            ans += 1;
+            for j in 0..k {
+                s[i + j] = 'X';
+            }
+        }
+    }
     println!("{}", ans);
 }
