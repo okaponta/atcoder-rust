@@ -7,11 +7,7 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        n:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    println!("{}{}{} {}{}{}", n[1], n[2], n[0], n[2], n[0], n[1]);
 }
