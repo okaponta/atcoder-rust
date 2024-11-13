@@ -7,11 +7,8 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut l:[usize;3],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    l.sort();
+    println!("{}", l[0] + l[2] - l[1]);
 }
