@@ -7,11 +7,17 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut cnt = vec![0; 3];
+    for c in s {
+        if c == '1' {
+            cnt[0] += 1;
+        } else if c == '2' {
+            cnt[1] += 1;
+        } else if c == '3' {
+            cnt[2] += 1;
+        }
+    }
+    println!("{}", if cnt == vec![1, 2, 3] { "Yes" } else { "No" });
 }
