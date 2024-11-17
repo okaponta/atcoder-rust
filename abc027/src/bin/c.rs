@@ -1,17 +1,15 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+    input! {mut n:usize}
+    n += 1;
+    let mut ans = true;
+    while 1 < n {
+        if ans {
+            n += 1;
+        }
+        n /= 2;
+        ans = !ans;
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    println!("{}", if ans { "Takahashi" } else { "Aoki" });
 }
