@@ -8,10 +8,12 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mid = n / 2;
+    let ans = n % 2 == 1
+        && s[mid] == '/'
+        && (0..mid).all(|i| s[i] == '1')
+        && (mid + 1..n).all(|i| s[i] == '2');
+    println!("{}", if ans { "Yes" } else { "No" });
 }
