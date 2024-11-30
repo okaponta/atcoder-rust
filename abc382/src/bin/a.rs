@@ -7,11 +7,11 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        _n:usize,
+        d:usize,
+        s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let mut ans = s.iter().filter(|c| **c == '.').count();
+    ans += d;
     println!("{}", ans);
 }
