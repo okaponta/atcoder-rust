@@ -7,11 +7,17 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        _n:usize,
+        d:usize,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for _i in 0..d {
+        for j in (0..s.len()).rev() {
+            if s[j] == '@' {
+                s[j] = '.';
+                break;
+            }
+        }
+    }
+    println!("{}", s.iter().join(""));
 }
