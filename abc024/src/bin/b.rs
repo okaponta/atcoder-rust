@@ -1,17 +1,17 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
-    }
-    #[allow(unused_mut)]
+    input! {n:usize,t:usize,a:[usize;n]}
     let mut ans = 0;
+    let mut start = 0;
+    let mut end = 0;
+    for a in a {
+        if end < a {
+            ans += end - start;
+            start = a;
+        }
+        end = a + t;
+    }
+    ans += end - start;
     println!("{}", ans);
 }
