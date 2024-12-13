@@ -7,11 +7,14 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:Chars,
+        b:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let c = a
+        .iter()
+        .chain(b.iter())
+        .collect::<String>()
+        .parse::<usize>()
+        .unwrap();
+    println!("{}", c * 2);
 }
