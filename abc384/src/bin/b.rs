@@ -8,10 +8,19 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut r:i64,
+        da:[(u8,i64);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for (d, a) in da {
+        if d == 1 {
+            if 1600 <= r && r < 2800 {
+                r += a;
+            }
+        } else {
+            if 1200 <= r && r < 2400 {
+                r += a;
+            }
+        }
+    }
+    println!("{}", r);
 }
