@@ -8,10 +8,14 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        c1:char,
+        c2:char,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for i in 0..n {
+        if s[i] != c1 {
+            s[i] = c2;
+        }
+    }
+    println!("{}", s.iter().join(""));
 }
