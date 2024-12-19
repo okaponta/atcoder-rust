@@ -1,17 +1,23 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+    input_interactive!(n: usize);
+    let mut max = 0;
+    let mut pair = 0;
+    for i in 1..n {
+        println!("? 1 {}", i + 1);
+        input_interactive!(d: usize);
+        if max < d {
+            max = d;
+            pair = i;
+        }
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for i in 0..n {
+        println!("? {} {}", pair + 1, i + 1);
+        input_interactive!(d: usize);
+        if max < d {
+            max = d;
+        }
+    }
+    println!("! {}", max);
 }
