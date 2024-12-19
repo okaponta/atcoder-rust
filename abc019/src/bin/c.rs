@@ -1,3 +1,5 @@
+use std::collections::HashSet;
+
 #[allow(unused)]
 use itertools::*;
 #[allow(unused)]
@@ -8,10 +10,14 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut set = HashSet::new();
+    for mut a in a {
+        while a % 2 & 1 == 0 {
+            a >>= 1;
+        }
+        set.insert(a);
+    }
+    println!("{}", set.len());
 }
