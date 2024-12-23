@@ -7,11 +7,18 @@ use superslice::*;
 
 fn main() {
     input! {
+        mut s:Chars,
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        lr:[(Usize1,usize);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let m = s.len();
+    for (l, r) in lr {
+        s = (0..l)
+            .into_iter()
+            .chain((l..r).rev().into_iter())
+            .chain((r..m).into_iter())
+            .map(|i| s[i])
+            .collect::<Vec<_>>();
+    }
+    println!("{}", s.iter().join(""));
 }
