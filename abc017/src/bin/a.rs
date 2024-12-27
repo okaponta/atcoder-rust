@@ -7,11 +7,8 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        se:[(usize,usize);3],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let ans = se.into_iter().map(|(s, e)| s * e / 10).sum::<usize>();
     println!("{}", ans);
 }
