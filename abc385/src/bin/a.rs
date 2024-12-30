@@ -7,11 +7,12 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut a:[usize;3],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    if a[0] == a[1] && a[1] == a[2] {
+        println!("Yes");
+        return;
+    }
+    a.sort();
+    println!("{}", if a[0] + a[1] == a[2] { "Yes" } else { "No" })
 }
