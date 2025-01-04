@@ -7,11 +7,15 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        x:usize,
     }
-    #[allow(unused_mut)]
     let mut ans = 0;
+    for i in 1..10 {
+        for j in 1..10 {
+            if i * j != x {
+                ans += i * j;
+            }
+        }
+    }
     println!("{}", ans);
 }
