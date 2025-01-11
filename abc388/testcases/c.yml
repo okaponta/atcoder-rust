@@ -1,0 +1,30 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      6
+      2 3 4 4 7 10
+    out: |
+      8
+  - name: sample2
+    in: |
+      3
+      387 388 389
+    out: |
+      0
+  - name: sample3
+    in: |
+      32
+      1 2 4 5 8 10 12 16 19 25 33 40 50 64 87 101 149 175 202 211 278 314 355 405 412 420 442 481 512 582 600 641
+    out: |
+      388
+
+extend:
+  - type: Text
+    path: "./c"
+    in: /in/*.txt
+    out: /out/*.txt
