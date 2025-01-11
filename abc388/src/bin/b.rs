@@ -8,10 +8,14 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        d:usize,
+        tl:[(usize,usize);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for i in 1..=d {
+        let mut ans = 0;
+        for &(t, l) in &tl {
+            ans = ans.max(t * (l + i));
+        }
+        println!("{}", ans);
+    }
 }
