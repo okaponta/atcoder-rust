@@ -1,17 +1,22 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
 use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
 
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        mut xyc:[(Usize1,Usize1,char);m],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    xyc.sort();
+    let mut tmp = n;
+    for (_x, y, c) in xyc {
+        if c == 'B' {
+            if tmp <= y {
+                println!("No");
+                return;
+            }
+        } else {
+            tmp = tmp.min(y);
+        }
+    }
+    println!("Yes");
 }
