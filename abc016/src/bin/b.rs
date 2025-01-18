@@ -7,11 +7,20 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:i64,b:i64,c:i64,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
+    let mut q = 0;
+    if a + b == c {
+        q += 1;
+    }
+    if a - b == c {
+        q += 2;
+    }
+    let ans = match q {
+        0 => '!',
+        1 => '+',
+        2 => '-',
+        _ => '?',
+    };
     println!("{}", ans);
 }
