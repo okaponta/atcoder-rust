@@ -1,17 +1,24 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        k:usize,
+        t:[[usize;k];n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    dfs(0, 0, &t, n, k);
+    println!("Nothing");
+}
+
+fn dfs(i: usize, tmp: usize, t: &Vec<Vec<usize>>, n: usize, k: usize) {
+    if i == n {
+        if tmp == 0 {
+            println!("Found");
+            std::process::exit(0);
+        }
+        return;
+    }
+    for j in 0..k {
+        dfs(i + 1, tmp ^ t[i][j], t, n, k);
+    }
 }
