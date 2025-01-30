@@ -1,17 +1,17 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        ab:[(usize,usize);n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut imos = vec![0; 1000002];
+    for (a, b) in ab {
+        imos[a] += 1;
+        imos[b + 1] -= 1;
+    }
+    for i in 1..1000002 {
+        imos[i] += imos[i - 1];
+    }
+    println!("{}", imos.iter().max().unwrap());
 }
