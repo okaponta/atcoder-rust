@@ -1,0 +1,30 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      2 2
+      ab
+    out: |
+      576 99 1
+  - name: sample2
+    in: |
+      3 4
+      aaa
+    out: |
+      390625 62500 3750 101
+  - name: sample3
+    in: |
+      7 50
+      atcoder
+    out: |
+      309810541 226923474 392073062 146769908 221445233 435648037 862664208 238437587
+
+extend:
+  - type: Text
+    path: "./g"
+    in: /in/*.txt
+    out: /out/*.txt
