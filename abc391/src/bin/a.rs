@@ -7,11 +7,21 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    s.iter().for_each(|&c| print!("{}", f(c)));
+    println!();
+}
+
+fn f(c: char) -> char {
+    if c == 'N' {
+        return 'S';
+    }
+    if c == 'S' {
+        return 'N';
+    }
+    if c == 'E' {
+        return 'W';
+    }
+    'E'
 }
