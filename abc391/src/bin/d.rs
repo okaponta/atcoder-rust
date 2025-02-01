@@ -1,11 +1,5 @@
-use std::collections::{HashSet, VecDeque};
-
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
 use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use std::collections::{HashSet, VecDeque};
 
 #[fastout]
 fn main() {
@@ -21,20 +15,15 @@ fn main() {
         tai.push((ta[i].0, ta[i].1, i));
     }
     tai.sort();
-    let mut list = vec![vec![(1 << 60, 0); 2]; w];
+    let mut list = vec![vec![(1 << 60, 0)]; w];
     for i in 0..n {
         list[xy[i].0].push((xy[i].1, i));
     }
     for i in 0..w {
         list[i].sort();
-        list[i].reverse();
     }
-    let mut tmp = vec![(0, 0); w];
-    for i in 0..w {
-        tmp[i] = list[i].pop().unwrap();
-    }
-    let mut tmpmax = tmp.iter().max().unwrap().0;
-    let mut time = tmpmax;
+    let mut cur = 0;
+    let mut time = (0..w).into_iter().map(|i| list[i][cur].0).max().unwrap();
     let mut set = HashSet::new();
     let mut ans = vec![false; q];
     let mut qq = VecDeque::new();
@@ -45,15 +34,11 @@ fn main() {
         if t <= time {
             ans[i] = !set.contains(&a);
         } else {
-            for (_, i) in tmp {
-                set.insert(i);
-            }
-            tmp = vec![(0, 0); w];
             for i in 0..w {
-                tmp[i] = list[i].pop().unwrap();
+                set.insert(list[i][cur].1);
             }
-            tmpmax = tmp.iter().max().unwrap().0;
-            time = tmpmax;
+            cur += 1;
+            time = (0..w).into_iter().map(|i| list[i][cur].0).max().unwrap();
             qq.push_front((t, a, i));
         }
     }
