@@ -8,10 +8,24 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        s:[Chars;n],
+        t:[Chars;m],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    for i in 0..=n - m {
+        for j in 0..=n - m {
+            let mut ok = true;
+            for k in 0..m {
+                for l in 0..m {
+                    if s[i + k][j + l] != t[k][l] {
+                        ok = false;
+                    }
+                }
+            }
+            if ok {
+                println!("{} {}", i + 1, j + 1);
+                return;
+            }
+        }
+    }
 }
