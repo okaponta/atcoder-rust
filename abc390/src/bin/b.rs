@@ -1,17 +1,7 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
-    }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    input! {n:usize,a:[usize;n]}
+    let b = a.windows(3).all(|v| v[1] * v[1] == v[0] * v[2]);
+    println!("{}", if b { "Yes" } else { "No" });
 }
