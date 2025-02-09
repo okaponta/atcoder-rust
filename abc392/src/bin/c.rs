@@ -8,10 +8,16 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        p:[Usize1;n],
+        q:[Usize1;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut map = vec![0; n];
+    for i in 0..n {
+        map[q[i]] = i;
+    }
+    let mut ans = vec![];
+    for i in 0..n {
+        ans.push(q[p[map[i]]] + 1);
+    }
+    println!("{}", ans.iter().join(" "));
 }
