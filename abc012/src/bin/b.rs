@@ -7,11 +7,11 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut n:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut min = n / 60;
+    n %= 60;
+    let hour = min / 60;
+    min %= 60;
+    println!("{:<02}:{:<02}:{:<02}", hour, min, n);
 }
