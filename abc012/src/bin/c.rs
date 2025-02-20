@@ -1,17 +1,13 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let rem = 2025 - n;
+    for i in 1..=9 {
+        if rem % i == 0 && rem / i <= 9 {
+            println!("{} x {}", i, rem / i);
+        }
+    }
 }
