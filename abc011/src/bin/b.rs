@@ -1,17 +1,12 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
 use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    println!(
+        "{}{}",
+        s[0].to_ascii_uppercase(),
+        s[1..].iter().collect::<String>().to_ascii_lowercase()
+    );
 }
