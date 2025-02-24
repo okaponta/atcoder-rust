@@ -8,10 +8,21 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        ng:[usize;3],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut dp = vec![200; n + 5];
+    dp[0] = 0;
+    for i in 0..n {
+        for j in 1..4 {
+            if ng.contains(&(i + j)) {
+                continue;
+            }
+            dp[i + j] = dp[i + j].min(dp[i] + 1);
+        }
+    }
+    if dp[n] <= 100 {
+        println!("YES");
+    } else {
+        println!("NO");
+    }
 }
