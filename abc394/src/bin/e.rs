@@ -2,6 +2,8 @@ use itertools::*;
 use proconio::{marker::*, *};
 use std::collections::VecDeque;
 
+const INF: usize = 1 << 60;
+
 fn main() {
     input! {
         n:usize,
@@ -9,60 +11,26 @@ fn main() {
     }
     let mut q = VecDeque::new();
     let mut ans = vec![vec![1 << 60; n]; n];
-    let mut before = vec![vec![vec![]; 26]; n];
-    let mut after = vec![vec![vec![]; 26]; n];
     for i in 0..n {
-        for j in 0..n {
-            if c[i][j] != '-' {
-                let cc = (c[i][j] as u8 - b'a') as usize;
-                q.push_back((i, j, 1, true, cc));
-                ans[i][j] = 1;
-                before[j][cc].push(i);
-                after[i][cc].push(j);
+        q.push_back((i, i, 0));
+        ans[i][i] = 0;
+    }
+    for (i, j) in iproduct!(0..n, 0..n) {
+        if c[i][j] != '-' {
+            q.push_back((i, j, 1));
+            ans[i][j] = ans[i][j].min(1);
+        }
+    }
+    while let Some((i, j, len)) = q.pop_front() {
+        for (k, l) in iproduct!(0..n, 0..n) {
+            if c[k][i] == c[j][l] && c[k][i] != '-' && len + 2 < ans[k][l] {
+                ans[k][l] = len + 2;
+                q.push_back((k, l, len + 2));
             }
         }
     }
-    while let Some((i, j, len, same, cc)) = q.pop_front() {
-        if same {
-            for &k in &before[i][cc] {
-                if ans[k][j] > len + 1 {
-                    ans[k][j] = len + 1;
-                    q.push_back((k, j, len + 1, true, cc));
-                }
-            }
-            for &k in &after[j][cc] {
-                if ans[i][k] > len + 1 {
-                    ans[i][k] = len + 1;
-                    q.push_back((i, k, len + 1, true, cc));
-                }
-            }
-        }
-        for k in 0..26 {
-            for &a in &before[i][k] {
-                for &b in &after[j][k] {
-                    if ans[a][b] > len + 2 {
-                        ans[a][b] = len + 2;
-                        q.push_back((a, b, len + 2, false, 99));
-                    }
-                }
-            }
-        }
-    }
+    let f = |x| if x == INF { -1 } else { x as i64 };
     for i in 0..n {
-        println!(
-            "{}",
-            (0..n).into_iter().map(|j| f(i, j, ans[i][j])).join(" ")
-        );
-    }
-}
-
-fn f(i: usize, j: usize, ans: usize) -> i64 {
-    if i == j {
-        return 0;
-    }
-    if ans == 1 << 60 {
-        -1
-    } else {
-        ans as i64
+        println!("{}", (0..n).into_iter().map(|j| f(ans[i][j])).join(" "));
     }
 }
