@@ -1,17 +1,19 @@
-#[allow(unused)]
 use itertools::*;
-#[allow(unused)]
 use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut i = 0;
+    while i + 1 < s.len() {
+        if s[i] == 'W' && s[i + 1] == 'A' {
+            s[i] = 'A';
+            s[i + 1] = 'C';
+            i = i.saturating_sub(1);
+        } else {
+            i += 1;
+        }
+    }
+    println!("{}", s.iter().join(""));
 }
