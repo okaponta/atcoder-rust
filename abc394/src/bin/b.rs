@@ -1,17 +1,11 @@
-#[allow(unused)]
-use itertools::*;
-#[allow(unused)]
-use proconio::{marker::*, *};
-#[allow(unused)]
-use superslice::*;
+use proconio::*;
 
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:[String;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    s.sort_by_key(|s| s.len());
+    s.iter().for_each(|s| print!("{}", s));
+    println!();
 }
