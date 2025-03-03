@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 #[allow(unused)]
 use itertools::*;
 #[allow(unused)]
@@ -8,10 +10,21 @@ use superslice::*;
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut map = HashMap::new();
+    for i in 0..n {
+        map.entry(a[i]).or_insert(vec![]).push(i);
+    }
+    let mut ans = 1 << 60;
+    for (_, v) in map {
+        for vv in v.windows(2) {
+            ans = ans.min(vv[1] - vv[0]);
+        }
+    }
+    if ans == 1 << 60 {
+        println!("-1");
+    } else {
+        println!("{}", ans + 1);
+    }
 }
