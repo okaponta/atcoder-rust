@@ -7,11 +7,16 @@ use superslice::*;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        q:usize,
     }
-    #[allow(unused_mut)]
-    let mut ans = 0;
-    println!("{}", ans);
+    let mut deck = vec![0; 100];
+    for _ in 0..q {
+        input! {qi: u8}
+        if qi == 1 {
+            input! {x: usize}
+            deck.push(x);
+        } else {
+            println!("{}", deck.pop().unwrap());
+        }
+    }
 }
