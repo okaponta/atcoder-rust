@@ -3,9 +3,13 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:String,
     }
-    println!("{}", 0);
+    if s < "37.5".to_string() {
+        println!("3");
+    } else if s < "38.0".to_string() {
+        println!("2");
+    } else {
+        println!("1");
+    }
 }
