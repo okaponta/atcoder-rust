@@ -4,8 +4,6 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
     }
-    println!("{}", 0);
+    println!("{}", (n + 1) / 2);
 }
