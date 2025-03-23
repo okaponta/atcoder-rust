@@ -1,0 +1,27 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      ABC
+    out: |
+      ABCBA
+  - name: sample2
+    in: |
+      Z
+    out: |
+      Z
+  - name: sample3
+    in: |
+      TREE
+    out: |
+      TREERT
+
+extend:
+  - type: Text
+    path: "./f"
+    in: /in/*.txt
+    out: /out/*.txt
