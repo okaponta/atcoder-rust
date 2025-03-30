@@ -4,8 +4,9 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:Chars,
+        t:Chars,
     }
-    println!("{}", 0);
+    let ans = (0..n).into_iter().filter(|&i| s[i] != t[i]).count();
+    println!("{}", ans);
 }
