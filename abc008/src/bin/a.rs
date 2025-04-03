@@ -3,9 +3,8 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:usize,
+        t:usize,
     }
-    println!("{}", 0);
+    println!("{}", t - s + 1);
 }
