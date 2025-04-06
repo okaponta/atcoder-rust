@@ -3,9 +3,11 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:usize,
     }
-    println!("{}", 0);
+    if 400 % a != 0 {
+        println!("-1");
+    } else {
+        println!("{}", 400 / a);
+    }
 }
