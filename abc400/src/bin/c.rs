@@ -1,11 +1,14 @@
 #[rustfmt::skip]#[allow(unused)]
 use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
+use num_integer::Roots;
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut n:usize,
     }
-    println!("{}", 0);
+    n /= 2;
+    let mut ans = n.sqrt();
+    n /= 2;
+    ans += n.sqrt();
+    println!("{}", ans);
 }
