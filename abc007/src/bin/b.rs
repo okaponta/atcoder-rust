@@ -3,9 +3,11 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:String,
     }
-    println!("{}", 0);
+    if a == "a" {
+        println!("-1");
+        return;
+    }
+    println!("a");
 }
