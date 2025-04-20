@@ -1,0 +1,57 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      6
+      login
+      private
+      public
+      logout
+      private
+      public
+    out: |
+      1
+  - name: sample2
+    in: |
+      4
+      private
+      private
+      private
+      logout
+    out: |
+      3
+  - name: sample3
+    in: |
+      20
+      private
+      login
+      private
+      logout
+      public
+      logout
+      logout
+      logout
+      logout
+      private
+      login
+      login
+      private
+      login
+      private
+      login
+      public
+      private
+      logout
+      private
+    out: |
+      3
+
+extend:
+  - type: Text
+    path: "./b"
+    in: /in/*.txt
+    out: /out/*.txt
