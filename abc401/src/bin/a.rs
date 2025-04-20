@@ -3,9 +3,14 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:usize,
     }
-    println!("{}", 0);
+    println!(
+        "{}",
+        if 200 <= s && s < 300 {
+            "Success"
+        } else {
+            "Failure"
+        }
+    );
 }
