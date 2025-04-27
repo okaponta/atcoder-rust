@@ -3,9 +3,7 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    println!("{}", 0);
+    println!("{}", s.iter().filter(|c| c.is_uppercase()).join(""));
 }
