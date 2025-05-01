@@ -1,11 +1,14 @@
-#[rustfmt::skip]#[allow(unused)]
-use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
+use proconio::{marker::*, *};
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+    input! {n:usize,m:usize,ab:[(Usize1,Usize1);m]}
+    let mut c = vec![0; n];
+    for (a, b) in ab {
+        c[(a + b) % n] += 1;
     }
-    println!("{}", 0);
+    let mut ans = 0;
+    for c in c {
+        ans += (m - c) * c;
+    }
+    println!("{}", ans / 2);
 }
