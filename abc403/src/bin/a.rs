@@ -4,8 +4,8 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    println!("{}", 0);
+    let ans = (0..n).step_by(2).map(|i| a[i]).sum::<usize>();
+    println!("{}", ans);
 }
