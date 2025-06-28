@@ -4,8 +4,7 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        ab:[(usize,usize);n],
     }
-    println!("{}", 0);
+    println!("{}", ab.into_iter().filter(|(a, b)| a < b).count());
 }
