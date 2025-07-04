@@ -4,8 +4,13 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    println!("{}", 0);
+    let mut s = a.iter().sum::<usize>();
+    let mut ans = 0;
+    for i in 0..n {
+        s -= a[i];
+        ans += a[i] * s;
+    }
+    println!("{}", ans);
 }
