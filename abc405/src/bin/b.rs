@@ -4,8 +4,16 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        mut a:[usize;n],
     }
-    println!("{}", 0);
+    let mut ans = 0;
+    loop {
+        if (1..=m).any(|i| !a.contains(&i)) {
+            println!("{ans}");
+            return;
+        }
+        a.pop();
+        ans += 1;
+    }
 }
