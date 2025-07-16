@@ -3,9 +3,14 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:usize,
+        b:usize,
+        c:usize,
+        d:usize,
     }
-    println!("{}", 0);
+    if c < a || a == c && d < b {
+        println!("Yes")
+    } else {
+        println!("No")
+    }
 }
