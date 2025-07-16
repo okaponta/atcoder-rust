@@ -3,9 +3,12 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        r:usize,
+        x:usize,
     }
-    println!("{}", 0);
+    if x == 1 {
+        println!("{}", if 1600 <= r && r < 3000 { "Yes" } else { "No" });
+    } else {
+        println!("{}", if 1200 <= r && r < 2400 { "Yes" } else { "No" });
+    }
 }
