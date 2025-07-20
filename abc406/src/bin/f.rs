@@ -10,18 +10,17 @@ fn main() {
     }
     let mut sum = n;
     let mut g = vec![vec![]; n];
-    let mut map = vec![vec![]; n];
-    let mut w = vec![];
     let mut xmap = vec![0; n];
+    let mut ymap = vec![vec![]; n];
     for i in 0..n - 1 {
         let (u, v) = uv[i];
         g[u].push((v, i));
         g[v].push((u, i));
     }
-    dfs(0, 0, &g, 0, &mut map, &mut w, &mut xmap);
+    dfs(0, 0, &g, 0, &mut ymap, &mut xmap);
     let mut seg = SegmentTree::new(2 * n, 0, |a, b| a + b);
-    for i in 0..w.len() {
-        seg.update(i, w[i]);
+    for &i in &xmap {
+        seg.update(i, 1);
     }
     for _ in 0..q {
         input! {qi:u8}
@@ -31,7 +30,7 @@ fn main() {
             sum += w;
         } else {
             input! {y:Usize1}
-            let a = seg.query(map[y][0]..map[y][1]);
+            let a = seg.query(ymap[y][0]..ymap[y][1]);
             println!("{}", abs(a, sum - a));
         }
     }
@@ -50,24 +49,19 @@ fn dfs(
     prev: usize,
     g: &Vec<Vec<(usize, usize)>>,
     count: usize,
-    map: &mut Vec<Vec<usize>>,
-    w: &mut Vec<usize>,
+    ymap: &mut Vec<Vec<usize>>,
     xmap: &mut Vec<usize>,
 ) -> usize {
     let mut res = count;
-    w.push(1);
     xmap[cur] = res;
-    // 行き
     for &(next, idx) in &g[cur] {
         if next == prev {
             continue;
         }
-        map[idx].push(res + 1);
-        res = dfs(next, cur, g, res + 1, map, w, xmap);
-        map[idx].push(res);
+        ymap[idx].push(res + 1);
+        res = dfs(next, cur, g, res + 1, ymap, xmap);
+        ymap[idx].push(res);
     }
-    // 帰り
-    w.push(0);
     res + 1
 }
 
