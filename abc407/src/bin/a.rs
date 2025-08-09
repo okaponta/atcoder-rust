@@ -3,9 +3,8 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:usize,
+        b:usize,
     }
-    println!("{}", 0);
+    println!("{}", (2 * a + b) / (2 * b))
 }
