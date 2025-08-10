@@ -7,7 +7,10 @@ fn main() {
         w:usize,
         a:[[usize;w];h],
     }
-    println!("{}", dfs(0, 0, vec![vec![false; w]; h], h, w, &a));
+    println!(
+        "{}",
+        dfs(0, 0, vec![vec![false; w]; h], h, w, &a, &mut HashMap::new())
+    );
 }
 
 fn dfs(
@@ -17,7 +20,11 @@ fn dfs(
     h: usize,
     w: usize,
     a: &Vec<Vec<usize>>,
+    memo: &mut HashMap<Vec<Vec<bool>>, usize>,
 ) -> usize {
+    if let Some(val) = memo.get(&cur) {
+        return *val;
+    }
     let mut res = xor(&cur, a, h, w);
     if w <= j {
         j -= w;
@@ -31,16 +38,17 @@ fn dfs(
         let mut next = cur.clone();
         next[i][j] = true;
         next[i + 1][j] = true;
-        res = res.max(dfs(i, j + 1, next, h, w, a));
+        res = res.max(dfs(i, j + 1, next, h, w, a, memo));
     }
     // よこ
     if j < w - 1 && !cur[i][j] && !cur[i][j + 1] {
         let mut next = cur.clone();
         next[i][j] = true;
         next[i][j + 1] = true;
-        res = res.max(dfs(i, j + 2, next, h, w, a));
+        res = res.max(dfs(i, j + 2, next, h, w, a, memo));
     }
-    res = res.max(dfs(i, j + 1, cur, h, w, a));
+    res = res.max(dfs(i, j + 1, cur.clone(), h, w, a, memo));
+    memo.insert(cur, res);
     res
 }
 
