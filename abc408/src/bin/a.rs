@@ -4,8 +4,13 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        s:usize,
+        mut t:[usize;n],
     }
-    println!("{}", 0);
+    t.insert(0, 0);
+    if t.windows(2).all(|v| v[1] - v[0] <= s) {
+        println!("Yes");
+    } else {
+        println!("No");
+    }
 }
