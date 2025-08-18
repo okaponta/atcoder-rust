@@ -4,8 +4,10 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut a:[usize;n],
     }
-    println!("{}", 0);
+    a.sort();
+    a.dedup();
+    println!("{}", a.len());
+    println!("{}", a.iter().join(" "));
 }
