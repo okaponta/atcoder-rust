@@ -1,11 +1,10 @@
-#[rustfmt::skip]#[allow(unused)]
-use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
-
+use proconio::*;
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+    input! {n:usize, a:[usize;n]}
+    for i in (0..=n).rev() {
+        if i <= a.iter().filter(|&&a| i <= a).count() {
+            println!("{i}");
+            return;
+        }
     }
-    println!("{}", 0);
 }
