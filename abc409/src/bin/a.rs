@@ -4,8 +4,15 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        t:Chars,
+        a:Chars,
     }
-    println!("{}", 0);
+    println!(
+        "{}",
+        if (0..n).any(|i| t[i] == 'o' && a[i] == 'o') {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
