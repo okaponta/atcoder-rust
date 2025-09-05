@@ -32,22 +32,24 @@ fn case() {
             let mut sum = vec![0; w + 1];
             sum[0] = n;
             for k in 0..w {
-                if 0 < dp[k] {
-                    sum[k + 1] = sum[k] + dp[k] as usize;
-                } else {
-                    sum[k + 1] = sum[k] - (-dp[k] as usize);
-                }
-            }
-            for k in 0..=w {
-                ans += cnt[sum[k]];
+                sum[k + 1] = add(sum[k], dp[k]);
                 cnt[sum[k]] += 1;
+                ans += cnt[sum[k + 1]];
             }
-            for k in 0..=w {
+            for k in 0..w {
                 cnt[sum[k]] = 0;
             }
         }
     }
     println!("{}", ans);
+}
+
+fn add(a: usize, b: i32) -> usize {
+    if 0 < b {
+        a + b as usize
+    } else {
+        a - (-b as usize)
+    }
 }
 
 fn rotate(h: usize, w: usize, s: Vec<Vec<char>>) -> Vec<Vec<char>> {
