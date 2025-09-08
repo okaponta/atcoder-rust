@@ -3,9 +3,8 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        p:Chars,
+        l:usize,
     }
-    println!("{}", 0);
+    println!("{}", if l <= p.len() { "Yes" } else { "No" });
 }
