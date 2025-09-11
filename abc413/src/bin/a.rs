@@ -4,8 +4,15 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        a:[usize;n],
     }
-    println!("{}", 0);
+    println!(
+        "{}",
+        if a.into_iter().sum::<usize>() <= m {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
