@@ -4,8 +4,16 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        cl:[(char,u128);n],
     }
-    println!("{}", 0);
+    if 100 < cl.iter().map(|(_, l)| *l).sum::<u128>() {
+        println!("Too Long");
+        return;
+    }
+    for (c, l) in cl {
+        for _ in 0..l {
+            print!("{c}");
+        }
+    }
+    println!();
 }
