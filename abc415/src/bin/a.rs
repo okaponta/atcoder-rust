@@ -4,8 +4,8 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
+        x:usize,
     }
-    println!("{}", 0);
+    println!("{}", if a.contains(&x) { "Yes" } else { "No" });
 }
