@@ -1,11 +1,12 @@
-#[rustfmt::skip]#[allow(unused)]
-use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
+#[rustfmt::skip]
+use {itertools::*,proconio::{marker::*, *}};
 
 fn main() {
-    input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
-    }
-    println!("{}", 0);
+    input! {s:Chars}
+    (1..=s.len())
+        .into_iter()
+        .filter(|&i| s[i - 1] == '#')
+        .collect_vec()
+        .chunks(2)
+        .for_each(|v| println!("{},{}", v[0], v[1]));
 }
