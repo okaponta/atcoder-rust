@@ -3,9 +3,17 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        _n:usize,
+        l:Usize1,
+        r:usize,
+        s:Chars
     }
-    println!("{}", 0);
+    println!(
+        "{}",
+        if (l..r).all(|i| s[i] == 'o') {
+            "Yes"
+        } else {
+            "No"
+        }
+    );
 }
