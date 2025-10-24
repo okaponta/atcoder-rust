@@ -3,9 +3,16 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    println!("{}", 0);
+    let mut flg = true;
+    for i in 0..s.len() {
+        if s[i] == '#' {
+            flg = true;
+        } else if flg {
+            s[i] = 'o';
+            flg = false;
+        }
+    }
+    println!("{}", s.iter().join(""));
 }
