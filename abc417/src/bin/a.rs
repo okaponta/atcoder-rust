@@ -3,9 +3,16 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        _n:usize,
+        a:usize,
+        b:usize,
+        mut s:Chars,
     }
-    println!("{}", 0);
+    for _ in 0..a {
+        s.remove(0);
+    }
+    for _ in 0..b {
+        s.pop();
+    }
+    println!("{}", s.iter().join(""));
 }
