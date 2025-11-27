@@ -4,8 +4,17 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        a:[usize;n],
+        mut b:[usize;m],
     }
-    println!("{}", 0);
+    let mut ans = vec![];
+    for a in &a {
+        if let Some(i) = b.iter().position(|j| j == a) {
+            b.remove(i);
+        } else {
+            ans.push(a);
+        }
+    }
+    println!("{}", ans.iter().join(" "));
 }
