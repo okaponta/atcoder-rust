@@ -4,8 +4,16 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
+        ab:[(Usize1,usize);n],
     }
-    println!("{}", 0);
+    let mut count = vec![0; m];
+    let mut sum = vec![0; m];
+    for (a, b) in ab {
+        count[a] += 1;
+        sum[a] += b;
+    }
+    for i in 0..m {
+        println!("{}", sum[i] as f64 / count[i] as f64);
+    }
 }
