@@ -1,0 +1,36 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      8
+      greentea
+    out: |
+      Yes
+  - name: sample2
+    in: |
+      6
+      coffee
+    out: |
+      No
+  - name: sample3
+    in: |
+      3
+      tea
+    out: |
+      Yes
+  - name: sample4
+    in: |
+      1
+      t
+    out: |
+      No
+
+extend:
+  - type: Text
+    path: "./a"
+    in: /in/*.txt
+    out: /out/*.txt
