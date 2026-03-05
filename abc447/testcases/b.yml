@@ -1,0 +1,26 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      mississippi
+    out: |
+      mpp
+  - name: sample2
+    in: |
+      atcoder
+    out: >
+  - name: sample3
+    in: |
+      beginner
+    out: |
+      bgir
+
+extend:
+  - type: Text
+    path: "./b"
+    in: /in/*.txt
+    out: /out/*.txt
