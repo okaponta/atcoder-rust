@@ -4,8 +4,7 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        m:usize,
     }
-    println!("{}", 0);
+    println!("{}", if m <= (n + 1) / 2 { "Yes" } else { "No" });
 }
