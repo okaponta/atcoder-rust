@@ -3,9 +3,9 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        x:usize,
     }
-    println!("{}", 0);
+    let mut s = "HelloWorld".to_string().chars().collect_vec();
+    s.remove(x - 1);
+    println!("{}", s.iter().join(""));
 }
