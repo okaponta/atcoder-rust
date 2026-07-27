@@ -4,8 +4,12 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        a:[usize;n],
     }
-    println!("{}", 0);
+    println!(
+        "{}",
+        (1..n - 1)
+            .filter(|i| a[i - 1] < a[*i] && a[*i] > a[i + 1])
+            .count()
+    );
 }
