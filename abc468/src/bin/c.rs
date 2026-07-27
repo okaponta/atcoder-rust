@@ -4,8 +4,14 @@ use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
 fn main() {
     input! {
         n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        p:[usize;n],
+        q:[usize;n],
     }
-    println!("{}", 0);
+    let mut ans = 0;
+    for v in (1..=n).permutations(n) {
+        if p < v && v < q {
+            ans += 1;
+        }
+    }
+    println!("{}", ans);
 }
