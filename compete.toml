@@ -23,7 +23,7 @@ test-suite = "{{ manifest_dir }}/testcases/{{ bin_alias }}.yml"
 [template]
 src = '''
 #[rustfmt::skip]#[allow(unused)]
-use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*};
+use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*,std::vec};
 
 fn main() {
     input! {
