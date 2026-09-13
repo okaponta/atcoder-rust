@@ -1,4 +1,4 @@
 # Pinned to the same rustc AtCoder's judge uses. `acrust env update` keeps it in step.
 [toolchain]
 channel = "1.89.0"
-components = ["rustfmt", "clippy"]
+components = ["rustfmt", "clippy", "rust-analyzer"]

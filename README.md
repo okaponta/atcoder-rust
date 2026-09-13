@@ -1,7 +1,7 @@
 # atcoder-rust
 
 AtCoderの回答を貯めておくリポジトリです  
-[cargo-compete](https://github.com/qryxip/cargo-compete)を使用しております。
+[acrust](https://github.com/okaponta/acrust)を使用しております。
 
 # About Me
 
@@ -19,37 +19,40 @@ AtCoderの回答を貯めておくリポジトリです
   - [こちらのレポジトリ](https://github.com/okaponta/rust-kyopro-type-converter)にあるRustの型変換コマンドを読み込んでいます
   - ローカルにクローンしないと動かないです
 - join
-  - vscodeのデバッグ用configと現在のディレクトリの内容をgit commitする
+  - 現在のディレクトリの内容をgit commitする
+  - vscodeのデバッグ用config(`.vscode/launch.json`)は`acrust new`が`.acrust/template/copy/`から配置してくれるので、joinはコミットするだけです
 - test
   - `test a`などでテストケースを実行します
 - run
   - `run a`などで実際に動かせます
 - submit
   - `submit a`などで提出できます
+- copy
+  - `copy a`などで解答をクリップボードにコピーします
+  - 終了したコンテストには提出できないので、練習提出はこれでコピーしてブラウザに貼ります
 - commit
   - `commit a`などでコメントつきでgit commitします
 - problem
-  - `problem abcXXX`などでA-F問題を開きます
-- qiita
-  - qiita解説記事投稿用のテンプレを出力します。
+  - 引数なしでそのコンテストの全問題を開きます。`problem c`などで1問だけ開くこともできます
+  - 問題IDはCargo.tomlから読むので、ABC/ARC併催回(abc042のcはarc058_a)も正しく開きます
+  - コンテストのディレクトリの中で実行してください
 
 # 自分用コマンドメモ
 
 - コンテストごと
-  - procon-support でエイリアス読み込んだ状態で problem abcXXX で A-F 問題を開いておく
-  - cargo compete new abcXXX
+  - acrust new abcXXX
   - Cmd+Shift+N で新規 VSCode のウィンドウ開く
   - Cmd+O で abcXXX を開く
   - procon-support でエイリアス読み込み
+  - problem で全問題を開く
   - join でコミット
-  - cargo compete open
 - 問題ごと
   - test a
   - submit a
   - commit a
   - run a
-- Rust のバージョンが 1.49.0 以降になったら以下でたぶんバージョン固定できる
-  - rustup toolchain add 1.49.0
-  - echo '1.49.0' > rust-toolchain
+- Rust のバージョンは `rust-toolchain.toml` でジャッジと同じものに固定してあります
+  - `acrust env update` でジャッジ環境(rustc・edition・クレート)に追従します
+  - `acrust status` で今の状態を確認できます
 - ログイン求められた時(Submission rejected)
-  - cargo compete login atcoder
+  - acrust login
