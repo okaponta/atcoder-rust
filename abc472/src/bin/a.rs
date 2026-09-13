@@ -1,11 +1,14 @@
 #[rustfmt::skip]#[allow(unused)]
-use {itertools::*,proconio::{marker::*, *},superslice::*,std::collections::*,std::vec};
+use {itertools::*,proconio::{marker::*, *},superslice::*,std::*};
 
 fn main() {
     input! {
-        n:usize,
-        _a:[usize;n],
-        _s:Chars,
+        mut s:Chars,
     }
-    println!("{}", 0);
+    println!(
+        "{}",
+        s.into_iter()
+            .map(|c| if c != 'A' { '.' } else { c })
+            .collect::<String>()
+    );
 }
