@@ -1,0 +1,28 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+tc
+oder
+a
+'''
+out = '''
+atcoder
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+4
+cat
+enate
+on
+c
+'''
+out = '''
+concatenate
+'''

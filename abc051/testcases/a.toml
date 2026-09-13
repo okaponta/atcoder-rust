@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+happy,newyear,enjoy
+'''
+out = '''
+happy newyear enjoy
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+haiku,atcoder,tasks
+'''
+out = '''
+haiku atcoder tasks
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+abcde,fghihgf,edcba
+'''
+out = '''
+abcde fghihgf edcba
+'''

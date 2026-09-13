@@ -1,0 +1,60 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+6
+login
+private
+public
+logout
+private
+public
+'''
+out = '''
+1
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+4
+private
+private
+private
+logout
+'''
+out = '''
+3
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+20
+private
+login
+private
+logout
+public
+logout
+logout
+logout
+logout
+private
+login
+login
+private
+login
+private
+login
+public
+private
+logout
+private
+'''
+out = '''
+3
+'''

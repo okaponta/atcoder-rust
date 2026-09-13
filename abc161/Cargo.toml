@@ -3,13 +3,16 @@ name = "abc161"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-abc161-a = { alias = "a", problem = "https://atcoder.jp/contests/abc161/tasks/abc161_a" }
-abc161-b = { alias = "b", problem = "https://atcoder.jp/contests/abc161/tasks/abc161_b" }
-abc161-c = { alias = "c", problem = "https://atcoder.jp/contests/abc161/tasks/abc161_c" }
-abc161-d = { alias = "d", problem = "https://atcoder.jp/contests/abc161/tasks/abc161_d" }
-abc161-e = { alias = "e", problem = "https://atcoder.jp/contests/abc161/tasks/abc161_e" }
-abc161-f = { alias = "f", problem = "https://atcoder.jp/contests/abc161/tasks/abc161_f" }
+[package.metadata.acrust]
+contest = "abc161"
+
+[package.metadata.acrust.tasks]
+a = "abc161_a"
+b = "abc161_b"
+c = "abc161_c"
+d = "abc161_d"
+e = "abc161_e"
+f = "abc161_f"
 
 [[bin]]
 name = "abc161-a"

@@ -1,0 +1,58 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+abc
+def
+ghi
+abc
+bef
+ghi
+'''
+out = '''
+2 1
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+1
+f
+q
+'''
+out = '''
+1 1
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+10
+eixfumagit
+vtophbepfe
+pxbfgsqcug
+ugpugtsxzq
+bvfhxyehfk
+uqyfwtmglr
+jaitenfqiq
+acwvufpfvv
+jhaddglpva
+aacxsyqvoj
+eixfumagit
+vtophbepfe
+pxbfgsqcug
+ugpugtsxzq
+bvfhxyehok
+uqyfwtmglr
+jaitenfqiq
+acwvufpfvv
+jhaddglpva
+aacxsyqvoj
+'''
+out = '''
+5 9
+'''

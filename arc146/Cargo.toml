@@ -3,13 +3,16 @@ name = "arc146"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-arc146-a = { alias = "a", problem = "https://atcoder.jp/contests/arc146/tasks/arc146_a" }
-arc146-b = { alias = "b", problem = "https://atcoder.jp/contests/arc146/tasks/arc146_b" }
-arc146-c = { alias = "c", problem = "https://atcoder.jp/contests/arc146/tasks/arc146_c" }
-arc146-d = { alias = "d", problem = "https://atcoder.jp/contests/arc146/tasks/arc146_d" }
-arc146-e = { alias = "e", problem = "https://atcoder.jp/contests/arc146/tasks/arc146_e" }
-arc146-f = { alias = "f", problem = "https://atcoder.jp/contests/arc146/tasks/arc146_f" }
+[package.metadata.acrust]
+contest = "arc146"
+
+[package.metadata.acrust.tasks]
+a = "arc146_a"
+b = "arc146_b"
+c = "arc146_c"
+d = "arc146_d"
+e = "arc146_e"
+f = "arc146_f"
 
 [[bin]]
 name = "arc146-a"

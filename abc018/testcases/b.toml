@@ -1,0 +1,28 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+abcdef
+2
+3 5
+1 4
+'''
+out = '''
+debacf
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+redcoat
+3
+1 7
+1 2
+3 4
+'''
+out = '''
+atcoder
+'''

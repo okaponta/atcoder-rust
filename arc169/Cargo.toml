@@ -3,13 +3,16 @@ name = "arc169"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-arc169-a = { alias = "a", problem = "https://atcoder.jp/contests/arc169/tasks/arc169_a" }
-arc169-b = { alias = "b", problem = "https://atcoder.jp/contests/arc169/tasks/arc169_b" }
-arc169-c = { alias = "c", problem = "https://atcoder.jp/contests/arc169/tasks/arc169_c" }
-arc169-d = { alias = "d", problem = "https://atcoder.jp/contests/arc169/tasks/arc169_d" }
-arc169-e = { alias = "e", problem = "https://atcoder.jp/contests/arc169/tasks/arc169_e" }
-arc169-f = { alias = "f", problem = "https://atcoder.jp/contests/arc169/tasks/arc169_f" }
+[package.metadata.acrust]
+contest = "arc169"
+
+[package.metadata.acrust.tasks]
+a = "arc169_a"
+b = "arc169_b"
+c = "arc169_c"
+d = "arc169_d"
+e = "arc169_e"
+f = "arc169_f"
 
 [[bin]]
 name = "arc169-a"

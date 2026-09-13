@@ -1,0 +1,21 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+sick fine
+'''
+out = '''
+2
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+fine fine
+'''
+out = '''
+4
+'''

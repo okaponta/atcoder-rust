@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+narita
+NRT
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+losangeles
+LAX
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+snuke
+RNG
+'''
+out = '''
+No
+'''

@@ -1,0 +1,63 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+FTFFTFFF
+4 2
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+FTFFTFFF
+-2 -2
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+FF
+1 0
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+TF
+1 0
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample5"
+in = '''
+FFTTFF
+0 0
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample6"
+in = '''
+TTTT
+1 0
+'''
+out = '''
+No
+'''

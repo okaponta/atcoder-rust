@@ -3,10 +3,13 @@ name = "atc001"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-atc001-a = { alias = "a", problem = "https://atcoder.jp/contests/atc001/tasks/dfs_a" }
-atc001-b = { alias = "b", problem = "https://atcoder.jp/contests/atc001/tasks/unionfind_a" }
-atc001-c = { alias = "c", problem = "https://atcoder.jp/contests/atc001/tasks/fft_c" }
+[package.metadata.acrust]
+contest = "atc001"
+
+[package.metadata.acrust.tasks]
+a = "dfs_a"
+b = "unionfind_a"
+c = "fft_c"
 
 [[bin]]
 name = "atc001-a"

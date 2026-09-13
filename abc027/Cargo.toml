@@ -3,11 +3,14 @@ name = "abc027"
 version = "0.1.0"
 edition = "2021"
 
-[package.metadata.cargo-compete.bin]
-abc027-a = { alias = "a", problem = "https://atcoder.jp/contests/abc027/tasks/abc027_a" }
-abc027-b = { alias = "b", problem = "https://atcoder.jp/contests/abc027/tasks/abc027_b" }
-abc027-c = { alias = "c", problem = "https://atcoder.jp/contests/abc027/tasks/abc027_c" }
-abc027-d = { alias = "d", problem = "https://atcoder.jp/contests/abc027/tasks/abc027_d" }
+[package.metadata.acrust]
+contest = "abc027"
+
+[package.metadata.acrust.tasks]
+a = "abc027_a"
+b = "abc027_b"
+c = "abc027_c"
+d = "abc027_d"
 
 [[bin]]
 name = "abc027-a"

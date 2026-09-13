@@ -1,0 +1,25 @@
+type = "batch"
+timelimit = "2s"
+match = "float"
+
+[float]
+relative-error = 1e-9
+absolute-error = 1e-9
+
+[[cases]]
+name = "sample1"
+in = '''
+3 10
+'''
+out = '''
+0.145833333333
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+100000 5
+'''
+out = '''
+0.999973749998
+'''

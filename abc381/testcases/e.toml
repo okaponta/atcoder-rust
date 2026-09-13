@@ -1,0 +1,22 @@
+type = "batch"
+timelimit = "3s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+12 5
+111/212/1122
+1 7
+9 12
+3 6
+4 10
+1 12
+'''
+out = '''
+5
+0
+3
+1
+7
+'''

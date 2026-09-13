@@ -3,14 +3,17 @@ name = "abc380"
 version = "0.1.0"
 edition = "2021"
 
-[package.metadata.cargo-compete.bin]
-abc380-a = { alias = "a", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_a" }
-abc380-b = { alias = "b", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_b" }
-abc380-c = { alias = "c", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_c" }
-abc380-d = { alias = "d", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_d" }
-abc380-e = { alias = "e", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_e" }
-abc380-f = { alias = "f", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_f" }
-abc380-g = { alias = "g", problem = "https://atcoder.jp/contests/abc380/tasks/abc380_g" }
+[package.metadata.acrust]
+contest = "abc380"
+
+[package.metadata.acrust.tasks]
+a = "abc380_a"
+b = "abc380_b"
+c = "abc380_c"
+d = "abc380_d"
+e = "abc380_e"
+f = "abc380_f"
+g = "abc380_g"
 
 [[bin]]
 name = "abc380-a"

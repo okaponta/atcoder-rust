@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+pot
+top
+'''
+out = '''
+YES
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+tab
+bet
+'''
+out = '''
+NO
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+eye
+eel
+'''
+out = '''
+NO
+'''

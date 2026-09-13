@@ -1,0 +1,55 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+Aoki
+Takahashi
+Takahashi
+'''
+out = '''
+2
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+2
+Aoki
+Aoki
+'''
+out = '''
+0
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+20
+Aoki
+Takahashi
+Takahashi
+Aoki
+Aoki
+Aoki
+Aoki
+Takahashi
+Aoki
+Aoki
+Aoki
+Takahashi
+Takahashi
+Aoki
+Takahashi
+Aoki
+Aoki
+Aoki
+Aoki
+Takahashi
+'''
+out = '''
+7
+'''

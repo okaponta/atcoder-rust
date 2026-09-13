@@ -1,0 +1,43 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+january
+february
+march
+april
+may
+june
+july
+august
+september
+october
+november
+december
+'''
+out = '''
+1
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+ve
+inrtfa
+npccxva
+djiq
+lmbkktngaovl
+mlfiv
+fmbvcmuxuwggfq
+qgmtwxmb
+jii
+ts
+bfxrvs
+eqvy
+'''
+out = '''
+2
+'''

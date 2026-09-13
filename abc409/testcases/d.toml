@@ -1,0 +1,20 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+7
+atcoder
+1
+x
+5
+snuke
+'''
+out = '''
+acodert
+x
+nsuke
+'''

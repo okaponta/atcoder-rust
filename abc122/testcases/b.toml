@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+ATCODER
+'''
+out = '''
+3
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+HATAGAYA
+'''
+out = '''
+5
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+SHINJUKU
+'''
+out = '''
+0
+'''

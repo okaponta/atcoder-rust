@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+internationalization
+'''
+out = '''
+i18n
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+smiles
+'''
+out = '''
+s4s
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+xyz
+'''
+out = '''
+x1z
+'''

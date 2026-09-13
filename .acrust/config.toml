@@ -1,0 +1,54 @@
+# acrust configuration.
+# Details: https://github.com/okaponta/acrust
+
+version = 1
+
+[contest]
+# Where contest packages go. {contest} is expanded.
+path = "./{contest}"
+
+[package]
+# The edition of the generated Cargo.toml. `acrust env update` keeps it in step with the judge.
+edition = "2024"
+# Generate rust-toolchain.toml and pin the same rustc the judge uses.
+# Without this, a newer local rustc gives you "all samples AC, CE only on submit".
+pin-toolchain = true
+# Optimize locally while keeping the overflow checks on.
+profile = """
+[dev]
+opt-level = 3
+debug-assertions = true
+overflow-checks = true
+"""
+
+[template]
+src = ".acrust/template/main.rs"
+dependencies = ".acrust/template/dependencies.toml"
+cargo-lock = ".acrust/template/Cargo.lock"
+# Anything in this directory is copied into every package as it is. It does not
+# exist until you make it: `.vscode/launch.json`, an `.envrc`, a `justfile`.
+copy-dir = ".acrust/template/copy"
+
+[testcases]
+# {package} (the package path from the repository root) and {problem} (the alias) are expanded.
+path = "{package}/testcases/{problem}.toml"
+
+[test]
+profile = "dev"        # dev | release
+jobs = 0               # 0 = one per logical core
+timeout-margin = 1.5   # multiplier on the problem's time limit; never waits less than 5s
+resolve = "mtime"      # how to infer the problem when omitted: mtime | single | never
+
+[submit]
+language-id = ""                     # empty: read it off the <select> on the submit page (recommended)
+language-pattern = '^Rust \(rustc'
+test-before-submit = true
+watch = true                         # follow the result after submitting
+watch-interval-ms = 2000             # first interval; then 1.5x each time, up to 10000ms
+watch-timeout-s = 60                 # past this, print the submission URL and stop
+
+[atcoder]
+language-list = "https://img.atcoder.jp/file/language-update/2025-10/language-list.html"
+request-interval-ms = 1000
+retry = 3
+user-agent = "acrust/{version} (+https://github.com/okaponta/acrust)"

@@ -1,0 +1,49 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+4
+at
+atco
+coder
+der
+'''
+out = '''
+11
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+5
+a
+aa
+aaa
+aaaa
+aaaaa
+'''
+out = '''
+7
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+10
+armiearggc
+ukupaunpiy
+cogzmjmiob
+rtwbvmtruq
+qapfzsitbl
+vhkihnipny
+ybonzypnsn
+esxvgoudra
+usngxmaqpt
+yfseonwhgp
+'''
+out = '''
+90
+'''

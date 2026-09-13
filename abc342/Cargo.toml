@@ -3,14 +3,17 @@ name = "abc342"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-abc342-a = { alias = "a", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_a" }
-abc342-b = { alias = "b", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_b" }
-abc342-c = { alias = "c", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_c" }
-abc342-d = { alias = "d", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_d" }
-abc342-e = { alias = "e", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_e" }
-abc342-f = { alias = "f", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_f" }
-abc342-g = { alias = "g", problem = "https://atcoder.jp/contests/abc342/tasks/abc342_g" }
+[package.metadata.acrust]
+contest = "abc342"
+
+[package.metadata.acrust.tasks]
+a = "abc342_a"
+b = "abc342_b"
+c = "abc342_c"
+d = "abc342_d"
+e = "abc342_e"
+f = "abc342_f"
+g = "abc342_g"
 
 [[bin]]
 name = "abc342-a"

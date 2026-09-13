@@ -1,0 +1,37 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+((A)y)x
+'''
+out = '''
+YAx
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+((XYZ)n(X(y)Z))
+'''
+out = '''
+XYZNXYZ
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+(((()))(()))(())
+'''
+out = ''''''
+
+[[cases]]
+name = "sample4"
+in = '''
+dF(qT(plC())NnnfR(GsdccC))PO()KjsiI((ysA)eWW)ve
+'''
+out = '''
+dFGsdccCrFNNnplCtQPOKjsiIwwEysAve
+'''

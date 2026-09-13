@@ -1,0 +1,39 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+atcoder
+'''
+out = '''
+acdr
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+aaaa
+'''
+out = '''
+aa
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+z
+'''
+out = '''
+z
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+fukuokayamaguchi
+'''
+out = '''
+fkoaaauh
+'''

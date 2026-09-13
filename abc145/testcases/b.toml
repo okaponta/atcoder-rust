@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+6
+abcabc
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+6
+abcadc
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+1
+z
+'''
+out = '''
+No
+'''

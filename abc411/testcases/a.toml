@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+chokudai
+5
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+ac
+3
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+atcoder
+7
+'''
+out = '''
+Yes
+'''

@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+3 4 5
+'''
+out = '''
+pairwise coprime
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+3
+6 10 15
+'''
+out = '''
+setwise coprime
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+3
+6 10 16
+'''
+out = '''
+not coprime
+'''

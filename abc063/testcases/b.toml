@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+uncopyrightable
+'''
+out = '''
+yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+different
+'''
+out = '''
+no
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+no
+'''
+out = '''
+yes
+'''

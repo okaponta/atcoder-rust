@@ -1,0 +1,39 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+atcoder beginner contest
+'''
+out = '''
+ABC
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+resident register number
+'''
+out = '''
+RRN
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+k nearest neighbor
+'''
+out = '''
+KNN
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+async layered coding
+'''
+out = '''
+ALC
+'''

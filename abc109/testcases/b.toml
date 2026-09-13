@@ -1,0 +1,63 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+4
+hoge
+english
+hoge
+enigma
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+9
+basic
+c
+cpp
+php
+python
+nadesico
+ocaml
+lua
+assembly
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+8
+a
+aa
+aaa
+aaaa
+aaaaa
+aaaaaa
+aaa
+aaaaaaa
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+3
+abc
+arc
+agc
+'''
+out = '''
+No
+'''

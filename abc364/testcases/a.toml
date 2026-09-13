@@ -1,0 +1,45 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+5
+salty
+sweet
+salty
+salty
+sweet
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+4
+sweet
+salty
+sweet
+sweet
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+6
+salty
+sweet
+sweet
+salty
+sweet
+sweet
+'''
+out = '''
+No
+'''

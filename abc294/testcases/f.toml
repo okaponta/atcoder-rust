@@ -1,0 +1,51 @@
+type = "batch"
+timelimit = "4s"
+match = "float"
+
+[float]
+relative-error = 1e-9
+absolute-error = 1e-9
+
+[[cases]]
+name = "sample1"
+in = '''
+3 1 1
+1 2
+4 1
+1 4
+1 4
+'''
+out = '''
+50.000000000000000
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+2 2 2
+6 4
+10 1
+5 8
+9 6
+'''
+out = '''
+62.500000000000000
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+4 5 10
+5 4
+1 6
+7 4
+9 8
+2 2
+5 6
+6 7
+5 3
+8 1
+'''
+out = '''
+54.166666666666664
+'''

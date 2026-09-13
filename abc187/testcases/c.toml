@@ -1,0 +1,37 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+6
+a
+!a
+b
+!c
+d
+!d
+'''
+out = '''
+a
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+10
+red
+red
+red
+!orange
+yellow
+!blue
+cyan
+!green
+brown
+!gray
+'''
+out = '''
+satisfiable
+'''

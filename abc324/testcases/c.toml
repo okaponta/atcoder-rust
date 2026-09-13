@@ -1,0 +1,48 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+5 ababc
+ababc
+babc
+abacbc
+abdbc
+abbac
+'''
+out = '''
+4
+1 2 3 4
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+1 aoki
+takahashi
+'''
+out = '''
+0
+
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+9 atcoder
+atoder
+atcode
+athqcoder
+atcoder
+tacoder
+jttcoder
+atoder
+atceoder
+atcoer
+'''
+out = '''
+6
+1 2 4 7 8 9
+'''

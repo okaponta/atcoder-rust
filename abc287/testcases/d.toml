@@ -1,0 +1,47 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+a?c
+b?
+'''
+out = '''
+Yes
+No
+No
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+atcoder
+?????
+'''
+out = '''
+Yes
+Yes
+Yes
+Yes
+Yes
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+beginner
+contest
+'''
+out = '''
+No
+No
+No
+No
+No
+No
+No
+No
+'''

@@ -1,0 +1,51 @@
+type = "batch"
+timelimit = "2s"
+match = "float"
+
+[float]
+relative-error = 1e-5
+absolute-error = 1e-5
+
+[[cases]]
+name = "sample1"
+in = '''
+2
+1144#
+2233#
+'''
+out = '''
+0.4444444444444444
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+2
+9988#
+1122#
+'''
+out = '''
+1.0
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+6
+1122#
+2228#
+'''
+out = '''
+0.001932367149758454
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+100000
+3226#
+3597#
+'''
+out = '''
+0.6296297942426154
+'''

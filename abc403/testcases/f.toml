@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+9
+'''
+out = '''
+(1+1+1)*(1+1+1)
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+11
+'''
+out = '''
+11
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+403
+'''
+out = '''
+1+(1+1+1)*(1+11+11+111)
+'''

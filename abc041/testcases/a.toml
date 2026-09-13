@@ -1,0 +1,43 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+atcoder
+3
+'''
+out = '''
+c
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+beginner
+1
+'''
+out = '''
+b
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+contest
+7
+'''
+out = '''
+t
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+z
+1
+'''
+out = '''
+z
+'''

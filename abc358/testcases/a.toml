@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+AtCoder Land
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+CodeQUEEN Land
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+aTcodeR lANd
+'''
+out = '''
+No
+'''

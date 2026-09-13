@@ -1,0 +1,25 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+5
+31 4 159 2 65
+5 5 5 5 10
+'''
+out = '''
+16
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+4
+100 100 100 1000000000
+1 2 3 4
+'''
+out = '''
+10
+'''

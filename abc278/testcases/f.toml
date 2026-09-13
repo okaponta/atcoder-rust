@@ -1,0 +1,62 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+6
+enum
+float
+if
+modint
+takahashi
+template
+'''
+out = '''
+First
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+10
+catch
+chokudai
+class
+continue
+copy
+exec
+havoc
+intrinsic
+static
+yucatec
+'''
+out = '''
+Second
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+16
+mnofcmzsdx
+lgeowlxuqm
+ouimgdjxlo
+jhwttcycwl
+jbcuioqbsj
+mdjfikdwix
+jhvdpuxfil
+peekycgxco
+sbvxszools
+xuuqebcrzp
+jsciwvdqzl
+obblxzjhco
+ptobhnpfpo
+muizaqtpgx
+jtgjnbtzcl
+sivwidaszs
+'''
+out = '''
+First
+'''

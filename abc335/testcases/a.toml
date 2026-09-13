@@ -1,0 +1,39 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+hello2023
+'''
+out = '''
+hello2024
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+worldtourfinals2023
+'''
+out = '''
+worldtourfinals2024
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+2023
+'''
+out = '''
+2024
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+20232023
+'''
+out = '''
+20232024
+'''

@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+4 3
+ode
+zaaa
+r
+atc
+'''
+out = '''
+atcoder
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+5 2
+z
+z
+zzz
+z
+zzzzzz
+'''
+out = '''
+zz
+'''

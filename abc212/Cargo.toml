@@ -3,15 +3,18 @@ name = "abc212"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-abc212-a = { alias = "a", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_a" }
-abc212-b = { alias = "b", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_b" }
-abc212-c = { alias = "c", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_c" }
-abc212-d = { alias = "d", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_d" }
-abc212-e = { alias = "e", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_e" }
-abc212-f = { alias = "f", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_f" }
-abc212-g = { alias = "g", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_g" }
-abc212-h = { alias = "h", problem = "https://atcoder.jp/contests/abc212/tasks/abc212_h" }
+[package.metadata.acrust]
+contest = "abc212"
+
+[package.metadata.acrust.tasks]
+a = "abc212_a"
+b = "abc212_b"
+c = "abc212_c"
+d = "abc212_d"
+e = "abc212_e"
+f = "abc212_f"
+g = "abc212_g"
+h = "abc212_h"
 
 [[bin]]
 name = "abc212-a"

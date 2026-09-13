@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+3 2 4
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+4
+3 3 3 3
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+10
+73 8 55 26 97 48 37 47 35 55
+'''
+out = '''
+No
+'''

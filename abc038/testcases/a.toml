@@ -1,0 +1,48 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+ICEDT
+'''
+out = '''
+YES
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+MUGICHA
+'''
+out = '''
+NO
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+OOLONGT
+'''
+out = '''
+YES
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+T
+'''
+out = '''
+YES
+'''
+
+[[cases]]
+name = "sample5"
+in = '''
+TEA
+'''
+out = '''
+NO
+'''

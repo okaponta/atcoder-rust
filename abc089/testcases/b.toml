@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+6
+G W Y P Y W
+'''
+out = '''
+Four
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+9
+G W W G P W P G G
+'''
+out = '''
+Three
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+8
+P Y W G Y W Y Y
+'''
+out = '''
+Four
+'''

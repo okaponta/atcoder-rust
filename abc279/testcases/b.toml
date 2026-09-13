@@ -1,0 +1,43 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+voltage
+tag
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+atcoder
+ace
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+gorilla
+gorillagorillagorilla
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+toyotasystems
+toyotasystems
+'''
+out = '''
+Yes
+'''

@@ -1,0 +1,21 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+Sunny
+'''
+out = '''
+Cloudy
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+Rainy
+'''
+out = '''
+Sunny
+'''

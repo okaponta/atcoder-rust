@@ -1,0 +1,43 @@
+type = "batch"
+timelimit = "2s"
+match = "float"
+
+[float]
+relative-error = 1e-6
+absolute-error = 1e-6
+
+[[cases]]
+name = "sample1"
+in = '''
+45 200
+'''
+out = '''
+90
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+37 450
+'''
+out = '''
+166.5
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+0 1000
+'''
+out = '''
+0
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+50 0
+'''
+out = '''
+0
+'''

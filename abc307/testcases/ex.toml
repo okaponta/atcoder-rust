@@ -1,0 +1,47 @@
+type = "batch"
+timelimit = "5s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3 5
+ABC
+..___
+'''
+out = '''
+3
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+11 15
+abracadabra
+__.._________ab
+'''
+out = '''
+2
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+20 30
+abaababbbabaabababba
+__a____b_____a________________
+'''
+out = '''
+2
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+1 1
+a
+_
+'''
+out = '''
+1
+'''

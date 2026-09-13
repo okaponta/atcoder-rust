@@ -1,0 +1,16 @@
+type = "batch"
+timelimit = "2s"
+match = "float"
+
+[float]
+relative-error = 1e-9
+absolute-error = 1e-9
+
+[[cases]]
+name = "sample1"
+in = '''
+1 1
+'''
+out = '''
+1.03527618041008295791
+'''

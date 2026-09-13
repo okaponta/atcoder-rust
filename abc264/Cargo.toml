@@ -3,15 +3,18 @@ name = "abc264"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-abc264-a = { alias = "a", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_a" }
-abc264-b = { alias = "b", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_b" }
-abc264-c = { alias = "c", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_c" }
-abc264-d = { alias = "d", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_d" }
-abc264-e = { alias = "e", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_e" }
-abc264-ex = { alias = "ex", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_h" }
-abc264-f = { alias = "f", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_f" }
-abc264-g = { alias = "g", problem = "https://atcoder.jp/contests/abc264/tasks/abc264_g" }
+[package.metadata.acrust]
+contest = "abc264"
+
+[package.metadata.acrust.tasks]
+a = "abc264_a"
+b = "abc264_b"
+c = "abc264_c"
+d = "abc264_d"
+e = "abc264_e"
+ex = "abc264_h"
+f = "abc264_f"
+g = "abc264_g"
 
 [[bin]]
 name = "abc264-a"

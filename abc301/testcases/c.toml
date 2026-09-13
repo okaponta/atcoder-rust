@@ -1,0 +1,43 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+ch@ku@ai
+choku@@i
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+ch@kud@i
+akidu@ho
+'''
+out = '''
+Yes
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+aoki
+@ok@
+'''
+out = '''
+No
+'''
+
+[[cases]]
+name = "sample4"
+in = '''
+aa
+bb
+'''
+out = '''
+No
+'''

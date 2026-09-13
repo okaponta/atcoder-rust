@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "float"
+
+[float]
+relative-error = 1e-5
+absolute-error = 1e-5
+
+[[cases]]
+name = "sample1"
+in = '''
+2
+10000 JPY
+0.10000000 BTC
+'''
+out = '''
+48000.0
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+3
+100000000 JPY
+100.00000000 BTC
+0.00000001 BTC
+'''
+out = '''
+138000000.0038
+'''

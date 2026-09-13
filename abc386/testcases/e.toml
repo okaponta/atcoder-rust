@@ -1,0 +1,23 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+4 2
+3 2 6 4
+'''
+out = '''
+7
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+10 4
+1516 1184 1361 2014 1013 1361 1624 1127 1117 1759
+'''
+out = '''
+2024
+'''

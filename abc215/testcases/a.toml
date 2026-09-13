@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+Hello,World!
+'''
+out = '''
+AC
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+Hello,world!
+'''
+out = '''
+WA
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+Hello!World!
+'''
+out = '''
+WA
+'''

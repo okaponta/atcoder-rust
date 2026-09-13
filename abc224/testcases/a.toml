@@ -1,0 +1,30 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+atcoder
+'''
+out = '''
+er
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+tourist
+'''
+out = '''
+ist
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+er
+'''
+out = '''
+er
+'''

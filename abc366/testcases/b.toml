@@ -1,0 +1,37 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+abc
+de
+fghi
+'''
+out = '''
+fda
+geb
+h*c
+i
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+3
+atcoder
+beginner
+contest
+'''
+out = '''
+cba
+oet
+ngc
+tio
+end
+sne
+ter
+*r
+'''

@@ -1,0 +1,17 @@
+type = "batch"
+timelimit = "3s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+3
+2023
+63
+1059872604593911
+'''
+out = '''
+17 7
+3 7
+104149 97711
+'''

@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+cupofcoffee
+cupofhottea
+'''
+out = '''
+4
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+abcde
+bcdea
+'''
+out = '''
+5
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+apple
+apple
+'''
+out = '''
+0
+'''

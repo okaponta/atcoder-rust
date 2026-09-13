@@ -1,0 +1,33 @@
+type = "batch"
+timelimit = "2s"
+match = "lines"
+
+[[cases]]
+name = "sample1"
+in = '''
+8
+"a,b"c,d
+'''
+out = '''
+"a,b"c.d
+'''
+
+[[cases]]
+name = "sample2"
+in = '''
+5
+,,,,,
+'''
+out = '''
+.....
+'''
+
+[[cases]]
+name = "sample3"
+in = '''
+20
+a,"t,"c,"o,"d,"e,"r,
+'''
+out = '''
+a."t,"c."o,"d."e,"r.
+'''

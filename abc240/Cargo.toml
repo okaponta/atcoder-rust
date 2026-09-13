@@ -3,15 +3,18 @@ name = "abc240"
 version = "0.1.0"
 edition = "2018"
 
-[package.metadata.cargo-compete.bin]
-abc240-a = { alias = "a", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_a" }
-abc240-b = { alias = "b", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_b" }
-abc240-c = { alias = "c", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_c" }
-abc240-d = { alias = "d", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_d" }
-abc240-e = { alias = "e", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_e" }
-abc240-ex = { alias = "ex", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_h" }
-abc240-f = { alias = "f", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_f" }
-abc240-g = { alias = "g", problem = "https://atcoder.jp/contests/abc240/tasks/abc240_g" }
+[package.metadata.acrust]
+contest = "abc240"
+
+[package.metadata.acrust.tasks]
+a = "abc240_a"
+b = "abc240_b"
+c = "abc240_c"
+d = "abc240_d"
+e = "abc240_e"
+ex = "abc240_h"
+f = "abc240_f"
+g = "abc240_g"
 
 [[bin]]
 name = "abc240-a"

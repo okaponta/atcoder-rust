@@ -3,14 +3,17 @@ name = "abc363"
 version = "0.1.0"
 edition = "2021"
 
-[package.metadata.cargo-compete.bin]
-abc363-a = { alias = "a", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_a" }
-abc363-b = { alias = "b", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_b" }
-abc363-c = { alias = "c", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_c" }
-abc363-d = { alias = "d", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_d" }
-abc363-e = { alias = "e", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_e" }
-abc363-f = { alias = "f", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_f" }
-abc363-g = { alias = "g", problem = "https://atcoder.jp/contests/abc363/tasks/abc363_g" }
+[package.metadata.acrust]
+contest = "abc363"
+
+[package.metadata.acrust.tasks]
+a = "abc363_a"
+b = "abc363_b"
+c = "abc363_c"
+d = "abc363_d"
+e = "abc363_e"
+f = "abc363_f"
+g = "abc363_g"
 
 [[bin]]
 name = "abc363-a"
